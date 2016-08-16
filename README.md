@@ -1,6 +1,6 @@
 # Apache and PHP on Docker
 
-This is a basic docker environment for PHP development.
+This is a basic Docker environment for PHP development.
 It is not intended to use directly as it stands, but rather to extend it and create custom development environments.
 
 It provides a pre-configured Apache (2.4) + mod_php (PHP 5.6) web server, based on Debian 8 (Jessie).
