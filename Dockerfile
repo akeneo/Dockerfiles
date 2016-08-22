@@ -9,10 +9,10 @@ RUN useradd -m -s /bin/bash docker
 # Install Apache + mod_php and some PHP extensions
 RUN apt-get update && \
     apt-get -yq install \
-        vim git curl wget bash-completion supervisor \
-        mysql-server mongodb \
+        bash-completion curl git imagemagick supervisor vim wget \
+        mongodb mysql-server \
         apache2 libapache2-mod-php5 php5-cli \
-        php5-apcu php5-mcrypt php5-intl php5-mysql php5-curl php5-gd php5-mongo php5-xdebug
+        php5-apcu php5-curl php5-gd php5-imagick php5-intl php5-mongo php5-mcrypt php5-mysql php5-xdebug
 
 # Clean installation to gain some space
 RUN apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
