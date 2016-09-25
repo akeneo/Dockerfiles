@@ -3,20 +3,22 @@ MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Create a user which have the same ID than the host user
-RUN useradd -m -s /bin/bash docker
-
 # Install Apache + mod_php and some PHP extensions
 RUN apt-get update && \
     apt-get -yq install \
-        bash-completion curl git imagemagick supervisor vim wget \
-        mongodb mysql-server \
+        bash-completion curl git imagemagick supervisor vim wget sudo \
         apache2 libapache2-mod-php5 php5-cli \
         php5-apcu php5-curl php5-gd php5-imagick php5-intl php5-mongo php5-mcrypt php5-mysql php5-xdebug
 
 # Clean installation to gain some space
 RUN apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
     rm -rf rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Add a "docker" user
+RUN sudo useradd docker --shell /bin/bash --create-home \
+  && sudo usermod -a -G sudo docker \
+  && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
+  && echo 'docker:secret' | chpasswd
 
 # Install composer
 ADD docker/install-composer.sh /install-composer.sh
@@ -42,7 +44,9 @@ RUN sed -i "s/export APACHE_RUN_USER=www-data/export APACHE_RUN_USER=docker/" /e
 # Expose Apache to the host
 EXPOSE 80
 
-# Run services thanks to Supervisord
-ADD docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+# Define "docker" as current user
+USER docker
+WORKDIR /home/docker/
 
-CMD ["/usr/bin/supervisord", "-n"]
+# Run apache in foreground
+CMD ["sudo", "/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
