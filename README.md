@@ -15,7 +15,7 @@ The environment come with  some PHP extensions: apcu, mcrypt, intl, mysql, curl,
 You can directly pull this image from [Docker hub](https://hub.docker.com/r/carcel/apache-php/) by running:
 
 ```bash
-    docker run -t -i -p 8080:80 -d --name apache-php carcel/apache-php
+$ docker run -t -i -p 8080:80 -d --name apache-php carcel/apache-php
 ```
 
 ### From GitHub
@@ -23,19 +23,19 @@ You can directly pull this image from [Docker hub](https://hub.docker.com/r/carc
 Clone the repository, go inside the created folder, and build the docker image:
 
 ```bash
-    docker build -t "apache-php" .
+$ docker build -t "apache-php" .
 ```
 
 Then you can run a container like this:
 
 ```
-    docker run -t -i -p 8080:80 -d --name apache-php apache-php
+$ docker run -t -i -p 8080:80 -d --name apache-php apache-php
 ```
 
 Access the URL `localhost:8080` with your web browser to check that the container works. You can also go inside the container with:
 
 ```bash
-    docker exec -i -t apache-php /bin/bash
+$ docker exec -i -t apache-php /bin/bash
 ```
 
 ## License
