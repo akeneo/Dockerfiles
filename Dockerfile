@@ -8,10 +8,8 @@ RUN apt-get update && \
     apt-get -yq install \
         bash-completion curl git imagemagick supervisor vim wget sudo \
         apache2 libapache2-mod-php5 php5-cli \
-        php5-apcu php5-curl php5-gd php5-imagick php5-intl php5-mongo php5-mcrypt php5-mysql php5-xdebug
-
-# Clean installation to gain some space
-RUN apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
+        php5-apcu php5-curl php5-gd php5-imagick php5-intl php5-mongo php5-mcrypt php5-mysql php5-xdebug \ &&
+    apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove --purge && \
     rm -rf rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add a "docker" user
