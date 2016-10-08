@@ -12,7 +12,7 @@ RUN apt-get update && \
 
 # Add PHP 7 repository
 RUN wget https://www.dotdeb.org/dotdeb.gpg && apt-key add dotdeb.gpg && rm dotdeb.gpg
-COPY docker/dotdeb.list /etc/apt/sources.list.d/dotdeb.list
+COPY files/dotdeb.list /etc/apt/sources.list.d/dotdeb.list
 
 # Install Apache + mod_php and some PHP extensions
 RUN apt-get update && \
@@ -31,8 +31,8 @@ RUN sudo useradd docker --shell /bin/bash --create-home \
   && echo 'docker:secret' | chpasswd
 
 # Install composer
-ADD docker/install-composer.sh /install-composer.sh
-RUN chmod +x /install-composer.sh && /install-composer.sh && rm /install-composer.sh
+ADD files/install-composer.sh /tmp/install-composer.sh
+RUN chmod +x /tmp/install-composer.sh && /tmp/install-composer.sh && rm /tmp/install-composer.sh
 
 # Configure PHP
 RUN phpenmod mcrypt && \
