@@ -8,6 +8,7 @@ services:
       - mongodb
     volumes:
       - /path/to/your/pim:/home/docker/pim
+      - /home/_you_/.composer:/home/docker/.composer
     working_dir: /home/docker/pim
     ports:
       - '8080:80'
