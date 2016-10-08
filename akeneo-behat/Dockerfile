@@ -1,4 +1,4 @@
-FROM carcel/apache-php:php-7.0
+FROM carcel/apache-php:latest
 MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 # Define "root" as current user
