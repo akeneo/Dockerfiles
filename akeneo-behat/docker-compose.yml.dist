@@ -9,6 +9,7 @@ services:
       - selenium
     volumes:
       - /path/to/you/pim:/home/docker/pim
+      - /home/_you_/.composer:/home/docker/.composer
     working_dir: /home/docker/pim
     ports:
       - '8080:80'
