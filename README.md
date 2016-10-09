@@ -4,9 +4,11 @@ This repository contains my own docker images I use for work and personal projec
 
 Are included:
 
-- [**carcel/apache-php**](apache-php/README.md): Base image with Apache + mod_php preconfigured
-- [**carcel/akeneo**](akeneo/README.md): An image for Akeneo development
-- [**carcel/akeneo-behat**](akeneo-behat/README.md): An image to run Akeneo behat tests
+- [**carcel/php**](php/README.md): Base image with PHP CLI preconfigured
+- [**carcel/fpm**](fpm/README.md): Base image with PHP FPM preconfigured, based on `carcel/php`
+- [**carcel/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured, based on `carcel/php`
+- [**carcel/akeneo**](akeneo/README.md): An image for Akeneo development, based on `carcel/apache-php`
+- [**carcel/akeneo-behat**](akeneo-behat/README.md): An image to run Akeneo behat tests, based on `carcel/apache-php`
 
 ## License
 
