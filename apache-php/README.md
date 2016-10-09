@@ -3,10 +3,10 @@
 This is a basic Docker environment for PHP development.
 It is not intended to use directly as it stands, but rather to extend it and create custom development environments.
 
-It provides a pre-configured Apache (2.4) + mod_php (PHP 7.0) web server, based on Debian 8 (Jessie).
+It provides a pre-configured Apache (2.4) + mod_php (PHP 5.6) web server, based on Debian 8 (Jessie).
 Apache is configured to run with the `docker` user. It is then preferred to place your PHP application in `/home/docker` and modify the default VHOST to access it.
 
-The environment come with  some PHP extensions: apcu, mcrypt, intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last one comes deactivated, run `php5enmod xdebug` and restart Apache to enable it).
+The environment come with  some PHP extensions: apcu, mcrypt, intl, mysql, curl, gd, mongo, and xdebug (this last one comes deactivated, run `php5enmod xdebug` and restart Apache to enable it).
 
 ## How to use it?
 
