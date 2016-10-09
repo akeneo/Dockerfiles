@@ -10,6 +10,8 @@ This environment is based on [carcel/apache-php](https://hub.docker.com/r/carcel
 
 Clone the repository and go inside the created folder. Copy/paste the file `docker-compose.yml.dist` as `docker-compose.yml`, and replace `/path/to/your/pim` by the path to your project.
 
+Replace `/home/you/.composer` by your own `.composer` folder, this will allow to use your own github tocken when installing vendors.
+
 Then run:
 
 ```bash
@@ -20,7 +22,7 @@ This will build the Dockerfile present in the repository, and run it with the ot
 
 ### From Docker hub
 
-The Dockerfile is available at [Docker hub](https://hub.docker.com/r/carcel/akeneo-behat/). In the `docker-compose.yml` file, you can replace `build: ./` by `image: carcel/akeneo` in the `apache-php` block.
+The Dockerfile is available at [Docker hub](https://hub.docker.com/r/carcel/akeneo-behat/). In the `docker-compose.yml` file, you can replace `build: ./` by `image: carcel/akeneo:php-5.6` in the `akeneo` block.
 
 This allow you to use the `docker-compose.yml` file in every PIM project you want, simply by placing it at the root of your project.
 
@@ -62,13 +64,11 @@ parameters:
 Then you can initialize Akeneo with these commands (you will need to create a GitHub token for composer):
 
 ```bash
-$ docker-compose exec apache-php composer update
-$ docker-compose exec apache-php pim-initialize
+$ docker-compose exec akeneo composer update
+$ docker-compose exec akeneo pim-initialize
 ```
 
 You should now be able to access Akeneo from your host through `localhost:8080`.
-To access it through `localhost:8080/app_dev.php`, don't forget to comment the `if (isset($_SERVER['HTTP_CLIENT_IP'])` condition in `web/app_dev.php`.
-
 
 ## Run behat tests
 
@@ -82,7 +82,7 @@ default:
     context:
         class:  Context\FeatureContext
         parameters:
-            base_url: 'apache-php:80'
+            base_url: 'http://akeneo:80'
             timeout: 30000
             window_width: 1280
             window_height: 1024
@@ -91,8 +91,8 @@ default:
             default_session: symfony2
             show_cmd: chromium-browser %s
             selenium2:
-                wd_host: 'selenium:4444/wd/hub'
-            base_url: 'apache-php:80'
+                wd_host: 'http://selenium:4444/wd/hub'
+            base_url: 'http://akeneo:80'
             files_path: 'features/Context/fixtures/'
         Behat\Symfony2Extension\Extension:
             kernel:
@@ -104,7 +104,7 @@ default:
 You are now able to run behat tests directly into the container by runing:
 
 ```bash
-$ docker-compose exec apache-php bin/behat features/path/to/scenario
+$ docker-compose exec akeneo bin/behat features/path/to/scenario
 ```
 
 ## What if?
