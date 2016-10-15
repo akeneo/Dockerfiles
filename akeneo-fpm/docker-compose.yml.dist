@@ -6,11 +6,19 @@ services:
     depends_on:
       - mysql
       - mongodb
-    user: docker
     volumes:
       - /path/to/your/pim:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer
     working_dir: /home/docker/pim
+    networks:
+      - akeneo
+
+  nginx:
+    image: carcel/akeneo-nginx
+    depends_on:
+      - akeneo
+    volumes:
+      - /path/to/your/pim:/home/docker/pim
     ports:
       - '8080:80'
     networks:

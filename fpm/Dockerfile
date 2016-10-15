@@ -21,9 +21,6 @@ RUN sed -i "s/user = www-data/user = docker/" /etc/php/7.0/fpm/pool.d/www.conf &
     sed -i "s/listen.owner = www-data/listen.owner = docker/" /etc/php/7.0/fpm/pool.d/www.conf && \
     sed -i "s/listen.group = www-data/listen.group = docker/" /etc/php/7.0/fpm/pool.d/www.conf
 
-# Expose PHP FPM to the host
-EXPOSE 9000
-
 # Define "docker" as current user
 USER docker
 

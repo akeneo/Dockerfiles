@@ -6,15 +6,34 @@ services:
     depends_on:
       - mysql
       - mongodb
-    user: docker
+      - selenium
     volumes:
       - /path/to/your/pim:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer
+      - /tmp/behat/screenshots:/tmp/behat/screenshots
     working_dir: /home/docker/pim
+    networks:
+      - behat
+
+  selenium:
+    image: selenium/standalone-firefox-debug:2.53.1-beryllium
+    volumes:
+      - /path/to/your/pim:/home/docker/pim:ro
+    ports:
+      - '5900:5900'
+    networks:
+      - behat
+
+  nginx:
+    image: carcel/akeneo-behat-nginx
+    depends_on:
+      - akeneo
+    volumes:
+      - /path/to/your/pim:/home/docker/pim
     ports:
       - '8080:80'
     networks:
-      - akeneo
+      - behat
 
   mysql:
     image: mysql:5.7
@@ -24,12 +43,12 @@ services:
       - MYSQL_PASSWORD=akeneo_pim
       - MYSQL_DATABASE=akeneo_pim
     networks:
-      - akeneo
+      - behat
 
   mongodb:
     image: mongo:2.6
     networks:
-      - akeneo
+      - behat
 
 networks:
-  akeneo: ~
+  behat: ~
