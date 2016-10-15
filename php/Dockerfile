@@ -30,6 +30,9 @@ RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/" /etc/php5/cli/php
     sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php5/cli/php.ini && \
     sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php5/cli/php.ini
 
+# Expose Xdebug
+EXPOSE 9000
+
 # Define "docker" as current user
 USER docker
 WORKDIR /home/docker/

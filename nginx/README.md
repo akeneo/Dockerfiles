@@ -1,8 +1,6 @@
 # nginx on Docker
 
-This is a preconfigured nginx environment.
-
-nginx is configured with "docker" as user and group, and listen to the socket "/var/run/php5-fpm.sock";
+This is a nginx environment, based on [nginx](https://hub.docker.com/_/nginx/), preconfigured to run with user "docker".
 
 ## How to use it?
 
