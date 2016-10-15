@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install some useful packages
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests -yq install \
-        bash-completion curl git imagemagick supervisor vim wget sudo && \
+        ca-certificates bash-completion curl git imagemagick supervisor vim wget sudo && \
     apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -29,9 +29,8 @@ RUN useradd docker --shell /bin/bash --create-home \
   && echo 'docker:secret' | chpasswd
 
 # Install composer
-RUN wget https://getcomposer.org/composer.phar && \
-    mv composer.phar /usr/local/bin/composer && \
-    chmod +x /usr/local/bin/composer
+RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN chmod +x /usr/local/bin/composer
 
 # Configure PHP
 RUN phpenmod mcrypt && \
