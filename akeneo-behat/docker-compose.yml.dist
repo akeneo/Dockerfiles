@@ -2,14 +2,16 @@ version: '2'
 
 services:
   akeneo:
-    build: ./
+    image: carcel/akeneo-behat:latest
     depends_on:
       - mysql
       - mongodb
       - selenium
+    user: docker
     volumes:
       - /path/to/your/pim:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer
+      - /tmp/behat/screenshots:/tmp/behat/screenshots
     working_dir: /home/docker/pim
     ports:
       - '8080:80'
@@ -17,7 +19,9 @@ services:
       - behat
 
   selenium:
-    image: selenium/standalone-firefox-debug:2.53.0
+    image: selenium/standalone-firefox-debug:2.53.1-beryllium
+    volumes:
+      - /path/to/your/pim:/home/docker/pim:ro
     ports:
       - '5900:5900'
     networks:
