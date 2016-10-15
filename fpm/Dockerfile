@@ -6,7 +6,7 @@ USER root
 
 # Install PHP FPM
 RUN apt-get update && \
-    apt-get -yq install php5-fpm && \
+    apt-get --no-install-recommends --no-install-suggests -yq install php5-fpm && \
     apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
