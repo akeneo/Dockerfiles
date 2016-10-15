@@ -2,10 +2,11 @@ version: '2'
 
 services:
   akeneo:
-    build: ./
+    image: carcel/akeneo:php-7.0
     depends_on:
       - mysql
       - mongodb
+    user: docker
     volumes:
       - /path/to/your/pim:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer

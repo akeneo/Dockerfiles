@@ -12,7 +12,9 @@ RUN apt-get update && \
 
 # Configure PHP FPM
 RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/" /etc/php/7.0/fpm/php.ini && \
-    sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/7.0/fpm/php.ini
+    sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/7.0/fpm/php.ini && \
+    sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.0/fpm/php.ini && \
+    sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php/7.0/fpm/php.ini
 
 RUN sed -i "s/user = www-data/user = docker/" /etc/php/7.0/fpm/pool.d/www.conf && \
     sed -i "s/group = www-data/group = docker/" /etc/php/7.0/fpm/pool.d/www.conf && \
