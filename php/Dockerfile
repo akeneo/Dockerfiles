@@ -18,8 +18,9 @@ RUN useradd docker --shell /bin/bash --create-home \
   && echo 'docker:secret' | chpasswd
 
 # Install composer
-RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN chmod +x /usr/local/bin/composer
+RUN wget https://getcomposer.org/composer.phar && \
+    mv composer.phar /usr/local/bin/composer && \
+    chmod +x /usr/local/bin/composer
 
 # Configure PHP
 RUN php5enmod mcrypt && \
