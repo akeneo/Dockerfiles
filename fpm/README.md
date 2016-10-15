@@ -6,7 +6,7 @@ The environment come with native Debian Jessie PHP 7.0, and some PHP extensions:
 intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last one comes deactivated, run `phpenmod xdebug` to
 enable it).
 
-The PHP FPM daemon is configured with "docker" as user and group, and listen to the socket "/var/run/php5-fpm.sock";
+The PHP FPM daemon is configured with "docker" as user and group, and listen to the socket "/run/php/php7.0-fpm.sock";
 
 ## How to use it?
 
