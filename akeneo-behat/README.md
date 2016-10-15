@@ -82,8 +82,8 @@ default:
     context:
         class:  Context\FeatureContext
         parameters:
-            base_url: 'http://akeneo:80'
-            timeout: 30000
+            base_url: 'http://akeneo'
+            timeout: 10000
             window_width: 1280
             window_height: 1024
     extensions:
@@ -92,7 +92,7 @@ default:
             show_cmd: chromium-browser %s
             selenium2:
                 wd_host: 'http://selenium:4444/wd/hub'
-            base_url: 'http://akeneo:80'
+            base_url: 'http://akeneo'
             files_path: 'features/Context/fixtures/'
         Behat\Symfony2Extension\Extension:
             kernel:
