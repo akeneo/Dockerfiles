@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install PHP with some extensions
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests -yq install \
-        bash-completion curl git imagemagick vim wget sudo \
+        ca-certificates bash-completion curl git imagemagick vim wget sudo \
         php5-cli php5-apcu php5-curl php5-gd php5-imagick php5-intl php5-mongo php5-mcrypt php5-mysql php5-xdebug && \
     apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -18,9 +18,8 @@ RUN useradd docker --shell /bin/bash --create-home \
   && echo 'docker:secret' | chpasswd
 
 # Install composer
-RUN wget https://getcomposer.org/composer.phar && \
-    mv composer.phar /usr/local/bin/composer && \
-    chmod +x /usr/local/bin/composer
+RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN chmod +x /usr/local/bin/composer
 
 # Configure PHP
 RUN php5enmod mcrypt && \
