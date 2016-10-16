@@ -1,12 +1,14 @@
 # PHP FPM on Docker
 
-This is a basic Docker environment for PHP FPM development.
+This is a basic Docker environment for PHP FPM development, based on [carcel/php](https://hub.docker.com/r/carcel/php).
 
-The environment come with native Debian Jessie PHP 7.0, and some PHP extensions: fpm of course, but also apcu, mcrypt,
-intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last one comes deactivated, run `phpenmod xdebug` to
-enable it).
+It is not intended to use directly as it stands, but rather to extend it and create custom development environments.
 
-The PHP FPM daemon is configured with "docker" as user and group, and listen to the socket "/run/php/php7.0-fpm.sock";
+It comes with PHP 7.0 (provided by dotdeb.org repository), and some PHP extensions: fpm of course,
+but also apcu, mcrypt, intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last one comes deactivated,
+run `phpenmod xdebug` to enable it).
+
+The PHP FPM daemon is configured with "docker" as user and group, and listen to the socket "/run/php/php7.0-fpm.sock".
 
 ## How to use it?
 
