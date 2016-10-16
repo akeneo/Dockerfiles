@@ -24,7 +24,7 @@ RUN sed -i "s/export APACHE_RUN_USER=www-data/export APACHE_RUN_USER=docker/" /e
     sed -i "s/export APACHE_RUN_GROUP=www-data/export APACHE_RUN_GROUP=docker/" /etc/apache2/envvars && \
     chown -R docker: /var/lock/apache2
 
-# Expose Apache to the host
+# Expose Apache
 EXPOSE 80 443
 
 # Define "docker" as current user
