@@ -1,6 +1,7 @@
 # Apache and PHP on Docker
 
-This is a basic Docker environment for PHP development.
+This is a basic Docker environment for PHP development, based on [carcel/php](https://hub.docker.com/r/carcel/php).
+
 It is not intended to use directly as it stands, but rather to extend it and create custom development environments.
 
 It provides a pre-configured Apache (2.4) + mod_php (PHP 7.0) web server, based on Debian 8 (Jessie).
