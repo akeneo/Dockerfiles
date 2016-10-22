@@ -7,6 +7,8 @@ services:
       - mysql
       - mongodb
       - selenium
+    environment:
+      - BEHAT_TMPDIR:/home/docker/pim/app/cache/tmp
     volumes:
       - /path/to/your/pim:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer
@@ -18,7 +20,7 @@ services:
   selenium:
     image: selenium/standalone-firefox-debug:2.53.1-beryllium
     volumes:
-      - /path/to/your/pim:/home/docker/pim:ro
+      - /path/to/your/pim:/home/docker/pim
     ports:
       - '5900:5900'
     networks:
@@ -36,7 +38,7 @@ services:
       - behat
 
   mysql:
-    image: mysql:5.7
+    image: mysql:5.6
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=akeneo_pim
