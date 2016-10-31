@@ -30,9 +30,9 @@ Then you can run a container like this:
 $ docker run --name nginx -d nginx
 ```
 
-### Configure Akeneo PIM 
+### Use this image with docker-compose
 
-How to configure Akeneo is explained in [carcel/akeneo-fpm](https://hub.docker.com/r/carcel/akeneo-fpm).
+Instructions for docker-compose can be found [here](https://github.com/damien-carcel/Dockerfiles/COMPOSE.md).
 
 ## License
 
