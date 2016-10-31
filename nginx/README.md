@@ -28,7 +28,6 @@ Then you can run a container like this:
 $ docker run --name nginx -d nginx
 ```
 
-
 ## License
 
 This repository is under the MIT license. See the complete license in the `LICENSE` file.
