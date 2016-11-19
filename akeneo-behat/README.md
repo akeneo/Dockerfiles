@@ -32,7 +32,7 @@ $ docker run --name akeneo-behat -p 8080:80 -d akeneo-behat
 
 ### Use this image with docker-compose
 
-Instructions for docker-compose can be found [here](https://github.com/damien-carcel/Dockerfiles/COMPOSE.md).
+Instructions for docker-compose can be found [here](https://github.com/damien-carcel/Dockerfiles/blob/php-5.6/COMPOSE.md).
 
 ## License
 
