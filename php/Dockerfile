@@ -16,15 +16,15 @@ COPY files/dotdeb.list /etc/apt/sources.list.d/dotdeb.list
 
 # Install PHP with some extensions
 RUN apt-get update && \
-    apt-get --no-install-recommends --no-install-suggests -yq install \
+    apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
         php7.0-cli php7.0-apcu php7.0-mbstring php7.0-curl php7.0-gd php7.0-imagick php7.0-intl \
         php7.0-mcrypt php7.0-mongodb php7.0-mysql php7.0-soap php7.0-xdebug php7.0-xml php7.0-zip && \
-    apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
+    apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add a "docker" user
 RUN useradd docker --shell /bin/bash --create-home \
-  && usermod -a -G sudo docker \
+  && usermod --append --groups sudo docker \
   && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'docker:secret' | chpasswd
 
