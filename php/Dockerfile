@@ -5,15 +5,15 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install PHP with some extensions
 RUN apt-get update && \
-    apt-get --no-install-recommends --no-install-suggests -yq install \
+    apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
         ca-certificates bash-completion curl git imagemagick vim wget sudo \
         php5-cli php5-apcu php5-curl php5-gd php5-imagick php5-intl php5-mongo php5-mcrypt php5-mysql php5-xdebug && \
-    apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
+    apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add a "docker" user
 RUN useradd docker --shell /bin/bash --create-home \
-  && usermod -a -G sudo docker \
+  && usermod --append --groups sudo docker \
   && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && echo 'docker:secret' | chpasswd
 
