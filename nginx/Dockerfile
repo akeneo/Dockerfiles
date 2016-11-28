@@ -3,13 +3,13 @@ MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 # Install sudo
 RUN apt-get update && \
-    apt-get --no-install-recommends --no-install-suggests -yq install sudo && \
-    apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
+    apt-get --no-install-recommends --no-install-suggests --yes --quiet install sudo && \
+    apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add a "docker" user
 RUN useradd docker --shell /bin/bash --create-home \
-    && usermod -a -G sudo docker \
+  && usermod --append --groups sudo docker \
     && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && echo 'docker:secret' | chpasswd
 

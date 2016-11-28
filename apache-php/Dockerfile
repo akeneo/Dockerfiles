@@ -6,8 +6,8 @@ USER root
 
 # Install Apache + mod_php and some PHP extensions
 RUN apt-get update && \
-    apt-get --no-install-recommends --no-install-suggests -yq install apache2 libapache2-mod-php5 && \
-    apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
+    apt-get --no-install-recommends --no-install-suggests --yes --quiet install apache2 libapache2-mod-php5 && \
+    apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Configure PHP
