@@ -69,6 +69,7 @@ parameters:
     database_password: akeneo_pim
     locale: en
     secret: ThisTokenIsNotSoSecretChangeIt
+    installer_data: PimInstallerBundle:minimal
 ```
 
 Don't forget to configure MongoDB, if needed, by activating the `DoctrineMongoDBBundle` in `app/AppKernel.php`, and by adding the following to your parameters:
@@ -94,10 +95,10 @@ parameters:
 Then you can initialize Akeneo with these commands:
 
 ```bash
-$ docker-compose exec akeneo composer update
+$ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec akeneo pim-initialize
 
-$ docker-compose exec akeneo-behat composer update
+$ docker-compose exec akeneo-behat php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec akeneo-behat pim-initialize
 ```
 
