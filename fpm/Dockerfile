@@ -6,8 +6,8 @@ USER root
 
 # Install PHP FPM
 RUN apt-get update && \
-    apt-get --no-install-recommends --no-install-suggests -yq install php7.0-fpm && \
-    apt-get clean && apt-get -yq autoclean && apt-get -yq autoremove && \
+    apt-get --no-install-recommends --no-install-suggests --yes --quiet install php7.0-fpm && \
+    apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Configure PHP FPM
