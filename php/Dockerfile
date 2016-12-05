@@ -33,16 +33,15 @@ RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/loca
 RUN chmod +x /usr/local/bin/composer
 
 # Configure PHP
+COPY files/xdebug.ini /etc/php/7.0/mods-available/xdebug.ini
+
 RUN phpenmod mcrypt && \
-    phpdismod xdebug
+    phpenmod xdebug
 
 RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/" /etc/php/7.0/cli/php.ini && \
     sed -i "s/memory_limit = .*/memory_limit = 2G/" /etc/php/7.0/cli/php.ini && \
     sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.0/cli/php.ini && \
     sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php/7.0/cli/php.ini
-
-# Expose Xdebug
-EXPOSE 9000
 
 # Define "docker" as current user
 USER docker

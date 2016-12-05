@@ -13,12 +13,12 @@ RUN apt-get update && \
 RUN npm install -g grunt-cli
 
 # Add some utilities
-ADD files/pim-in-ass.sh /usr/local/bin/pim-in-ass
-ADD files/pim-initialize.sh /usr/local/bin/pim-initialize
+COPY files/pim-in-ass.sh /usr/local/bin/pim-in-ass
+COPY files/pim-initialize.sh /usr/local/bin/pim-initialize
 RUN chmod +x /usr/local/bin/*
 
 # Add Akeneo VHOST as default
-ADD files/akeneo.local.conf /etc/apache2/sites-available/000-default.conf
+COPY files/akeneo.local.conf /etc/apache2/sites-available/000-default.conf
 
 # Define "docker" as current user
 USER docker
