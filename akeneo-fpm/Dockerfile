@@ -13,8 +13,8 @@ RUN apt-get update && \
 RUN npm install -g grunt-cli
 
 # Add some utilities
-COPY files/pim-in-ass.sh /usr/local/bin/pim-in-ass
-COPY files/pim-initialize.sh /usr/local/bin/pim-initialize
+ADD files/pim-in-ass.sh /usr/local/bin/pim-in-ass
+ADD files/pim-initialize.sh /usr/local/bin/pim-initialize
 RUN chmod +x /usr/local/bin/*
 
 # Configure PHP FPM
