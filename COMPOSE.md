@@ -95,12 +95,16 @@ parameters:
 Then you can initialize Akeneo with these commands:
 
 ```bash
+$ docker-compose exec akeneo  php5dismod -s cli xdebug
 $ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec akeneo pim-initialize
+$ docker-compose exec akeneo  php5enmod -s cli xdebug
 
 $ docker-compose exec akeneo-behat php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec akeneo-behat pim-initialize
 ```
+
+As *xdebug* is activated by default on development images, it is recommanded to first deactivate it, then run the initialization, and finally enable it again.
 
 You should now be able to access Akeneo development environment from your host through `http://localhost:8080/` and behat environment through `http://localhost:8081/` (of course, you can change the host port in the compose file).
 
