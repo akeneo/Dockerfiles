@@ -4,6 +4,9 @@ MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 # Define "root" as current user
 USER root
 
+# Deactivate xdebug
+RUN phpdismod xdebug
+
 # Install perceptualdiff
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install perceptualdiff && \

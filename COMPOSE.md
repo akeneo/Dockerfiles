@@ -105,6 +105,11 @@ $ docker-compose exec akeneo-behat pim-initialize
 
 As *xdebug* is activated by default on development images, it is recommended to first deactivate it, then run the initialization, and finally enable it again.
 
+Also, you can configure two things on Xdebug through environment variables on akeneo and akeneo-behat images. These environment variables are all optional. 
+- PHP_XDEBUG_DEFAULT_ENABLE: 0 or 1 (by default 1)
+- PHP_XDEBUG_REMOTE_HOST: your host IP address (by default it allows all IPs)
+- PHP_XDEBUG_IDE_KEY: the IDE KEY you want (by default XDEBUG_IDE_KEY)
+
 You should now be able to access Akeneo development environment from your host through `http://localhost:8080/` and behat environment through `http://localhost:8081/` (of course, you can change the host port in the compose file).
 
 To access Akeneo in dev mode, through `http://localhost:8080/app_dev.php`, don't forget to comment the `if (isset($_SERVER['HTTP_CLIENT_IP'])` condition in `web/app_dev.php`.
