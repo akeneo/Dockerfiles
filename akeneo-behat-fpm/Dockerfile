@@ -1,4 +1,4 @@
-FROM carcel/fpm:latest
+FROM carcel/fpm:php-7.1
 MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 # Define "root" as current user
@@ -19,7 +19,7 @@ COPY files/pim-initialize.sh /usr/local/bin/pim-initialize
 RUN chmod +x /usr/local/bin/*
 
 # Configure PHP FPM
-RUN sed -i "s/listen = .*/listen = 9001/" /etc/php/7.0/fpm/pool.d/www.conf
+RUN sed -i "s/listen = .*/listen = 9001/" /etc/php/7.1/fpm/pool.d/www.conf
 
 # Expose PHP FPM
 EXPOSE 9001

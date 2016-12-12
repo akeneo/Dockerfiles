@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-XDEBUG_PATH="/etc/php/7.0/mods-available/xdebug.ini"
+XDEBUG_PATH="/etc/php/7.1/mods-available/xdebug.ini"
 
 function execAsRoot {
     gosu root bash -c "$1"
