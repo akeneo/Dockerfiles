@@ -1,4 +1,4 @@
-FROM carcel/php:latest
+FROM carcel/php:php-7.1
 MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 # Define "root" as current user
@@ -6,15 +6,15 @@ USER root
 
 # Install Apache + mod_php and some PHP extensions
 RUN apt-get update && \
-    apt-get --no-install-recommends --no-install-suggests --yes --quiet install apache2 libapache2-mod-php7.0 && \
+    apt-get --no-install-recommends --no-install-suggests --yes --quiet install apache2 libapache2-mod-php7.1 && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Configure PHP
-RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/" /etc/php/7.0/apache2/php.ini && \
-    sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/7.0/apache2/php.ini && \
-    sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.0/apache2/php.ini && \
-    sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php/7.0/apache2/php.ini
+RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/" /etc/php/7.1/apache2/php.ini && \
+    sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/7.1/apache2/php.ini && \
+    sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.1/apache2/php.ini && \
+    sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php/7.1/apache2/php.ini
 
 # Configure Apache
 RUN a2enmod rewrite && \
