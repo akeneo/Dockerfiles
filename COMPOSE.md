@@ -17,7 +17,7 @@ Replace `/home/you/.composer` by your own `.composer` folder. This will allow yo
 
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 
-By default, latest versions of `akeneo`, `akeneo-behat`, `akeneo-fpm` and `akeneo-behat-fpm` are used. But you can also choose to use a specific tag. Currently, are available `php-5.6` and `php-7.0` (same as `latest`).
+By default, latest versions of `akeneo`, `akeneo-behat`, `akeneo-fpm` and `akeneo-behat-fpm` are used. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0` and `php-7.1` (same as `latest`).
 
 ## Run and stop the containers
 
