@@ -95,15 +95,15 @@ parameters:
 Then you can initialize Akeneo with these commands:
 
 ```bash
-$ docker-compose exec akeneo sudo php5dismod -s cli xdebug
 $ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec akeneo pim-initialize
-$ docker-compose exec akeneo sudo php5enmod -s cli xdebug
 
 $ docker-compose exec akeneo-behat pim-initialize
 ```
 
-As *xdebug* is activated by default on development images, it is recommended to first deactivate it, then run the initialization, and finally enable it again.
+As *xdebug* is deactivated by default on development images, you should activate it at the end of the installation if you want to debug.
+
+If you want to activate it by default, you can turn the environment variable "PHP_XDEBUG_ENABLED" to "1"
 
 Also, you can configure two things on Xdebug through environment variables on akeneo and akeneo-behat images. These environment variables are all optional. 
 - PHP_XDEBUG_DEFAULT_ENABLE: 0 or 1 (by default 1)

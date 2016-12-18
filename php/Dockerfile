@@ -40,7 +40,7 @@ RUN useradd docker --shell /bin/bash --create-home \
 RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN chmod +x /usr/local/bin/composer
 
-RUN php5enmod mcrypt
+RUN php5enmod mcrypt && php5dismod xdebug
 
 RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/" /etc/php5/cli/php.ini && \
     sed -i "s/memory_limit = .*/memory_limit = 2G/" /etc/php5/cli/php.ini && \
