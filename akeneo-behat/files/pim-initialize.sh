@@ -15,3 +15,4 @@ app/console -e=behat ca:c
 
 app/console -e=behat oro:requirejs:generate-config
 app/console -e=behat pim:install --force
+app/console -e=behat asset:install --symlink
