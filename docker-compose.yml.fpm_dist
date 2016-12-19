@@ -6,6 +6,11 @@ services:
     depends_on:
       - mysql
       - mongodb
+    environment:
+      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
+      PHP_XDEBUG_DEFAULT_ENABLE: 1
+      PHP_XDEBUG_ENABLED: 0
+      #PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
     volumes:
       - ./:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer
@@ -20,7 +25,11 @@ services:
       - mongodb-behat
       - selenium
     environment:
-      - BEHAT_TMPDIR:/home/docker/pim/app/cache/tmp
+      BEHAT_TMPDIR:/home/docker/pim/app/cache/tmp
+      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
+      PHP_XDEBUG_DEFAULT_ENABLE: 1
+      PHP_XDEBUG_ENABLED: 0
+      #PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
     volumes:
       - ./:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer

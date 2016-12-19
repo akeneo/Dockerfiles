@@ -27,8 +27,11 @@ RUN sed -i "s/export APACHE_RUN_USER=www-data/export APACHE_RUN_USER=docker/" /e
 # Expose Apache
 EXPOSE 80 443
 
+COPY files/apache-foreground /usr/local/bin
+RUN  chmod +x /usr/local/bin/apache-foreground
+
 # Define "docker" as current user
 USER docker
 
 # Run apache in foreground
-CMD ["sudo", "/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["sudo", "/usr/local/bin/apache-foreground"]
