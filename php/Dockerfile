@@ -45,7 +45,7 @@ RUN useradd docker --shell /bin/bash --create-home \
 RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN chmod +x /usr/local/bin/composer
 
-RUN phpenmod mcrypt
+RUN phpenmod mcrypt && phpdismod xdebug
 
 RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/" /etc/php/7.1/cli/php.ini && \
     sed -i "s/memory_limit = .*/memory_limit = 2G/" /etc/php/7.1/cli/php.ini && \
