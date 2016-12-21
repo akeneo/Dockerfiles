@@ -5,12 +5,11 @@ services:
     image: carcel/akeneo-fpm
     depends_on:
       - mysql
-      - mongodb
+#      - mongodb
     environment:
-      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
-      PHP_XDEBUG_DEFAULT_ENABLE: 1
-      PHP_XDEBUG_ENABLED: 0
-      #PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
+#      PHP_XDEBUG_ENABLED: 0
+#      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
+#      PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
     user: docker
     volumes:
       - ./:/home/docker/pim
@@ -23,14 +22,13 @@ services:
     image: carcel/akeneo-behat-fpm
     depends_on:
       - mysql-behat
-      - mongodb-behat
+#      - mongodb-behat
       - selenium
     environment:
-      BEHAT_TMPDIR:/home/docker/pim/app/cache/tmp
-      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
-      PHP_XDEBUG_DEFAULT_ENABLE: 1
-      PHP_XDEBUG_ENABLED: 0
-      #PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
+      BEHAT_TMPDIR: /home/docker/pim/app/cache/tmp
+#      PHP_XDEBUG_ENABLED: 0
+#      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
+#      PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
     user: docker
     volumes:
       - ./:/home/docker/pim
@@ -91,15 +89,15 @@ services:
     networks:
       - behat
 
-  mongodb:
-    image: mongo:2.6
-    networks:
-      - akeneo
+#  mongodb:
+#    image: mongo:2.6
+#    networks:
+#      - akeneo
 
-  mongodb-behat:
-    image: mongo:2.6
-    networks:
-      - behat
+#  mongodb-behat:
+#    image: mongo:2.6
+#    networks:
+#      - behat
 
 networks:
   akeneo: ~
