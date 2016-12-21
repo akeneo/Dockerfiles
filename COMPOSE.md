@@ -13,11 +13,11 @@ The simplest way to run the images is to copy one of the compose files at the ro
 
 You can place it somewhere else, but then you will need to change the volumes parameter from `./:/home/docker/pim` to `/the/path/to/your/pim:/home/docker/pim` (you'll need to do it for both `akeneo` and `akeneo-behat` services, and `nginx` and `nginx-behat` if using PHP-FPM).
 
-Replace `/home/you/.composer` by your own `.composer` folder. This will allow you to use your own github tocken when installing vendors.
+Replace `/home/you/.composer` by your own `.composer` folder. This will allow you to use your own GitHub token when installing vendors.
 
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 
-By default, latest versions of `akeneo`, `akeneo-behat`, `akeneo-fpm` and `akeneo-behat-fpm` are used. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0` and `php-7.1` (same as `latest`).
+By default, latest versions of `akeneo`, `akeneo-behat`, `akeneo-fpm` and `akeneo-behat-fpm` are used. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (same as `latest`).
 
 ## Run and stop the containers
 
@@ -72,7 +72,9 @@ parameters:
     installer_data: PimInstallerBundle:minimal
 ```
 
-Don't forget to configure MongoDB, if needed, by activating the `DoctrineMongoDBBundle` in `app/AppKernel.php`, and by adding the following to your parameters:
+If you want to work with MongoDB, don't forget to uncomment the corresponding services in your compose file (`mongodb` and `mongodb-behat`, both commented in the provided examples).
+
+Then add the following to your PIM parameters:
 
 ```yaml
 # /host/path/to/you/pim/app/config/parameters.yml and parameters.yml.dist to avoid removal on "composer update"
@@ -92,6 +94,8 @@ parameters:
     mongodb_database: akeneo_pim
 ```
 
+Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php`.
+
 Then you can initialize Akeneo with these commands:
 
 ```bash
@@ -102,14 +106,11 @@ $ docker-compose exec akeneo pim-initialize
 $ docker-compose exec akeneo-behat pim-initialize
 ```
 
-As *xdebug* is deactivated by default on development images, you should activate it at the end of the installation if you want to debug.
+*Xdebug* is deactivated by default. If you want to activate, you can turn the environment variable `PHP_XDEBUG_ENABLED` to `1`. Then you just have to run `docker-compose up -d` again.
 
-If you want to activate it by default, you can turn the environment variable "PHP_XDEBUG_ENABLED" to "1"
-
-Also, you can configure two things on Xdebug through environment variables on akeneo and akeneo-behat images. These environment variables are all optional. 
-- PHP_XDEBUG_DEFAULT_ENABLE: 0 or 1 (by default 1)
-- PHP_XDEBUG_REMOTE_HOST: your host IP address (by default it allows all IPs)
-- PHP_XDEBUG_IDE_KEY: the IDE KEY you want (by default XDEBUG_IDE_KEY)
+Also, you can configure two things on Xdebug through environment variables on akeneo and akeneo-behat images. These environment variables are all optional.
+- `PHP_XDEBUG_IDE_KEY`: the IDE KEY you want to use (by default `XDEBUG_IDE_KEY`)
+- `PHP_XDEBUG_REMOTE_HOST`: your host IP address (by default it allows all IPs)
 
 You should now be able to access Akeneo development environment from your host through `http://localhost:8080/` and behat environment through `http://localhost:8081/` (of course, you can change the host port in the compose file).
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Clean previous assets"
-rm -rf app/cache/*
+rm -rf app/cache/behat
 rm -rf web/bundles/*
 rm -rf web/css/*
 rm -rf web/js/*
