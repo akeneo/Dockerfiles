@@ -12,7 +12,7 @@ function writeXdebugSetting {
 }
 
 # checkOrWrite xdebugKey defaultValue providedValue
-function checkOrWrite {
+function checkOrWriteXdebugSetting {
    if [ -z "$3" ]; then
        writeXdebugSetting "${1}=${2}"
    else
@@ -22,9 +22,9 @@ function checkOrWrite {
 
 writeXdebugSetting "xdebug.remote_enable=1"
 writeXdebugSetting "xdebug.max_nesting_level=500"
+writeXdebugSetting "xdebug.default_enable=1"
 
-checkOrWrite "xdebug.idekey" "XDEBUG_IDE_KEY" "${PHP_XDEBUG_IDE_KEY}"
-checkOrWrite "xdebug.default_enable" "1" "${PHP_XDEBUG_DEFAULT_ENABLE}"
+checkOrWriteXdebugSetting "xdebug.idekey" "XDEBUG_IDE_KEY" "${PHP_XDEBUG_IDE_KEY}"
 
 if [ -z "${PHP_XDEBUG_REMOTE_HOST}" ]; then
     writeXdebugSetting "xdebug.remote_connect_back=1"
