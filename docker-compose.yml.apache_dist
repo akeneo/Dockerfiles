@@ -13,6 +13,7 @@ services:
       #PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
     ports:
       - '8080:80'
+    user: docker
     volumes:
       - ./:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer
@@ -34,6 +35,7 @@ services:
       #PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
     ports:
       - '8081:80'
+    user: docker
     volumes:
       - ./:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer

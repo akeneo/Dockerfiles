@@ -11,6 +11,7 @@ services:
       PHP_XDEBUG_DEFAULT_ENABLE: 1
       PHP_XDEBUG_ENABLED: 0
       #PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
+    user: docker
     volumes:
       - ./:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer
@@ -30,6 +31,7 @@ services:
       PHP_XDEBUG_DEFAULT_ENABLE: 1
       PHP_XDEBUG_ENABLED: 0
       #PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
+    user: docker
     volumes:
       - ./:/home/docker/pim
       - /home/you/.composer:/home/docker/.composer
