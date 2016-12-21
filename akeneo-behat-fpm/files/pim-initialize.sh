@@ -2,7 +2,7 @@
 
 echo "Clean the install"
 rm -rf app/archive/*
-rm -rf app/cache/*
+rm -rf app/cache/behat
 rm -rf app/file_storage/*
 rm -rf app/logs/*
 rm -rf web/bundles/*
