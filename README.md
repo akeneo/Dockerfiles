@@ -2,6 +2,19 @@
 
 This repository contains my own docker images I use for Akeneo and other Symfony development. Feel free to use/adapt them if they fit your needs.
 
+| [Master][Master] | [php-7.1][php-7.1] | [php-7.0][php-7.0] | [php-5.6][php-5.6] |
+|:----------------:|:----------:|:----------:|:----------:|
+| [![Build status][Master image]][Master] | [![Build status][php-7.1 image]][php-7.1] | [![Build status][php-7.0 image]][php-7.0] | [![Build status][php-5.6 image]][php-5.6] |
+
+  [Master image]: https://travis-ci.org/damien-carcel/Dockerfiles.svg?branch=master
+  [Master]: https://travis-ci.org/damien-carcel/Dockerfiles/tree/master
+  [php-7.1 image]: https://travis-ci.org/damien-carcel/Dockerfiles.svg?branch=php-7.1
+  [php-7.1]: https://travis-ci.org/damien-carcel/Dockerfiles/tree/php-7.1
+  [php-7.0 image]: https://travis-ci.org/damien-carcel/Dockerfiles.svg?branch=php-7.0
+  [php-7.0]: https://travis-ci.org/damien-carcel/Dockerfiles/tree/php-7.0
+  [php-5.6 image]: https://travis-ci.org/damien-carcel/Dockerfiles.svg?branch=php-5.6
+  [php-5.6]: https://travis-ci.org/damien-carcel/Dockerfiles/tree/php-5.6
+
 ## Images available
 
 - [**carcel/php**](php/README.md): Base image with PHP CLI preconfigured
