@@ -30,9 +30,9 @@ Then you can run a container like this:
 $ docker run --name nginx -d nginx
 ```
 
-### Use this image with docker-compose
+### Use this image with Docker Compose
 
-Instructions for docker-compose can be found [here](https://github.com/damien-carcel/Dockerfiles/blob/php-5.6/COMPOSE.md).
+The easiest way to use these images is [Docker Compose](https://docs.docker.com/compose/). You can found detailed explanations [here](https://github.com/damien-carcel/Dockerfiles/blob/master/COMPOSE.md).
 
 ## License
 
