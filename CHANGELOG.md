@@ -82,17 +82,12 @@
     and `carcel/akeneo-nginx` and `carcel/akeneo-behat-nginx` (based on `carcel/nginx`).
 - **Issue 23:** Add `carcel/nginx` image.
 
-### Bug fix
-
-- **Issue 45:** Fix an issue with composer installation during `carcel/php` image build.
-
-## 2016-10-09
-
 ### Bug fixes
 
 - **Issue 34:** Fix user declaration in Dockerfiles by placing it at the end.
-- **Issue 36**: Raise PHP upload size limit to 20 MB.
-- **Issue 37**: Fix Selenium container usage in compose file example.
+- **Issue 36:** Raise PHP upload size limit to 20 MB.
+- **Issue 37:** Fix Selenium container usage in compose file example.
+- **Issue 45:** Fix an issue with composer installation during `carcel/php` image build.
 
 ## 2016-10-09
 
