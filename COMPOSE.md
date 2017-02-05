@@ -18,6 +18,7 @@ Replace `/home/you/.composer` by your own `.composer` folder. This will allow yo
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 
 By default, latest versions of `akeneo`, `akeneo-behat`, `akeneo-fpm` and `akeneo-behat-fpm` are used. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (same as `latest`).
+Read the [Tags available](https://github.com/damien-carcel/Dockerfiles/blob/master/README.md#tags-available) section of the `README.md` for more details.
 
 ## Run and stop the containers
 
@@ -41,7 +42,9 @@ but if you want to completely remove everything (containers, networks and volume
 $ docker-compose down -v
 ```
 
-## Configure Akeneo PIM 
+## Install and run Akeneo
+
+### Configure Akeneo
 
 First, make sure that Akeneo database settings are as the containers expect them:
 
@@ -72,7 +75,7 @@ parameters:
     installer_data: PimInstallerBundle:minimal
 ```
 
-If you want to work with MongoDB, don't forget to uncomment the corresponding services in your compose file (`mongodb` and `mongodb-behat`, both commented in the provided examples).
+If you want to use MongoDB storage, don't forget to uncomment the corresponding services in your compose file (`mongodb` and `mongodb-behat`, both commented in the provided examples).
 
 Then add the following to your PIM parameters:
 
@@ -94,17 +97,42 @@ parameters:
     mongodb_database: akeneo_pim
 ```
 
-Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php`.
+### PHP 5.6 or PHP 7.x? dev or standard?
+
+When using Akeneo with PHP 7.x and MongoDB storage, you need to add `alcaeus/mongo-php-adapter` in your requirements:
+
+```bash
+$ docker-compose exec akeneo composer require --no-update --ignore-platform-reqs alcaeus/mongo-php-adapter
+```
+
+Akeneo exists in two editions: community (open-source) and enterprise (proprietary). Both comes with:
+
+- a development version (`akeneo/pim-community-dev` on GitHub for the community edition),
+- a standard version (`akeneo/pim-community-standard` on GitHub for the community edition) which is only an empty Symfony application, having `akeneo/pim-community-dev` in its vendors.
+
+The development version is the one if you want to contribute to Akeneo project: adding new features, fixing bugs. The standard version is the one to create projects and use Akeneo in production.
+
+The development version comes with `doctrine/mongodb-odm-bundle` already present in its composer requirements (needed for IDE autocompletion and unit tests).
+So you always need to add `alcaeus/mongo-php-adapter` when using PHP 7.x, even if not using MongoDB storage.
+
+This is not the case for the standard version.
+
+### Install Akeneo
+
+Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php` if you want to use MongoDB storage.
 
 Then you can initialize Akeneo with these commands:
 
 ```bash
-$ docker-compose exec akeneo composer require --dev --no-update alcaeus/mongo-php-adapter
-$ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update
+$ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update --ignore-platform-reqs
 $ docker-compose exec akeneo pim-initialize
 
 $ docker-compose exec akeneo-behat pim-initialize
 ```
+
+Notice that `--ignore-platform-reqs` argument for composer is only needed if you are using PHP 7.x and you have `doctrine/mongodb-odm-bundle` in your requirements.
+
+### Xdebug
 
 *Xdebug* is deactivated by default. If you want to activate, you can turn the environment variable `PHP_XDEBUG_ENABLED` to `1`. Then you just have to run `docker-compose up -d` again.
 
