@@ -1,5 +1,11 @@
 # Changelog
 
+## 2016-01-21
+
+### Bug fix
+
+- **Issue 125:** Fix wrong path for FPM PID/socket in `carcel/fpm`, for `php-7.1` and `master` branches.
+
 ## 2016-01-05
 
 ### Enhancement
@@ -34,7 +40,9 @@
 ### Enhancements
 
 - **Issue 88:** Allow user to config Xdebug from environment variables.
-
+- **Issue 89:** Introduce `php-7.1` branch containing PHP 7.1 based images.
+    PHP 7.1 packages are provided by [Sury](https://packages.sury.org//) repositories. Master is updated to PHP 7.1 too.
+    
 ## 2016-12-05
 
 ### Enhancement
