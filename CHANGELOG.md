@@ -58,7 +58,11 @@
 
 - Fix some broken links in documentation.
 
-### Bug fixes
+## 2016-11-15:
+
+### Bug fix
+
+- **Issue 35:** Add missing `php7.0-mbstring` package.
 
 ## 2016-10-31
 
@@ -96,6 +100,16 @@
 - **Issue 5:** Add `carcel/fpm` image (extends `carcel/php`). Introduce a new docker compose file example dedicated to FPM.
 - **Issue 20:** Split `carcel/apache-php` image to introduce a new `carcel/php` image (the first one extends the second).
 
+## 2016-10-08
+
+### Enhancement
+
+- **Issue 4:** Introduce `php-7.0` branch, containing PHP 7.0 based images.
+    PHP 7.0 packages are provided by [Dotdeb](https://www.dotdeb.org/) repositories.
+    Master contains the same PHP 7.0 images.
+    Original PHP 5.6 images (Debian Jessie native packages) are now in the `php-5.6` branch.
+    All files used by dockerfiles are now placed in a `files` subfolder.
+    
 ## 2016-10-07
 
 ### Enhancement
