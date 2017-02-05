@@ -19,7 +19,7 @@ This repository contains my own docker images I use for Akeneo and other Symfony
 
 - [**carcel/php**](php/README.md): Base image with PHP CLI preconfigured
 - [**carcel/fpm**](fpm/README.md): Base image with PHP FPM preconfigured, based on `carcel/php`
-- [**nginx/fpm**](nginx/README.md): Base image with nginx preconfigured, based on official `nginx`
+- [**carcel/nginx**](nginx/README.md): Base image with nginx preconfigured, based on official `nginx`
 - [**carcel/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured, based on `carcel/php`
 - [**carcel/akeneo**](akeneo/README.md): An image for Akeneo development, based on `carcel/apache-php`
 - [**carcel/akeneo-behat**](akeneo-behat/README.md): An image to run Akeneo behat tests, based on `carcel/apache-php`
@@ -30,7 +30,7 @@ This repository contains my own docker images I use for Akeneo and other Symfony
 
 ## How to use these images?
 
-Find out how to use these images with `docker-compose` [here](COMPOSE.md).
+Find out how to use these images with `docker-compose` [here](https://github.com/damien-carcel/Dockerfiles/blob/master/COMPOSE.md).
 
 ## License
 
