@@ -28,9 +28,21 @@ This repository contains my own docker images I use for Akeneo and other Symfony
 - [**carcel/akeneo-fpm**](akeneo-fpm/README.md): An image for Akeneo development with PHP FPM (to be used with `carcel/akeneo-nginx`), based on `carcel/fpm`
 - [**carcel/akeneo-behat-fpm**](akeneo-behat-fpm/README.md): An image to run Akeneo behat tests with PHP FPM (to be used with `carcel/akeneo-behat-nginx`), based on `carcel/fpm`
 
+## Tags available
+
+Four branches are maintained, all based on [debian:jessie](https://hub.docker.com/_/debian/):
+
+- `php-5.6` provides images with native Jessie PHP 5.6. Corresponding tag is `php-5.6`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `5.6`.
+- `php-7.0` provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.0`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.0`.
+- `php-7.1` provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.1`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.1`.
+- `master` provides images with native Jessie PHP 5.6. Corresponding tag is `latest`, and its images are exactly the same than `php-7.1` tag.
+    `nginx` images are present only on this branch, so they are only available with the tag `latest`.
+
 ## How to use these images?
 
 Find out how to use these images with `docker-compose` [here](https://github.com/damien-carcel/Dockerfiles/blob/master/COMPOSE.md).
+
+Please read carefully if you encounter any trouble.
 
 ## License
 

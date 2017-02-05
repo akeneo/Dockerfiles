@@ -1,5 +1,11 @@
 # Changelog
 
+## 2016-02-05
+
+### Enhancement
+
+- **Issue 124:** Complete the documentation and put it on master only.
+
 ## 2016-01-21
 
 ### Bug fix
