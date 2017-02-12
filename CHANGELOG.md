@@ -1,6 +1,12 @@
 # Changelog
 
-## 2016-01-05
+## 2017-02-12
+
+### Enhancement
+
+- **Issue 131:** Replace Dotdeb repositories by Sury ones for php-7.0 images.
+
+## 2017-01-05
 
 ### Enhancement
 
