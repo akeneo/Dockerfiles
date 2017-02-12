@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-images=("php" "fpm" "apache-php" "akeneo" "akeneo-behat" "akeneo-fpm" "akeneo-behat-fpm")
-versions=("7.1" "7.1" "php-7.1" "php-7.1" "php-7.1" "php-7.1" "php-7.1")
+images=("php" "fpm" "apache-php" "akeneo" "akeneo-behat" "akeneo-fpm")
+versions=("7.1" "7.1" "php-7.1" "php-7.1" "php-7.1" "php-7.1")
 
 cwd=$(pwd)
 for (( i=0; i<${#images[@]}; i++ ));
