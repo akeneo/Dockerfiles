@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install some useful packages
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
-        ca-certificates bash-completion curl git imagemagick vim wget sudo && \
+        ca-certificates bash-completion curl git imagemagick perceptualdiff vim wget sudo && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
