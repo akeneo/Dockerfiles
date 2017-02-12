@@ -6,13 +6,13 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install some useful packages
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
-        ca-certificates bash-completion curl git imagemagick vim wget sudo && \
+        apt-transport-https ca-certificates bash-completion curl git imagemagick vim wget sudo && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add PHP 7 repository
-RUN wget https://www.dotdeb.org/dotdeb.gpg && apt-key add dotdeb.gpg && rm dotdeb.gpg
-COPY files/dotdeb.list /etc/apt/sources.list.d/dotdeb.list
+RUN wget -O sury.gpg https://packages.sury.org/php/apt.gpg && apt-key add sury.gpg && rm sury.gpg
+COPY files/sury.list /etc/apt/sources.list.d/sury.list
 
 # Install and configure Gosu
 RUN set -x && \
