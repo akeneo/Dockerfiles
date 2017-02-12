@@ -9,6 +9,7 @@
 - **Issue 66:** Remove npm and grunt from akeneo images
     (use dedicated images for that, like [digitallyseamless](https://hub.docker.com/u/digitallyseamless/) images).
 - **Issue 115:** Configure `carcel/fpm` to use port 9001 instead of socket.
+- **Issue 116:** Remove `carcel/akeneo-behat-fpm` image.
 
 ## 2017-01-05
 
