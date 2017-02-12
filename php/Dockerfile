@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:jessie-slim
 MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -8,7 +8,9 @@ RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
         ca-certificates bash-completion curl git imagemagick vim wget sudo && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+            /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
+            /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Install and configure Gosu
 RUN set -x && \
@@ -28,7 +30,9 @@ RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
         php5-cli php5-apcu php5-curl php5-gd php5-imagick php5-intl php5-mongo php5-mcrypt php5-mysql php5-xdebug && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+            /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
+            /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Add a "docker" user
 RUN useradd docker --shell /bin/bash --create-home \
