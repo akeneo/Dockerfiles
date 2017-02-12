@@ -19,12 +19,10 @@ This repository contains my own docker images I use for Akeneo and other Symfony
 
 - [**carcel/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:jessie-slim`
 - [**carcel/fpm**](fpm/README.md): Base image with PHP FPM preconfigured, based on `carcel/php`
-- [**carcel/nginx**](nginx/README.md): Base image with nginx preconfigured, based on official `nginx`
+- [**carcel/nginx**](nginx/README.md): An image with nginx preconfigured, based on official `nginx`
 - [**carcel/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured, based on `carcel/php`
 - [**carcel/akeneo**](akeneo/README.md): An image for Akeneo development, based on `carcel/apache-php`
 - [**carcel/akeneo-behat**](akeneo-behat/README.md): An image to run Akeneo behat tests, based on `carcel/apache-php`
-- [**carcel/akeneo-nginx**](akeneo-nginx/README.md): An image for Akeneo development, with nginx preconfigured (to be used with `carcel/akeneo-fpm`), based on `carcel/nginx`
-- [**carcel/akeneo-behat-nginx**](akeneo-behat-nginx/README.md): An image to run Akeneo behat tests, with nginx preconfigured (to be used with `carcel/akeneo-behat-fpm`), based on `carcel/nginx`
 - [**carcel/akeneo-fpm**](akeneo-fpm/README.md): An image for Akeneo development with PHP FPM (to be used with `carcel/akeneo-nginx`), based on `carcel/fpm`
 - [**carcel/akeneo-behat-fpm**](akeneo-behat-fpm/README.md): An image to run Akeneo behat tests with PHP FPM (to be used with `carcel/akeneo-behat-nginx`), based on `carcel/fpm`
 
@@ -36,7 +34,7 @@ Four branches are maintained, all based on [debian:jessie](https://hub.docker.co
 - `php-7.0` provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.0`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.0`.
 - `php-7.1` provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.1`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.1`.
 - `master` provides images with native Jessie PHP 5.6. Corresponding tag is `latest`, and its images are exactly the same than `php-7.1` tag.
-    `nginx` images are present only on this branch, so they are only available with the tag `latest`.
+    `nginx` image is present only on this branch, and is only available with the tag `latest`.
 
 ## How to use these images?
 
