@@ -2,8 +2,12 @@
 
 ## 2017-02-12
 
-### Enhancement
+### Enhancements
 
+- **Issue 31:** Use `debian:jessie-slim` as base image,
+    and perform the same cleaning on documentation after package installation.
+- **Issue 66:** Remove npm and grunt from akeneo images
+    (use dedicated images for that, like [digitallyseamless](https://hub.docker.com/u/digitallyseamless/) images)
 - **Issue 131:** Replace Dotdeb repositories by Sury ones for php-7.0 images.
 
 ## 2017-01-05
