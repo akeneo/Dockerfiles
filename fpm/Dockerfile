@@ -26,6 +26,12 @@ RUN sed -i "s/user = www-data/user = docker/" /etc/php/7.1/fpm/pool.d/www.conf &
 # Create PHP run directory
 RUN mkdir /run/php
 
+# Configure PHP FPM
+RUN sed -i "s/listen = .*/listen = 9001/" /etc/php/7.1/fpm/pool.d/www.conf
+
+# Expose PHP FPM
+EXPOSE 9001
+
 # Define "docker" as current user
 USER docker
 
