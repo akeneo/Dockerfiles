@@ -3,7 +3,7 @@
 Two compose file examples are provided, both providing two environments, one for development, the other for running behat tests.
 
 - [**The first compose file**](docker-compose.yml.apache_dist) provides apache + mod_php environments, using [`carcel/akeneo`](https://hub.docker.com/r/carcel/akeneo/) and  [`carcel/akeneo-behat`](https://hub.docker.com/r/carcel/akeneo-behat/).
-- [**The second one**](docker-compose.yml.fpm_dist) provides nginx + PHP-FPM, using [`carcel/akeneo-fpm`](https://hub.docker.com/r/carcel/akeneo-fpm/) and  [`carcel/akeneo-behat-fpm`](https://hub.docker.com/r/carcel/akeneo-behat-fpm/).
+- [**The second one**](docker-compose.yml.fpm_dist) provides nginx + PHP-FPM, using [`carcel/akeneo-fpm`](https://hub.docker.com/r/carcel/akeneo-fpm/) and  [`carcel/nginx`](https://hub.docker.com/r/carcel/nginx/).
 
 You can of course create your own compose file, only for behat testing for example, or at the opposite to put everything in on compose file and run both apache + mod_php and nginx + fpm at the same time.
 
@@ -17,7 +17,7 @@ Replace `/home/you/.composer` by your own `.composer` folder. This will allow yo
 
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 
-By default, latest versions of `akeneo`, `akeneo-behat`, `akeneo-fpm` and `akeneo-behat-fpm` are used. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (same as `latest`).
+By default, latest versions of `akeneo`, `akeneo-behat` and `akeneo-fpm` are used. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (same as `latest`).
 Read the [Tags available](https://github.com/damien-carcel/Dockerfiles/blob/master/README.md#tags-available) section of the `README.md` for more details.
 
 ## Run and stop the containers
@@ -102,7 +102,11 @@ parameters:
 When using Akeneo with PHP 7.x and MongoDB storage, you need to add `alcaeus/mongo-php-adapter` in your requirements:
 
 ```bash
+# If using Apache
 $ docker-compose exec akeneo composer require --no-update --ignore-platform-reqs alcaeus/mongo-php-adapter
+
+# If using fpm
+$ docker-compose exec fpm composer require --no-update --ignore-platform-reqs alcaeus/mongo-php-adapter
 ```
 
 Akeneo exists in two editions: community (open-source) and enterprise (proprietary). Both comes with:
@@ -121,13 +125,20 @@ This is not the case for the standard version.
 
 Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php` if you want to use MongoDB storage.
 
-Then you can initialize Akeneo with these commands:
+Then you can initialize Akeneo with these commands if you are using Apache images:
 
 ```bash
 $ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update --ignore-platform-reqs
 $ docker-compose exec akeneo pim-initialize
 
 $ docker-compose exec akeneo-behat pim-initialize
+```
+
+Or those if you are using FPM + nginx images:
+
+```bash
+$ docker-compose exec fpm php -d memory_limit=-1 /usr/local/bin/composer update --ignore-platform-reqs
+$ docker-compose exec fpm pim-initialize
 ```
 
 Notice that `--ignore-platform-reqs` argument for composer is only needed if you are using PHP 7.x and you have `doctrine/mongodb-odm-bundle` in your requirements.
@@ -175,10 +186,14 @@ default:
         SensioLabs\Behat\PageObjectExtension\Extension: ~
 ```
 
-You are now able to run behat tests with:
+You are now able to run behat tests.
 
 ```bash
+# If using Apache
 $ docker-compose exec akeneo-behat bin/behat features/path/to/scenario
+
+# If using fpm
+$ docker-compose exec fpm bin/behat features/path/to/scenario
 ```
 
 ## What if?
