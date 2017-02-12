@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:jessie-slim
 MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -8,7 +8,9 @@ RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
         apt-transport-https ca-certificates bash-completion curl git imagemagick vim wget sudo && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+            /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
+            /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Add PHP 7 repository
 RUN wget -O sury.gpg https://packages.sury.org/php/apt.gpg && apt-key add sury.gpg && rm sury.gpg
@@ -33,7 +35,9 @@ RUN apt-get update && \
         php7.0-cli php7.0-apcu php7.0-mbstring php7.0-curl php7.0-gd php7.0-imagick php7.0-intl \
         php7.0-mcrypt php7.0-mongodb php7.0-mysql php7.0-soap php7.0-xdebug php7.0-xml php7.0-zip && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+            /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
+            /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Add a "docker" user
 RUN useradd docker --shell /bin/bash --create-home \
