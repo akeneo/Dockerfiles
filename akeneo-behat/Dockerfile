@@ -4,14 +4,13 @@ MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 # Define "root" as current user
 USER root
 
-# Deactivate xdebug
-RUN phpdismod xdebug
-
-# Install perceptualdiff
+# Install perceptualdiff (needed for some Akeneo behat tests)
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install perceptualdiff && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+            /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
+            /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Add some utilities
 COPY files/pim-in-ass.sh /usr/local/bin/pim-in-ass
