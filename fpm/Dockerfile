@@ -8,7 +8,9 @@ USER root
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install php5-fpm && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+            /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
+            /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Configure PHP FPM
 RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/" /etc/php5/fpm/php.ini && \
