@@ -15,7 +15,7 @@ services:
     user: docker
     volumes:
       - ./:/home/docker/pim
-      - /home/you/.composer:/home/docker/.composer
+      - ~/.composer:/home/docker/.composer
     working_dir: /home/docker/pim
     networks:
       - akeneo

@@ -8,7 +8,8 @@
     and perform the same cleaning on documentation after package installation.
 - **Issue 66:** Remove npm and grunt from akeneo images
     (use dedicated images for that, like [digitallyseamless](https://hub.docker.com/u/digitallyseamless/) images).
-- **Issue 115:** Configure `carcel/fpm` to use port 9001 instead of socket.
+- **Issue 115:** Configure `carcel/fpm` to use port 9001 instead of socket,
+    and remove images `carcel/akeneo-nginx` and `carcel/akeneo-behat-nginx`.
 - **Issue 131:** Replace Dotdeb repositories by Sury ones for php-7.0 images.
 
 ## 2017-02-05
