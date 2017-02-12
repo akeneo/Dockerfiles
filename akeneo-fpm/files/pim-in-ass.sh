@@ -9,6 +9,7 @@ rm -rf web/js/*
 
 echo "Initialize assets"
 app/console ca:c -e=prod
+app/console ca:c -e=behat
 app/console ca:c
 
 app/console -e=prod oro:requirejs:generate-config
