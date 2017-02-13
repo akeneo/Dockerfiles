@@ -2,6 +2,10 @@
 
 ## 2017-02-12
 
+### Bug fix
+
+- **Issue 155:** Removes all caches in `akeneo-fpm` image.
+
 ### Enhancements
 
 - **Issue 31:** Use `debian:jessie-slim` as base image,
@@ -19,26 +23,26 @@
 
 ## 2016-12-21
 
+### Bug fix
+
+- **Issue 110:** Add missing "user" option in compose files.
+
 ### Enhancements
 
 - **Issue 106:** Enhance compose examples and documentation.
 - **Issue 108:** Enhance helper commands.
 
-### Bug fix
-
-- **Issue 110:** Add missing "user" option in compose files.
-
 ## 2016-12-18
-
-### Enhancements
-
-- **Issue 99:** Deactivate Xdebug by default.
-- **Issue 100:** Add a script to easily perform "cache:clear" on Akeneo. Assets are also dumped as symlinks now.
 
 ### Bug fix
 
 - **Issue 75:** Allow to properly restart apache container by removing `/var/run/apache2/apache2.pid` in
     `carcel/apache-php` image entry point. 
+
+### Enhancements
+
+- **Issue 99:** Deactivate Xdebug by default.
+- **Issue 100:** Add a script to easily perform "cache:clear" on Akeneo. Assets are also dumped as symlinks now.
 
 ## 2016-12-12
 
@@ -54,22 +58,20 @@
 
 ## 2016-11-28
 
-### Enhancement
-
-- **Issue 66:** Add npm and grunt on akeneo development images (needed to run JavaScript and CSS static analysis).
-
 ### Bug fixes
 
 - **Issue 62:** Improve package install and cleaning.
 - **Issue 68:** Update compose documentation.
+
+### Enhancement
+
+- **Issue 66:** Add npm and grunt on akeneo development images (needed to run JavaScript and CSS static analysis).
 
 ## 2016-11-21
 
 ### Bug fixes
 
 - Fix some broken links in documentation.
-
-### Bug fixes
 
 ## 2016-10-31
 
