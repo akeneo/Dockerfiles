@@ -10,7 +10,7 @@ services:
 #      - mongodb-behat
       - selenium
     environment:
-      BEHAT_TMPDIR:/home/docker/pim/app/cache/tmp
+      BEHAT_TMPDIR: /home/docker/pim/app/cache/tmp
 #      PHP_XDEBUG_ENABLED: 0
 #      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
 #      PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
@@ -37,6 +37,8 @@ services:
     image: carcel/akeneo-nginx
     depends_on:
       - fpm
+#    environment:
+#      PHP_IDE_CONFIG: 'serverName=pim-ce'
     ports:
       - '8080:80'
     volumes:
@@ -48,6 +50,8 @@ services:
     image: carcel/akeneo-behat-nginx
     depends_on:
       - fpm
+#    environment:
+#      PHP_IDE_CONFIG: 'serverName=pim-ce-behat'
     ports:
       - '8081:80'
     volumes:

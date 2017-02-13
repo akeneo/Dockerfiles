@@ -1,10 +1,13 @@
 # Changelog
 
-## 2017-02-12
+## 2017-02-13
 
-### Bug fix
+### Bug fixes
 
+- **Issue 154:** Minor fixes in compose examples.
 - **Issue 155:** Removes all caches in `akeneo-fpm` image.
+
+## 2017-02-12
 
 ### Enhancements
 
