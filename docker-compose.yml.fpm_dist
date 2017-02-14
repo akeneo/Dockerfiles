@@ -10,16 +10,16 @@ services:
 #      - mongodb-behat
       - selenium
     environment:
-      BEHAT_TMPDIR: /home/docker/pim/app/cache/tmp
+      BEHAT_TMPDIR: /home/docker/symfony/app/cache/tmp
 #      PHP_XDEBUG_ENABLED: 0
 #      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
 #      PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
     user: docker
     volumes:
-      - ./:/home/docker/pim
+      - ./:/home/docker/symfony
       - ~/.composer:/home/docker/.composer
       - /tmp/behat/screenshots:/tmp/behat/screenshots
-    working_dir: /home/docker/pim
+    working_dir: /home/docker/symfony
     networks:
       - akeneo
       - behat
@@ -29,7 +29,7 @@ services:
     ports:
       - '5900:5900'
     volumes:
-      - ./:/home/docker/pim
+      - ./:/home/docker/symfony
     networks:
       - behat
 
@@ -42,7 +42,7 @@ services:
     ports:
       - '8080:80'
     volumes:
-      - ./:/home/docker/pim
+      - ./:/home/docker/symfony
     networks:
       - akeneo
 
@@ -55,7 +55,7 @@ services:
     ports:
       - '8081:80'
     volumes:
-      - ./:/home/docker/pim
+      - ./:/home/docker/symfony
     networks:
       - behat
 
