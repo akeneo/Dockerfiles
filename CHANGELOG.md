@@ -1,5 +1,12 @@
 # Changelog
 
+## 2017-02-14
+
+### Enhancement
+
+- **Issue 141:** Make `apache-php` image usable as it is.
+    Application is now placed in `/home/docker/symfony` in the containers.
+
 ## 2017-02-13
 
 ### Bug fixes

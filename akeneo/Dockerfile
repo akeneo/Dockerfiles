@@ -10,8 +10,5 @@ COPY files/pim-initialize.sh /usr/local/bin/pim-initialize
 COPY files/pim-cac.sh /usr/local/bin/pim-cac
 RUN chmod +x /usr/local/bin/*
 
-# Add Akeneo VHOST as default
-COPY files/akeneo.local.conf /etc/apache2/sites-available/000-default.conf
-
 # Define "docker" as current user
 USER docker
