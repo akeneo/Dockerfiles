@@ -1,10 +1,18 @@
 # Changelog
 
-## 2017-02-12
+## 2017-02-14
+
+### Enhancements
+
+- **Issue 141:** Make `apache-php` image usable as it is.
+
+## 2017-02-13
 
 ### Bug fix
 
 - **Issue 155:** Removes all caches in `akeneo-fpm` image.
+
+## 2017-02-12
 
 ### Enhancements
 
