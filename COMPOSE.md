@@ -1,19 +1,17 @@
 # Akeneo development and testing with docker-compose
 
-Two compose file examples are provided, both providing two environments, one for development, the other for running behat tests.
+Two compose file examples are provided, both providing two environments, one for development, the other for running behat and integration tests.
 
-- [**The first compose file**](docker-compose.yml.apache_dist) provides apache + mod_php environments, using [`carcel/akeneo`](https://hub.docker.com/r/carcel/akeneo/) and  [`carcel/akeneo-behat`](https://hub.docker.com/r/carcel/akeneo-behat/).
+- [**The first compose file**](docker-compose.yml.apache_dist) provides Apache + mod_php environments, using [`carcel/akeneo`](https://hub.docker.com/r/carcel/akeneo/) (development) and  [`carcel/akeneo-behat`](https://hub.docker.com/r/carcel/akeneo-behat/) (behat and integration tests).
 - [**The second one**](docker-compose.yml.fpm_dist) provides nginx + PHP-FPM, using [`carcel/akeneo-fpm`](https://hub.docker.com/r/carcel/akeneo-fpm/) and  [`carcel/nginx`](https://hub.docker.com/r/carcel/nginx/).
-
-You can of course create your own compose file, only for behat testing for example, or at the opposite to put everything in on compose file and run both apache + mod_php and nginx + fpm at the same time.
 
 ## Configure the images
 
-The simplest way to run the images is to copy one of the compose files at the root of your project (don't forget to rename it `docker-compose.yml`).
+**IMPORTANT - These images do not contain Akeneo.** So the first thing to do is obtaining Akeneo itself. You can clone it from GitHub or use an archive (downloaded from Akeneo website, or from Akeneo Partner Portal if you are an integrator and have access to it).
+
+The simplest way to run the containers is to copy one of the compose files at the root of your project (don't forget to rename it `docker-compose.yml`).
 
 You can place it somewhere else, but then you will need to change the volumes parameter from `./:/home/docker/pim` to `/the/path/to/your/pim:/home/docker/pim` (you'll need to do it for both `akeneo` and `akeneo-behat` services, and `nginx` and `nginx-behat` if using PHP-FPM).
-
-Replace `/home/you/.composer` by your own `.composer` folder. This will allow you to use your own GitHub token when installing vendors.
 
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 
