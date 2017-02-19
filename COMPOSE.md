@@ -123,10 +123,12 @@ This is not the case for the standard version.
 
 Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php` if you want to use MongoDB storage.
 
-Then you can initialize Akeneo with these commands if you are using Apache images:
+**Important:** if you are using PHP 7.x and you have `doctrine/mongodb-odm-bundle` in your requirements, you need to add the option `--ignore-platform-reqs` when running `composer update`.
+
+Now, you can initialize Akeneo. Run these commands if you are using Apache images:
 
 ```bash
-$ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update --ignore-platform-reqs
+$ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec akeneo pim-initialize
 
 $ docker-compose exec akeneo-behat pim-initialize
@@ -135,11 +137,9 @@ $ docker-compose exec akeneo-behat pim-initialize
 Or those if you are using FPM + nginx images:
 
 ```bash
-$ docker-compose exec fpm php -d memory_limit=-1 /usr/local/bin/composer update --ignore-platform-reqs
+$ docker-compose exec fpm php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec fpm pim-initialize
 ```
-
-Notice that `--ignore-platform-reqs` argument for composer is only needed if you are using PHP 7.x and you have `doctrine/mongodb-odm-bundle` in your requirements.
 
 ### Xdebug
 
