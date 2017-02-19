@@ -2,8 +2,19 @@
 
 ## 2017-02-23
 
+### Bug fix
+
 - **Issue 167:** Set `date.timezone` to `Etc/UTC` instead of `Europe/Paris`.
+
+### Enhancement
+
 - **Issue 168:** Rename asset script into `pim-assets`.
+
+## 2017-02-19
+
+### Enhancement
+
+- **Issue 160:** Improve the documentation for people who have none or very few knowledge of Docker.
 
 ## 2017-02-14
 

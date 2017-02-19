@@ -33,16 +33,17 @@ Four branches are maintained, all based on [debian:jessie](https://hub.docker.co
 - `php-7.0` provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.0`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.0`.
 - `php-7.1` provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.1`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.1`.
 - `master` provides images with native Jessie PHP 5.6. Corresponding tag is `latest`, and its images are exactly the same than `php-7.1` tag.
-    `nginx` image is present only on this branch, and is only available with the tag `latest`.
+    `nginx` image is only present on master branch, and so only available with the tag `latest`.
 
 ## How to use these images?
 
-Find out how to use these images with `docker-compose` [here](https://github.com/damien-carcel/Dockerfiles/blob/master/COMPOSE.md).
+If you are new to Docker, please start with the [getting started section](https://github.com/damien-carcel/Dockerfiles/blob/master/GETTING-STARTED.md).
+
+Then, you can find out how to use these images for Akeneo development and testing in the [Docker compose section](https://github.com/damien-carcel/Dockerfiles/blob/master/COMPOSE.md).
 
 Please read carefully the [troubleshoothing section](https://github.com/damien-carcel/Dockerfiles/blob/master/TROUBLESHOOTING.md) if you encounter any problem.
-
-If your problem is not listed in it, please don't hesitate to [open an issue](https://github.com/damien-carcel/Dockerfiles/issues).
+If your problem is not listed in it, don't hesitate to [open an issue](https://github.com/damien-carcel/Dockerfiles/issues).
 
 ## License
 
-This repository is under the MIT license. See the complete license in the `LICENSE` file.
+This content of this repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/damien-carcel/Dockerfiles/blob/master/LICENSE) file.
