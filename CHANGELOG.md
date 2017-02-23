@@ -1,5 +1,9 @@
 # Changelog
 
+## 2017-02-23
+
+- **Issue 167:** Set `date.timezone` to `Etc/UTC` instead of `Europe/Paris`.
+
 ## 2017-02-14
 
 ### Enhancements
