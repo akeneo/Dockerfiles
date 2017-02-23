@@ -5,7 +5,7 @@ MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 USER root
 
 # Add some utilities
-COPY files/pim-in-ass.sh /usr/local/bin/pim-in-ass
+COPY files/pim-assets.sh /usr/local/bin/pim-assets
 COPY files/pim-initialize.sh /usr/local/bin/pim-initialize
 COPY files/pim-cac.sh /usr/local/bin/pim-cac
 RUN chmod +x /usr/local/bin/*
