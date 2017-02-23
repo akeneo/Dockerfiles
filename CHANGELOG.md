@@ -3,6 +3,7 @@
 ## 2017-02-23
 
 - **Issue 167:** Set `date.timezone` to `Etc/UTC` instead of `Europe/Paris`.
+- **Issue 168:** Rename asset script into `pim-assets`.
 
 ## 2017-02-14
 
