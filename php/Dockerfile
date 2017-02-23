@@ -51,7 +51,7 @@ RUN chmod +x /usr/local/bin/composer
 
 RUN phpenmod mcrypt && phpdismod xdebug
 
-RUN sed -i "s/;date.timezone =/date.timezone = Europe\/Paris/" /etc/php/7.0/cli/php.ini && \
+RUN sed -i "s/;date.timezone =/date.timezone = Etc\/UTC/" /etc/php/7.0/cli/php.ini && \
     sed -i "s/memory_limit = .*/memory_limit = 2G/" /etc/php/7.0/cli/php.ini && \
     sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.0/cli/php.ini && \
     sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php/7.0/cli/php.ini
