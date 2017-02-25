@@ -26,8 +26,8 @@ This repository contains my own docker images I use for Akeneo and other Symfony
 
 ## How to use these images?
 
-Find out how to use these images with `docker-compose` [here](https://github.com/damien-carcel/Dockerfiles/blob/master/COMPOSE.md).
+Find out how to use these images with `docker-compose` [here](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/compose.md).
 
 ## License
 
-This repository is under the MIT license. See the complete license in the `LICENSE` file.
+This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/damien-carcel/Dockerfiles/blob/master/LICENSE) file.

@@ -9,4 +9,4 @@ mongo, soap, xml, zip and xdebug (this last one comes deactivated, run `phpenmod
 
 ## License
 
-This repository is under the MIT license. See the complete license in the `LICENSE` file.
+This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/damien-carcel/Dockerfiles/blob/master/LICENSE) file.
