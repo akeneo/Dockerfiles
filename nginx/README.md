@@ -30,4 +30,4 @@ $ docker run --name nginx -d nginx
 
 ## License
 
-This repository is under the MIT license. See the complete license in the `LICENSE` file.
+This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/damien-carcel/Dockerfiles/blob/master/LICENSE) file.

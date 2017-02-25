@@ -6,12 +6,12 @@ services:
     depends_on:
       - mysql
       - mysql-behat
-#      - mongodb
-#      - mongodb-behat
+      - mongodb
+      - mongodb-behat
       - selenium
     environment:
       BEHAT_TMPDIR: /home/docker/symfony/app/cache/tmp
-#      PHP_XDEBUG_ENABLED: 0
+      PHP_XDEBUG_ENABLED: 0
 #      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
 #      PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
     user: docker
@@ -37,8 +37,8 @@ services:
     image: carcel/akeneo-nginx
     depends_on:
       - fpm
-#    environment:
-#      PHP_IDE_CONFIG: 'serverName=pim-ce'
+    environment:
+      PHP_IDE_CONFIG: 'serverName=pim-ce'
     ports:
       - '8080:80'
     volumes:
@@ -50,8 +50,8 @@ services:
     image: carcel/akeneo-behat-nginx
     depends_on:
       - fpm
-#    environment:
-#      PHP_IDE_CONFIG: 'serverName=pim-ce-behat'
+    environment:
+      PHP_IDE_CONFIG: 'serverName=pim-ce-behat'
     ports:
       - '8081:80'
     volumes:
@@ -66,6 +66,8 @@ services:
       - MYSQL_USER=akeneo_pim
       - MYSQL_PASSWORD=akeneo_pim
       - MYSQL_DATABASE=akeneo_pim
+    ports:
+      - '3307:3306'
     networks:
       - akeneo
 
@@ -76,18 +78,24 @@ services:
       - MYSQL_USER=akeneo_pim
       - MYSQL_PASSWORD=akeneo_pim
       - MYSQL_DATABASE=akeneo_pim
+    ports:
+      - '3308:3306'
     networks:
       - behat
 
-#  mongodb:
-#    image: mongo:2.6
-#    networks:
-#      - akeneo
+  mongodb:
+    image: mongo:2.6
+    ports:
+      - '27018:27017'
+    networks:
+      - akeneo
 
-#  mongodb-behat:
-#    image: mongo:2.6
-#    networks:
-#      - behat
+  mongodb-behat:
+    image: mongo:2.6
+    ports:
+      - '27019:27017'
+    networks:
+      - behat
 
 networks:
   akeneo: ~
