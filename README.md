@@ -37,11 +37,11 @@ Four branches are maintained, all based on [debian:jessie](https://hub.docker.co
 
 ## How to use these images?
 
-If you are new to Docker, please start with the [getting started section](https://github.com/damien-carcel/Dockerfiles/blob/master/GETTING-STARTED.md).
+If you are new to Docker, please start with the [getting started section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/getting-started.md).
 
-Then, you can find out how to use these images for Akeneo development and testing in the [Docker compose section](https://github.com/damien-carcel/Dockerfiles/blob/master/COMPOSE.md).
+Then, you can find out how to use these images for Akeneo development and testing in the [Docker compose section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/compose.md).
 
-Please read carefully the [troubleshoothing section](https://github.com/damien-carcel/Dockerfiles/blob/master/TROUBLESHOOTING.md) if you encounter any problem.
+Please read carefully the [troubleshoothing section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/troubleshooting.md) if you encounter any problem.
 If your problem is not listed in it, don't hesitate to [open an issue](https://github.com/damien-carcel/Dockerfiles/issues).
 
 ## License

@@ -1,26 +1,19 @@
-# Akeneo development and testing with docker-compose
+# Akeneo with PHP FPM and Nginx
 
-Two compose file examples are provided, both providing two environments, one for development, the other for running behat and integration tests.
+## Using the images
 
-- [**The first compose file**](docker-compose.yml.apache_dist) provides Apache + mod_php environments, using [`carcel/akeneo`](https://hub.docker.com/r/carcel/akeneo/) (development) and  [`carcel/akeneo-behat`](https://hub.docker.com/r/carcel/akeneo-behat/) (behat and integration tests).
-- [**The second one**](docker-compose.yml.fpm_dist) provides nginx + PHP-FPM, using [`carcel/akeneo-fpm`](https://hub.docker.com/r/carcel/akeneo-fpm/) and  [`carcel/nginx`](https://hub.docker.com/r/carcel/nginx/).
+The simplest way to run the containers is to copy the [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/docker-compose.yml.fpm_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
 
-## Configure the images
-
-**IMPORTANT - These images do not contain Akeneo.** So the first thing to do is obtaining Akeneo itself. You can clone it from GitHub or use an archive (downloaded from Akeneo website, or from Akeneo Partner Portal if you are an integrator and have access to it).
-
-The simplest way to run the containers is to copy one of the compose files at the root of your project (don't forget to rename it `docker-compose.yml`).
-
-You can place it somewhere else, but then you will need to change the volumes parameter from `./:/home/docker/pim` to `/the/path/to/your/pim:/home/docker/pim` (you'll need to do it for both `akeneo` and `akeneo-behat` services, and `nginx` and `nginx-behat` if using PHP-FPM).
+You can place it somewhere else, but then you will need to change the volumes parameter from `./:/home/docker/pim` to `/the/path/to/your/pim:/home/docker/pim` (you'll need to do it for both `nginx` and `nginx-behat` services).
 
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 
-By default, latest versions of `akeneo`, `akeneo-behat` and `akeneo-fpm` are used. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (same as `latest`).
+By default, latest versions of `akeneo` and `akeneo-behat` are used in the compose file. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (same as `latest`).
 Read the [Tags available](https://github.com/damien-carcel/Dockerfiles/blob/master/README.md#tags-available) section of the `README.md` for more details.
 
 ## Run and stop the containers
 
-All `docker-compose` commands are to be ran from the folder containing the compose file.
+**All `docker-compose` commands are to be ran from the folder containing the compose file.**
 
 To start your containers, just run:
 
@@ -39,6 +32,8 @@ but if you want to completely remove everything (containers, networks and volume
 ```bash
 $ docker-compose down -v
 ```
+
+This, of course, will not delete the Akeneo application you cloned on your machine, only the Docker containers. 
 
 ## Install and run Akeneo
 
@@ -73,12 +68,10 @@ parameters:
     installer_data: PimInstallerBundle:minimal
 ```
 
-If you want to use MongoDB storage, don't forget to uncomment the corresponding services in your compose file (`mongodb` and `mongodb-behat`, both commented in the provided examples).
-
-Then add the following to your PIM parameters:
+If you want to use MongoDB storage, add the following to your PIM parameters:
 
 ```yaml
-# /host/path/to/you/pim/app/config/parameters.yml and parameters.yml.dist to avoid removal on "composer update"
+# /host/path/to/you/pim/app/config/parameters.yml and parameters.yml.dist ; the last one is important too, to avoid removal on "composer update"
 parameters:
     ...
     pim_catalog_product_storage_driver: doctrine/mongodb-odm
@@ -95,15 +88,13 @@ parameters:
     mongodb_database: akeneo_pim
 ```
 
+For more details on Akeneo configuration, don't hesitate to look at [Akeneo official documentation on the subject](https://docs.akeneo.com/latest/developer_guide/installation/index.html).
+
 ### PHP 5.6 or PHP 7.x? dev or standard?
 
 When using Akeneo with PHP 7.x and MongoDB storage, you need to add `alcaeus/mongo-php-adapter` in your requirements:
 
 ```bash
-# If using Apache
-$ docker-compose exec akeneo composer require --no-update --ignore-platform-reqs alcaeus/mongo-php-adapter
-
-# If using fpm
 $ docker-compose exec fpm composer require --no-update --ignore-platform-reqs alcaeus/mongo-php-adapter
 ```
 
@@ -125,21 +116,14 @@ Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php` if y
 
 **Important:** if you are using PHP 7.x and you have `doctrine/mongodb-odm-bundle` in your requirements, you need to add the option `--ignore-platform-reqs` when running `composer update`.
 
-Now, you can initialize Akeneo. Run these commands if you are using Apache images:
-
-```bash
-$ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update
-$ docker-compose exec akeneo pim-initialize
-
-$ docker-compose exec akeneo-behat pim-initialize
-```
-
-Or those if you are using FPM + nginx images:
+Now, you can initialize Akeneo:
 
 ```bash
 $ docker-compose exec fpm php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec fpm pim-initialize
 ```
+
+Command `pim-initialize` is detailed [later in this page](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/fpm.md#commands-available).
 
 ### Xdebug
 
@@ -165,7 +149,7 @@ default:
     context:
         class:  Context\FeatureContext
         parameters:
-            base_url: 'http://akeneo-behat/'
+            base_url: 'http://nginx-behat/'
             timeout: 10000
             window_width: 1280
             window_height: 1024
@@ -175,7 +159,7 @@ default:
             show_cmd: chromium-browser %s
             selenium2:
                 wd_host: 'http://selenium:4444/wd/hub'
-            base_url: 'http://akeneo-behat/'
+            base_url: 'http://nginx-behat/'
             files_path: 'features/Context/fixtures/'
         Behat\Symfony2Extension\Extension:
             kernel:
@@ -187,10 +171,6 @@ default:
 You are now able to run behat tests.
 
 ```bash
-# If using Apache
-$ docker-compose exec akeneo-behat bin/behat features/path/to/scenario
-
-# If using fpm
 $ docker-compose exec fpm bin/behat features/path/to/scenario
 ```
 
@@ -200,7 +180,7 @@ $ docker-compose exec fpm bin/behat features/path/to/scenario
 
 The docker image `selenium/standalone-firefox-debug` comes with a VNC server in it. You need a VNC client, and to connect to `localhost:5900`. You will then be able to see you browser and your tests running in it!
 
-### I don't want to see my tests running
+### I never want to see my tests running
 
 It is the default behavior, but in this case, you don't need to have a VNC server in your selenium container.
 
