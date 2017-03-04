@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-03-04
+
+### Enhancement
+
+- **Issue 179:** Manage "test" environment in the helpers (`pim-cac`, `pim-assets`, `pim-initialize`) of Akeneo images.
+
 ## 2017-02-25
 
 ### Enhancement
