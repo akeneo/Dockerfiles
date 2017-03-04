@@ -1,12 +1,18 @@
 # Changelog
 
+## 2017-03-04
+
+### Enhancement
+
+- **Issue 179:** Manage "test" environment in the helpers (`pim-cac`, `pim-assets`, `pim-initialize`) of Akeneo images.
+
 ## 2017-02-23
 
-# Bug fix
+### Bug fix
 
 - **Issue 167:** Set `date.timezone` to `Etc/UTC` instead of `Europe/Paris`.
 
-# Enhancement
+### Enhancement
 
 - **Issue 168:** Rename asset script into `pim-assets`.
 
