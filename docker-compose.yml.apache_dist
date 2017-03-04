@@ -7,10 +7,11 @@ services:
       - mysql
       - mongodb
     environment:
-      PHP_IDE_CONFIG: 'serverName=pim-ce'
-      PHP_XDEBUG_ENABLED: 0
-#      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
-#      PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
+      PHP_IDE_CONFIG: 'serverName=pim-ce'             # Mandatory for debugging
+      PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
+      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
+      PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with you host IP (only for Windows and Mac as Linux uses socket)
+      XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with you host IP to allow CLI debugging
     ports:
       - '8080:80'
     user: docker
@@ -29,16 +30,17 @@ services:
       - selenium
     environment:
       BEHAT_TMPDIR: /home/docker/symfony/app/cache/tmp
-      PHP_IDE_CONFIG: 'serverName=pim-ce-behat'
-      PHP_XDEBUG_ENABLED: 0
-#      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
-#      PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
+      PHP_IDE_CONFIG: 'serverName=pim-ce-behat'       # Mandatory for debugging
+      PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
+      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
+      PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with you host IP (only for Windows and Mac as Linux uses socket)
+      XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with you host IP to allow CLI debugging
     ports:
       - '8081:80'
     user: docker
     volumes:
       - ./:/home/docker/symfony
-      - /home/you/.composer:/home/docker/.composer
+      - ~/.composer:/home/docker/.composer
       - /tmp/behat/screenshots:/tmp/behat/screenshots
     working_dir: /home/docker/symfony
     networks:
@@ -47,7 +49,7 @@ services:
   selenium:
     image: selenium/standalone-firefox-debug:2.53.1-beryllium
     ports:
-      - '5900:5900'
+      - '5901:5900'
     volumes:
       - ./:/home/docker/symfony
     networks:

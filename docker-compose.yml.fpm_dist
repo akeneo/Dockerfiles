@@ -11,9 +11,10 @@ services:
       - selenium
     environment:
       BEHAT_TMPDIR: /home/docker/symfony/app/cache/tmp
-      PHP_XDEBUG_ENABLED: 0
-#      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY
-#      PHP_XDEBUG_REMOTE_HOST: 10.254.254.254
+      PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
+      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
+      PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with you host IP (only for Windows and Mac as Linux uses socket)
+      XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with you host IP
     user: docker
     volumes:
       - ./:/home/docker/symfony
@@ -27,7 +28,7 @@ services:
   selenium:
     image: selenium/standalone-firefox-debug:2.53.1-beryllium
     ports:
-      - '5900:5900'
+      - '5901:5900'
     volumes:
       - ./:/home/docker/symfony
     networks:
@@ -38,7 +39,7 @@ services:
     depends_on:
       - fpm
     environment:
-      PHP_IDE_CONFIG: 'serverName=pim-ce'
+      PHP_IDE_CONFIG: 'serverName=pim-ce'     # Mandatory for debugging
     ports:
       - '8080:80'
     volumes:
@@ -51,7 +52,7 @@ services:
     depends_on:
       - fpm
     environment:
-      PHP_IDE_CONFIG: 'serverName=pim-ce-behat'
+      PHP_IDE_CONFIG: 'serverName=pim-ce-behat'     # Mandatory for debugging
     ports:
       - '8081:80'
     volumes:
