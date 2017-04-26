@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-04-26
+
+### Enhancement
+
+- **Issue 187:** Add MySQL and MongoDB clients (available for all images).
+
 ## 2017-03-04
 
 ### Enhancement
