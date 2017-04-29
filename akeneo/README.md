@@ -32,7 +32,7 @@ $ docker run --name akeneo -p 8080:80 -d akeneo
 
 ### Use this image with Docker Compose
 
-The easiest way to use these images is [Docker Compose](https://docs.docker.com/compose/). You can found detailed explanations [here](https://github.com/damien-carcel/Dockerfiles/blob/master/COMPOSE.md).
+The easiest way to use these images is [Docker Compose](https://docs.docker.com/compose/). You can found detailed explanations [here](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/compose.md).
 
 ## License
 
