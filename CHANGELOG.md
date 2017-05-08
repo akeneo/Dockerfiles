@@ -1,5 +1,13 @@
 # Changelog
 
+## 2017-05-08
+
+### Enhancement
+
+- **Issue 185:** Make the vhosts and nginx servers more generic.
+    All base images now expect the web application to be in `/home/docker/application`,
+    and Akeneo images in `/home/docker/pim`.
+
 ## 2017-04-26
 
 ### Enhancement
