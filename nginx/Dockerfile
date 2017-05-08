@@ -18,6 +18,7 @@ RUN useradd docker --shell /bin/bash --create-home \
 # Configure nginx
 RUN sed -i "s/user  nginx;/user docker;/" /etc/nginx/nginx.conf
 COPY files/application.dev.conf /etc/nginx/conf.d/default.conf
+COPY files/upload.conf /etc/nginx/conf.d/upload.conf
 
 # Define "docker" as current user
 USER docker

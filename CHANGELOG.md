@@ -7,6 +7,7 @@
 - **Issue 185:** Make the vhosts and nginx servers more generic.
     All base images now expect the web application to be in `/home/docker/application`,
     and Akeneo images in `/home/docker/pim`.
+- **Issue 188:** Increase nginx client max body size to 20 MB (like for FPM).
 
 ## 2017-04-26
 
