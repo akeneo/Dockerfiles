@@ -11,7 +11,7 @@ COPY files/pim-cac.sh /usr/local/bin/pim-cac
 RUN chmod +x /usr/local/bin/*
 
 # Add Akeneo VHOST as default
-COPY files/akeneo-behat.local.conf /etc/apache2/sites-available/000-default.conf
+COPY files/akeneo-behat.dev.conf /etc/apache2/sites-available/000-default.conf
 
 # Define "docker" as current user
 USER docker
