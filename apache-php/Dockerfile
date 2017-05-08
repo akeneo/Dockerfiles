@@ -26,8 +26,8 @@ RUN sed -i "s/export APACHE_RUN_USER=www-data/export APACHE_RUN_USER=docker/" /e
     sed -i "s/export APACHE_RUN_GROUP=www-data/export APACHE_RUN_GROUP=docker/" /etc/apache2/envvars && \
     chown -R docker: /var/lock/apache2
 
-# Add Akeneo VHOST as default
-COPY files/akeneo.local.conf /etc/apache2/sites-available/000-default.conf
+# Add a default vhost
+COPY files/application.dev.conf /etc/apache2/sites-available/000-default.conf
 
 # Expose Apache
 EXPOSE 80 443
