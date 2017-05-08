@@ -1,6 +1,6 @@
 # Troubleshooting
 
-## I ran `composer update` and end up with this message:
+## I ran `composer update` on Akeneo PIM and end up with this message:
 
 ```bash
 Your requirements could not be resolved to an installable set of packages.
@@ -30,4 +30,5 @@ Your requirements could not be resolved to an installable set of packages.
 
 You are certainly using PHP 7.x while having `doctrine/mongodb-odm-bundle` in your requirements.
 
-You have to run composer with the `--ignore-platform-reqs` argument.
+You have to run composer with the `--ignore-platform-reqs` argument, as Akeneo 1.x uses an old version of `doctrine/mongodb`.
+Even if it is compatible with PHP 7.x, its composer requirements checks only for the PHP 5.x MongoDB extension (`ext-mongo`), not for the PHP 7.x one (`php-mongodb`).

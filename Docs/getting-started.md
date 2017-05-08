@@ -41,7 +41,7 @@ My examples could use more recent version in the future, and I encourage you to 
 version: '2'
 
 networks:     # Here we define a network, in which everything that happen in the containers will be isolated.
-  akeneo: ~   # We only define the name of the network, no specific configuration.
+  symfony: ~  # We only define the name of the network, no specific configuration.
 
 services:     # Each service you define below will be a container. It allows you to define you container configuration in a clear, readable way
   apache:     # This is our Apache + PHP container (as `mod_php` package needs both `php` and `apache` package, everything is in one container)
@@ -52,23 +52,67 @@ services:     # Each service you define below will be a container. It allows you
       - '8080:80'                           # Here we map the ports: port 80 of the container will be redirected on port 8080 on your machine
     user: docker                            # Every command we execute in the container will be as the `docker` user (id 1000 group 1000, defined during the build of the image `carcel/apache`)
     volumes:
-      - ./:/home/docker/symfony             # We map the content of the current folder (usually your PHP application) with `/home/docker/symfony` (because `carcel/apache` contains a Vhost pointing to this location)
+      - ./:/home/docker/application         # We map the content of the current folder (usually your PHP application) with `/home/docker/application` (because `carcel/apache` contains a vhost pointing to this location)
       - ~/.composer:/home/docker/.composer  # Same thing with you own composer folder, allowing you to use your own composer cache and GitHub token when running `composer update` for instance
-    working_dir: /home/docker/symfony       # The default working directory, so if for instance you run `app/console cache:clear` with `docker-compose`, it will be in this folder
+    working_dir: /home/docker/application   # The default working directory, so if for instance you run `app/console cache:clear` with `docker-compose`, it will be in this folder
     networks:
-      - akeneo                              # The Docker network we want our application to run within.
+      - symfony                             # The Docker network we want our application to run within.
 
   mysql:
-    image: mysql:5.6                        # Here we use the official MySQL 5.6 image: https://hub.docker.com/_/mysql/
+    image: mysql:5.7                        # Here we use the official MySQL 5.7 image: https://hub.docker.com/_/mysql/
     environment:                            # We can provide some environment variables to the container when we start it
       - MYSQL_ROOT_PASSWORD=root            # Here they are used to initialize MySQL with a root password and a default database
       - MYSQL_USER=symfony
       - MYSQL_PASSWORD=symfony
       - MYSQL_DATABASE=symfony
     networks:
-      - akeneo
+      - symfony
 ```
 
 You can notice than the mapping of the ports or of the volumes works the same way: first you provide the one of your own machine, then in second you provide the one of the Docker container.
 
 By mapping the port 80 of the container `apache` to your port 8080, you can access the PHP application in your web browser at the URL `localhost:8080` (you can of course choose another port).
+
+
+It is possible to do the same with `PHP-FPM` + `nginx`:
+
+```yaml
+version: '2'
+
+networks:
+  symfony: ~
+
+services:
+  fpm:
+    image: carcel/fpm
+    depends_on:
+      - mysql
+    user: docker
+    volumes:
+      - ./:/home/docker/application
+      - ~/.composer:/home/docker/.composer
+    working_dir: /home/docker/application
+    networks:
+      - symfony
+
+  nginx:
+    image: carcel/nginx
+    depends_on:
+      - fpm
+    ports:
+      - '8080:80'
+    volumes:
+      - ./:/home/docker/application
+    networks:
+      - symfony
+
+  mysql:
+    image: mysql:5.7
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=symfony
+      - MYSQL_PASSWORD=symfony
+      - MYSQL_DATABASE=symfony
+    networks:
+      - symfony
+```
