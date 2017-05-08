@@ -10,17 +10,17 @@ services:
       - mongodb-behat
       - selenium
     environment:
-      BEHAT_TMPDIR: /home/docker/symfony/app/cache/tmp
+      BEHAT_TMPDIR: /home/docker/pim/app/cache/tmp
       PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
       PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
       PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with you host IP (only for Windows and Mac as Linux uses socket)
       XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with you host IP
     user: docker
     volumes:
-      - ./:/home/docker/symfony
+      - ./:/home/docker/pim
       - ~/.composer:/home/docker/.composer
       - /tmp/behat/screenshots:/tmp/behat/screenshots
-    working_dir: /home/docker/symfony
+    working_dir: /home/docker/pim
     networks:
       - akeneo
       - behat
@@ -30,7 +30,7 @@ services:
     ports:
       - '5901:5900'
     volumes:
-      - ./:/home/docker/symfony
+      - ./:/home/docker/pim
     networks:
       - behat
 
@@ -43,7 +43,7 @@ services:
     ports:
       - '8080:80'
     volumes:
-      - ./:/home/docker/symfony
+      - ./:/home/docker/pim
     networks:
       - akeneo
 
@@ -56,7 +56,7 @@ services:
     ports:
       - '8081:80'
     volumes:
-      - ./:/home/docker/symfony
+      - ./:/home/docker/pim
     networks:
       - behat
 
