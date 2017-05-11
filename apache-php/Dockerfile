@@ -12,7 +12,7 @@ RUN apt-get update && \
             /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
             /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
-# Configure PHP
+# Configure PHP Apache
 RUN sed -i "s/;date.timezone =/date.timezone = Etc\/UTC/" /etc/php/7.1/apache2/php.ini && \
     sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/7.1/apache2/php.ini && \
     sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.1/apache2/php.ini && \
