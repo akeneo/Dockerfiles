@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-05-11
+
+### Bug fix
+
+- **Issue 200:** Fix XDebug activation/deactivation.
+
 ## 2017-05-08
 
 ### Enhancement
