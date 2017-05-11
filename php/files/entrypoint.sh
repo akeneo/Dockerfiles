@@ -35,7 +35,11 @@ fi
 if [ ! -z "${PHP_XDEBUG_ENABLED}" ]; then
     if [ "${PHP_XDEBUG_ENABLED}" == "1" ]; then
         execAsRoot "php5enmod xdebug"
+    elif [ "${PHP_XDEBUG_ENABLED}" == "0" ]; then
+        execAsRoot "php5dismod xdebug"
     fi
+else
+    execAsRoot "php5dismod xdebug"
 fi
 
 eval "${@}"

@@ -35,6 +35,12 @@ RUN apt-get update && \
             /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
             /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
+# Configure PHP CLI
+RUN sed -i "s/;date.timezone =/date.timezone = Etc\/UTC/" /etc/php5/cli/php.ini && \
+    sed -i "s/memory_limit = .*/memory_limit = 2G/" /etc/php5/cli/php.ini && \
+    sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php5/cli/php.ini && \
+    sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php5/cli/php.ini
+
 # Add a "docker" user
 RUN useradd docker --shell /bin/bash --create-home \
   && usermod --append --groups sudo docker \
@@ -45,13 +51,7 @@ RUN useradd docker --shell /bin/bash --create-home \
 RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN chmod +x /usr/local/bin/composer
 
-RUN php5enmod mcrypt && php5dismod xdebug
-
-RUN sed -i "s/;date.timezone =/date.timezone = Etc\/UTC/" /etc/php5/cli/php.ini && \
-    sed -i "s/memory_limit = .*/memory_limit = 2G/" /etc/php5/cli/php.ini && \
-    sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php5/cli/php.ini && \
-    sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php5/cli/php.ini
-
+# Copy "entrypoint"
 COPY ./files/entrypoint.sh /usr/local/bin
 RUN chmod a+x /usr/local/bin/entrypoint.sh
 
