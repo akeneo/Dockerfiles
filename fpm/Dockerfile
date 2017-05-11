@@ -23,17 +23,10 @@ RUN sed -i "s/user = www-data/user = docker/" /etc/php/7.0/fpm/pool.d/www.conf &
     sed -i "s/listen.owner = www-data/listen.owner = docker/" /etc/php/7.0/fpm/pool.d/www.conf && \
     sed -i "s/listen.group = www-data/listen.group = docker/" /etc/php/7.0/fpm/pool.d/www.conf
 
-# Create PHP run directory
-RUN mkdir /run/php
-
-# Configure PHP FPM
-RUN sed -i "s/listen = .*/listen = 9001/" /etc/php/7.0/fpm/pool.d/www.conf
-
-# Expose PHP FPM
-EXPOSE 9001
+RUN mkdir -p /run/php && sed -i "s/listen = .*/listen = 9001/" /etc/php/7.0/fpm/pool.d/www.conf
 
 # Define "docker" as current user
 USER docker
 
-# Run apache in foreground
+# Run FPM in foreground
 CMD ["sudo", "php-fpm7.0", "-F"]
