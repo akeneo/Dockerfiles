@@ -32,3 +32,7 @@ You are certainly using PHP 7.x while having `doctrine/mongodb-odm-bundle` in yo
 
 You have to run composer with the `--ignore-platform-reqs` argument, as Akeneo 1.x uses an old version of `doctrine/mongodb`.
 Even if it is compatible with PHP 7.x, its composer requirements checks only for the PHP 5.x MongoDB extension (`ext-mongo`), not for the PHP 7.x one (`php-mongodb`).
+
+## I cannot access `app_dev.php` on Symfony applications
+
+To access Symfony dev mode, through `http://localhost:8080/app_dev.php`, you need to comment the `if (isset($_SERVER['HTTP_CLIENT_IP'])` condition in `web/app_dev.php`.
