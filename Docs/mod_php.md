@@ -137,8 +137,6 @@ Also, you can configure two things on Xdebug through environment variables on ak
 
 You should now be able to access Akeneo development environment from your host through `http://localhost:8080/` and behat environment through `http://localhost:8081/` (of course, you can change the host port in the compose file).
 
-To access Akeneo in dev mode, through `http://localhost:8080/app_dev.php`, don't forget to comment the `if (isset($_SERVER['HTTP_CLIENT_IP'])` condition in `web/app_dev.php`.
-
 ### Scripts available
 
 Both `akeneo` and `akeneo-behat` images come with three little scripts to ease your Akeneo development and testing.
