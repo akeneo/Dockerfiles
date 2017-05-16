@@ -41,6 +41,8 @@ RUN sed -i "s/;date.timezone =/date.timezone = Etc\/UTC/" /etc/php5/cli/php.ini 
     sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php5/cli/php.ini && \
     sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php5/cli/php.ini
 
+RUN php5dismod xdebug
+
 # Add a "docker" user
 RUN useradd docker --shell /bin/bash --create-home \
   && usermod --append --groups sudo docker \
