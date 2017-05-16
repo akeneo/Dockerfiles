@@ -18,6 +18,8 @@ RUN sed -i "s/;date.timezone =/date.timezone = Etc\/UTC/" /etc/php/7.1/apache2/p
     sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/7.1/apache2/php.ini && \
     sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php/7.1/apache2/php.ini
 
+RUN phpdismod xdebug
+
 # Configure Apache
 RUN a2enmod rewrite && \
     echo "ServerName localhost" >> /etc/apache2/apache2.conf
