@@ -23,6 +23,8 @@ RUN sed -i "s/user = www-data/user = docker/" /etc/php/7.1/fpm/pool.d/www.conf &
     sed -i "s/listen.owner = www-data/listen.owner = docker/" /etc/php/7.1/fpm/pool.d/www.conf && \
     sed -i "s/listen.group = www-data/listen.group = docker/" /etc/php/7.1/fpm/pool.d/www.conf
 
+RUN phpdismod xdebug
+
 RUN mkdir -p /run/php && sed -i "s/listen = .*/listen = 9001/" /etc/php/7.1/fpm/pool.d/www.conf
 
 # Define "docker" as current user
