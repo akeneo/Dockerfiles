@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-05-22
+
+### Enhancement
+
+- **Issue 212:** Add `bcmath` extension to PHP 7.x images
+
 ## 2017-05-11
 
 ### Bug fix
