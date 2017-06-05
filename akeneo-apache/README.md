@@ -1,6 +1,6 @@
-# Akeneo on Docker
+# Akeneo and Apache on Docker
 
-This is a Docker development environment for Akeneo PIM.
+This is a Docker development environment for Akeneo PIM with Apache and `mod_php`.
 
 This environment is based on [carcel/apache-php](https://hub.docker.com/r/carcel/apache-php/).
 
@@ -8,10 +8,10 @@ This environment is based on [carcel/apache-php](https://hub.docker.com/r/carcel
 
 ### From Docker hub
 
-You can directly pull this image from [Docker hub](https://hub.docker.com/r/carcel/akeneo/) by running:
+You can directly pull this image from [Docker hub](https://hub.docker.com/r/carcel/akeneo-apache/) by running:
 
 ```bash
-$ docker run --name akeneo -p 8080:80 -d carcel/akeneo:php-7.0
+$ docker run --name akeneo -p 8080:80 -d carcel/akeneo-apache:php-7.0
 ```
 
 Access the URL `localhost:8080` with your web browser to check that the container works.
@@ -21,13 +21,13 @@ Access the URL `localhost:8080` with your web browser to check that the containe
 Clone the repository, go inside the created folder, and build the docker image:
 
 ```bash
-$ docker build -t "akeneo" .
+$ docker build -t "akeneo-apache" .
 ```
 
 Then you can run a container like this:
 
 ```bash
-$ docker run --name akeneo -p 8080:80 -d akeneo
+$ docker run --name akeneo -p 8080:80 -d akeneo-apache
 ```
 
 ### Use this image with Docker Compose
