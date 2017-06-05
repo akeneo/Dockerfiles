@@ -7,7 +7,7 @@ The simplest way to run those images is to use [Docker Compose](https://docs.doc
 Two compose file examples are provided, both providing two environments, one for development, the other for running behat and integration tests.
 
 - [**The first compose file**](https://github.com/damien-carcel/Dockerfiles/blob/master/docker-compose.yml.apache_dist) provides Apache + mod_php environments:
-    - it uses [`carcel/akeneo`](https://hub.docker.com/r/carcel/akeneo/) (development) and  [`carcel/akeneo-behat`](https://hub.docker.com/r/carcel/akeneo-behat/) (behat and integration tests),
+    - it uses [`carcel/akeneo-apache`](https://hub.docker.com/r/carcel/akeneo-apache/),
     - you can access the full documentation regarding this compose file [here](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/mod_php.md).
     
 - [**The second one**](https://github.com/damien-carcel/Dockerfiles/blob/master/docker-compose.yml.fpm_dist) provides nginx + PHP-FPM:
