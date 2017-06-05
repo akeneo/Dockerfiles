@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-06-05
+
+### Enhancement
+
+- **Issue 216:** Fuse `carcel/akeneo` and `carcel/akeneo-behat` into `carcel/akeneo-apache`.
+
 ## 2017-05-11
 
 ### Bug fix
