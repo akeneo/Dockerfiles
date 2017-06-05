@@ -20,8 +20,7 @@ This repository contains my own docker images I use for Akeneo and other Symfony
 - [**carcel/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:jessie-slim`
 - [**carcel/fpm**](fpm/README.md): An image with PHP FPM preconfigured to be use with any Symfony project, based on `carcel/php`
 - [**carcel/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured to be use with any Symfony project, based on `carcel/php`
-- [**carcel/akeneo**](akeneo/README.md): An image for Akeneo development, based on `carcel/apache-php`
-- [**carcel/akeneo-behat**](akeneo-behat/README.md): An image to run Akeneo behat tests, based on `carcel/apache-php`
+- [**carcel/akeneo-apache**](akeneo-apache/README.md): An image for Akeneo development with Apache + `mod_php`, based on `carcel/apache-php`
 - [**carcel/akeneo-fpm**](akeneo-fpm/README.md): An image for Akeneo development with PHP FPM, based on `carcel/fpm`
 - [**carcel/nginx**](nginx/README.md): An image with nginx preconfigured (to use with FPM images), based on official `nginx`
 
