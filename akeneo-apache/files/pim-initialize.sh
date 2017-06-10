@@ -14,8 +14,13 @@ echo "Initialize the PIM"
 app/console ca:c -e=prod
 app/console ca:c -e=behat
 
-app/console -e=prod oro:requirejs:generate-config
+echo "Install assets"
+npm install
 app/console -e=prod pim:install --force
 app/console -e=prod assets:install --symlink
 
+echo "Running Webpack"
+npm run webpack
+
+echo "Running install database"
 app/console -e=behat pim:installer:db

@@ -9,6 +9,7 @@ rm -rf web/js/*
 echo "Initialize assets"
 app/console ca:c -e=prod
 
-app/console -e=prod oro:requirejs:generate-config
+npm install
 app/console -e=prod pim:installer:assets
 app/console -e=prod assets:install --symlink
+npm run webpack

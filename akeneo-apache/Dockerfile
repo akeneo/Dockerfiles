@@ -4,6 +4,16 @@ MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 # Define "root" as current user
 USER root
 
+# Install some useful packages
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - && \
+    apt-get update && \
+    apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
+    nodejs bzip2 && \
+    apt-get clean && apt-get --yes --quiet autoremove --purge && \
+        rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+                /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
+                /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
+
 # Add some utilities
 COPY files/pim-assets.sh /usr/local/bin/pim-assets
 COPY files/pim-initialize.sh /usr/local/bin/pim-initialize
