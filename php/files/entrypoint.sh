@@ -42,4 +42,14 @@ else
     execAsRoot "php5dismod xdebug"
 fi
 
+if [ ! -z "${HOST_UID}" ] && [ ! -z "${HOST_GID}" ]; then
+    execAsRoot "usermod -u ${HOST_UID} docker"
+    execAsRoot "groupmod -g ${HOST_GID} docker"
+    execAsRoot "find /home -user 1000 -exec chown -h ${HOST_UID} {} \;"
+    execAsRoot "find /home -group 1000 -exec chgrp -h ${HOST_GID} {} \;"
+    execAsRoot "find /var/lock -user 1000 -exec chown -h ${HOST_UID} {} \;"
+    execAsRoot "find /var/lock -group 1000 -exec chgrp -h ${HOST_GID} {} \;"
+    execAsRoot "usermod -g ${HOST_GID} docker"
+fi
+
 eval "${@}"
