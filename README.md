@@ -1,6 +1,6 @@
 # My Dockerfiles
 
-This repository contains my own docker images I use for Akeneo and other Symfony development. Feel free to use/adapt them if they fit your needs.
+This repository contains the Dockerfiles I use for Akeneo and other Symfony development. Feel free to use/adapt them if they fit your needs.
 
 | [Master][Master] | [php-7.1][php-7.1] | [php-7.0][php-7.0] | [php-5.6][php-5.6] |
 |:----------------:|:----------:|:----------:|:----------:|
