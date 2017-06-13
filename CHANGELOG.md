@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-06-13
+
+### Enhancement
+
+- **Issue 132:** Adds CONTRIBUTING.md and GitHub templates (issues and pull requests).
+
 ## 2017-06-05
 
 ### Enhancement
