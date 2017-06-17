@@ -1,8 +1,8 @@
 version: '2'
 
 services:
-  fpm:
-    image: carcel/akeneo-fpm
+  akeneo:
+    image: carcel/akeneo-fpm:php-7.1
     depends_on:
       - mysql
       - mysql-behat
@@ -10,7 +10,8 @@ services:
       - mongodb-behat
       - selenium
     environment:
-      BEHAT_TMPDIR: /home/docker/pim/app/cache/tmp
+      BEHAT_TMPDIR: /home/docker/pim/app/cache/tmp    # Mandatory to run behat tests
+      PHP_IDE_CONFIG: 'serverName=pim-cli'            # Mandatory for debugging
       PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
       PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
       PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with you host IP (only for Windows and Mac as Linux uses socket)
@@ -37,9 +38,9 @@ services:
   nginx:
     image: carcel/akeneo-nginx
     depends_on:
-      - fpm
+      - akeneo
     environment:
-      PHP_IDE_CONFIG: 'serverName=pim-ce'     # Mandatory for debugging
+      PHP_IDE_CONFIG: 'serverName=pim'     # Mandatory for debugging
     ports:
       - '8080:80'
     volumes:
@@ -50,9 +51,9 @@ services:
   nginx-behat:
     image: carcel/akeneo-behat-nginx
     depends_on:
-      - fpm
+      - akeneo
     environment:
-      PHP_IDE_CONFIG: 'serverName=pim-ce-behat'     # Mandatory for debugging
+      PHP_IDE_CONFIG: 'serverName=pim-behat'     # Mandatory for debugging
     ports:
       - '8081:80'
     volumes:
@@ -61,7 +62,7 @@ services:
       - behat
 
   mysql:
-    image: mysql:5.6
+    image: mysql:5.5
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=akeneo_pim
@@ -73,7 +74,7 @@ services:
       - akeneo
 
   mysql-behat:
-    image: mysql:5.6
+    image: mysql:5.5
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=akeneo_pim
@@ -85,14 +86,14 @@ services:
       - behat
 
   mongodb:
-    image: mongo:2.6
+    image: mongo:2.4
     ports:
       - '27018:27017'
     networks:
       - akeneo
 
   mongodb-behat:
-    image: mongo:2.6
+    image: mongo:2.4
     ports:
       - '27019:27017'
     networks:

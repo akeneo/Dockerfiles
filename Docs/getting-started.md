@@ -1,3 +1,4 @@
+app/console -e=prod oro:requirejs:generate-config
 # Getting started
 
 The content of this guide is not to replace the official Docker documentation, but only to allow beginners to quickly have a running `Docker` + `Docker Compose` installation.
@@ -72,47 +73,3 @@ services:     # Each service you define below will be a container. It allows you
 You can notice than the mapping of the ports or of the volumes works the same way: first you provide the one of your own machine, then in second you provide the one of the Docker container.
 
 By mapping the port 80 of the container `apache` to your port 8080, you can access the PHP application in your web browser at the URL `localhost:8080` (you can of course choose another port).
-
-
-It is possible to do the same with `PHP-FPM` + `nginx`:
-
-```yaml
-version: '2'
-
-networks:
-  symfony: ~
-
-services:
-  fpm:
-    image: carcel/fpm
-    depends_on:
-      - mysql
-    user: docker
-    volumes:
-      - ./:/home/docker/application
-      - ~/.composer:/home/docker/.composer
-    working_dir: /home/docker/application
-    networks:
-      - symfony
-
-  nginx:
-    image: carcel/nginx
-    depends_on:
-      - fpm
-    ports:
-      - '8080:80'
-    volumes:
-      - ./:/home/docker/application
-    networks:
-      - symfony
-
-  mysql:
-    image: mysql:5.7
-    environment: 
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_USER=symfony
-      - MYSQL_PASSWORD=symfony
-      - MYSQL_DATABASE=symfony
-    networks:
-      - symfony
-```

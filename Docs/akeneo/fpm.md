@@ -2,14 +2,14 @@
 
 ## Using the images
 
-The simplest way to run the containers is to copy the [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/docker-compose.yml.fpm_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
+The simplest way to run the containers is to copy the [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
 
 You can place it somewhere else, but then you will need to change the volumes parameter from `./:/home/docker/pim` to `/the/path/to/your/pim:/home/docker/pim` (you'll need to do it for both `nginx` and `nginx-behat` services).
 
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 
-By default, latest versions of `akeneo` and `akeneo-behat` are used in the compose file. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (identical to `latest`).
-Read the [Tags available](https://github.com/damien-carcel/Dockerfiles/blob/master/README.md#tags-available) section of the `README.md` for more details.
+By default, `carcel/akeneo-fpm:php-7.1` is used in the compose file.
+Read the [Tags available](https://github.com/damien-carcel/Dockerfiles/blob/master/README.md#github-branches-and-corresponding-docker-hub-tags) section of the `README.md` for more details.
 
 ## Run and stop the containers
 
@@ -123,7 +123,7 @@ $ docker-compose exec fpm php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec fpm pim-initialize
 ```
 
-Command `pim-initialize` is detailed [below in this page](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/fpm.md#scripts-available).
+Command `pim-initialize` is detailed [below in this page](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/fpm.md#scripts-available).
 
 ### Xdebug
 
