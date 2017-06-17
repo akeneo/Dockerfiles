@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-06-17
+
+### Enhancement
+
+- **Issue 199:** Remove `carcel/akeneo-fpm` from PHP 5.6 branch.
+
 ## 2017-06-13
 
 ### Enhancement

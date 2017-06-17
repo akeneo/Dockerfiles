@@ -21,7 +21,6 @@ This repository contains the Dockerfiles I use for Akeneo and other Symfony deve
 - [**carcel/fpm**](fpm/README.md): An image with PHP FPM preconfigured to be use with any Symfony project, based on `carcel/php`
 - [**carcel/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured to be use with any Symfony project, based on `carcel/php`
 - [**carcel/akeneo-apache**](akeneo-apache/README.md): An image for Akeneo development with Apache + `mod_php`, based on `carcel/apache-php`
-- [**carcel/akeneo-fpm**](akeneo-fpm/README.md): An image for Akeneo development with PHP FPM, based on `carcel/fpm`
 
 ## How to use these images?
 
