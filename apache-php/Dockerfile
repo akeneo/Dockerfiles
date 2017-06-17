@@ -6,19 +6,19 @@ USER root
 
 # Install Apache + mod_php and some PHP extensions
 RUN apt-get update && \
-    apt-get --no-install-recommends --no-install-suggests --yes --quiet install apache2 libapache2-mod-php5 && \
+    apt-get --no-install-recommends --no-install-suggests --yes --quiet install apache2 libapache2-mod-php5.6 && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
             /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Configure PHP Apache
-RUN sed -i "s/;date.timezone =/date.timezone = Etc\/UTC/" /etc/php5/apache2/php.ini && \
-    sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php5/apache2/php.ini && \
-    sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php5/apache2/php.ini && \
-    sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php5/apache2/php.ini
+RUN sed -i "s/;date.timezone =/date.timezone = Etc\/UTC/" /etc/php/5.6/apache2/php.ini && \
+    sed -i "s/memory_limit = .*/memory_limit = 512M/" /etc/php/5.6/apache2/php.ini && \
+    sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php/5.6/apache2/php.ini && \
+    sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php/5.6/apache2/php.ini
 
-RUN php5dismod xdebug
+RUN phpdismod xdebug
 
 # Configure Apache
 RUN a2enmod rewrite && \
