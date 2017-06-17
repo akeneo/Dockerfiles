@@ -4,7 +4,8 @@
 
 ### Enhancement
 
-- **Issue 199:** Remove `carcel/akeneo-fpm` from PHP 5.6 branch.
+- **Issue 199:** Remove `carcel/akeneo-fpm` from PHP 5.6 and 7.0.
+    Remove `carcel/akeneo-fpm` from PHP 7.0 and following.
 
 ## 2017-06-13
 
