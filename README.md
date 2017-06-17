@@ -22,6 +22,7 @@ This repository contains the Dockerfiles I use for Akeneo and other Symfony deve
 - [**carcel/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:jessie-slim`
 - [**carcel/fpm**](fpm/README.md): An image with PHP FPM preconfigured to be use with any Symfony project, based on `carcel/php`
 - [**carcel/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured to be use with any Symfony project, based on `carcel/php`
+- [**carcel/akeneo-apache**](https://github.com/damien-carcel/Dockerfiles/tree/php-5.6/akeneo-apache/README.md): An image for Akeneo development with Apache + mod_php, based on `carcel/apache-php`
 - [**carcel/akeneo-fpm**](akeneo-fpm/README.md): An image for Akeneo development with PHP FPM, based on `carcel/fpm`
 - [**carcel/nginx**](nginx/README.md): An image with nginx preconfigured (to use with FPM images), based on official `nginx`
 
@@ -36,13 +37,14 @@ This repository contains the Dockerfiles I use for Akeneo and other Symfony deve
 Four branches are maintained, all based on [debian:jessie](https://hub.docker.com/_/debian/):
 
 - `php-5.6` branch provides images with native Jessie PHP 5.6. Corresponding tag is `php-5.6`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `5.6`.
-- `php-7.0` branch provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.0`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.0`.
-- `php-7.1` branch provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.1`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.1`.
-- `master` branch provides images with native Jessie PHP 5.6. Corresponding tag is `latest`, and its images are exactly the same than `php-7.1` tag.
-    `nginx` image is only present on master branch, and so only available with the tag `latest`.
-    
-- `carcel/akeneo-apache` image is only maintained for tag `php-5.6`.
-- `carcel/akeneo-fpm` image is only maintained for tags `php-7.1` and next to come (`latest` included).
+- `php-7.0` branch provides images with PHP 7.0 from [Sury](https://deb.sury.org/) repository. Corresponding tag is `php-7.0`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.0`.
+- `php-7.1` branch provides images with PHP 7.1 from [Sury](https://deb.sury.org/) repository. Corresponding tag is `php-7.1`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.1`.
+- `master` branch images correspond to the tag `latest`, and are exactly the same than images with `php-7.1` tag.
+
+- `carcel/akeneo-apache` is maintained only for tag `php-5.6`.
+- `carcel/akeneo-fpm` is maintained only for tag `php-7.1` and further (`master` included).
+
+**Please, remember that, for the moment, only Apache + mod_php, with PHP 5.6, is officialy supported by Akeneo.**
 
 ### Unmaintained
 
@@ -56,7 +58,9 @@ Four branches are maintained, all based on [debian:jessie](https://hub.docker.co
 
 If you are new to Docker, please start with the [getting started section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/getting-started.md).
 
-Then, you can find out how to use these images for Akeneo development and testing in the [Docker compose section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/compose.md).
+Then, you can find out how to use these images
+- for Symfony development in the [Symfony docker-compose section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/compose.md).
+- for Akeneo development and behat testing in the [Akeneo docker-compose section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/compose.md).
 
 Please read carefully the [troubleshoothing section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/troubleshooting.md) if you encounter any problem.
 If your problem is not listed in it, don't hesitate to [open an issue](https://github.com/damien-carcel/Dockerfiles/issues).

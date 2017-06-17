@@ -2,14 +2,16 @@ version: '2'
 
 services:
   akeneo:
-    image: carcel/akeneo-apache
+    image: carcel/akeneo-apache:php-5.6
     depends_on:
       - mysql
+      - mysql-behat
       - mongodb
+      - mongodb-behat
       - selenium
     environment:
-      BEHAT_TMPDIR: /home/docker/pim/app/cache/tmp
-      PHP_IDE_CONFIG: 'serverName=pim-ce'             # Mandatory for debugging
+      BEHAT_TMPDIR: /home/docker/pim/app/cache/tmp    # Mandatory to run behat tests
+      PHP_IDE_CONFIG: 'serverName=pim'             # Mandatory for debugging
       PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
       PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
       PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with you host IP (only for Windows and Mac as Linux uses socket)
@@ -37,7 +39,7 @@ services:
       - behat
 
   mysql:
-    image: mysql:5.6
+    image: mysql:5.5
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=akeneo_pim
@@ -49,7 +51,7 @@ services:
       - akeneo
 
   mysql-behat:
-    image: mysql:5.6
+    image: mysql:5.5
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=akeneo_pim
@@ -61,14 +63,14 @@ services:
       - behat
 
   mongodb:
-    image: mongo:2.6
+    image: mongo:2.4
     ports:
       - '27018:27017'
     networks:
       - akeneo
 
   mongodb-behat:
-    image: mongo:2.6
+    image: mongo:2.4
     ports:
       - '27019:27017'
     networks:

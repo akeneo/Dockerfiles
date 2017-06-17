@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+  fpm:
+    image: carcel/fpm
+    depends_on:
+      - mysql
+    environment:
+      PHP_IDE_CONFIG: 'serverName=your-cli-key'       # Mandatory for debugging in CLI
+      PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
+      PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
+      PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with you host IP (only for Windows and Mac as Linux uses socket)
+      XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with you host IP
+    user: docker
+    volumes:
+      - ./:/home/docker/application
+      - ~/.composer:/home/docker/.composer
+    working_dir: /home/docker/application
+    networks:
+      - symfony
+
+  nginx:
+    image: carcel/nginx
+    depends_on:
+      - fpm
+    environment:
+      PHP_IDE_CONFIG: 'serverName=your-server-key'    # Mandatory for debugging in web browser
+    ports:
+      - '8080:80'
+    volumes:
+      - ./:/home/docker/application
+    networks:
+      - symfony
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=symfony
+      - MYSQL_PASSWORD=symfony
+      - MYSQL_DATABASE=symfony
+    networks:
+      - symfony
+
+networks:
+  symfony: ~
