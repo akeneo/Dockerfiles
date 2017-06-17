@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-images=("php" "fpm" "apache-php" "akeneo-fpm" "nginx")
+images=("php" "fpm" "apache-php" "akeneo-fpm")
 
 cwd=$(pwd)
 for (( i=0; i<${#images[@]}; i++ ));
