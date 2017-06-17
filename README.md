@@ -17,21 +17,40 @@ This repository contains the Dockerfiles I use for Akeneo and other Symfony deve
 
 ## Images available
 
+### Maintained
+
 - [**carcel/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:jessie-slim`
 - [**carcel/fpm**](fpm/README.md): An image with PHP FPM preconfigured to be use with any Symfony project, based on `carcel/php`
 - [**carcel/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured to be use with any Symfony project, based on `carcel/php`
 - [**carcel/akeneo-fpm**](akeneo-fpm/README.md): An image for Akeneo development with PHP FPM, based on `carcel/fpm`
 - [**carcel/nginx**](nginx/README.md): An image with nginx preconfigured (to use with FPM images), based on official `nginx`
 
-## Tags available
+### Unmaintained
+
+- **carcel/akeneo** and **carcel/akeneo-behat** have been replaced by **carcel/akeneo-apache**.
+
+## GitHub branches and corresponding Docker Hub tags
+
+### Maintained
 
 Four branches are maintained, all based on [debian:jessie](https://hub.docker.com/_/debian/):
 
-- `php-5.6` provides images with native Jessie PHP 5.6. Corresponding tag is `php-5.6`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `5.6`.
-- `php-7.0` provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.0`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.0`.
-- `php-7.1` provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.1`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.1`.
-- `master` provides images with native Jessie PHP 5.6. Corresponding tag is `latest`, and its images are exactly the same than `php-7.1` tag.
+- `php-5.6` branch provides images with native Jessie PHP 5.6. Corresponding tag is `php-5.6`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `5.6`.
+- `php-7.0` branch provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.0`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.0`.
+- `php-7.1` branch provides images with native Jessie PHP 5.6. Corresponding tag is `php-7.1`, except for `carcel/php` and `carcel/fpm` images, which simply use the tag `7.1`.
+- `master` branch provides images with native Jessie PHP 5.6. Corresponding tag is `latest`, and its images are exactly the same than `php-7.1` tag.
     `nginx` image is only present on master branch, and so only available with the tag `latest`.
+    
+- `carcel/akeneo-apache` image is only maintained for tag `php-5.6`.
+- `carcel/akeneo-fpm` image is only maintained for tags `php-7.1` and next to come (`latest` included).
+
+### Unmaintained
+
+- `php-5.4` branch provides only `carcel/php` image with tag `5.4`. This branch is not maintained, and kept only for testing purposes with Akeneo 1.5 and previous.
+- `php-5.5` branch provides only `carcel/php` image with tag `5.5`. This branch is not maintained, and kept only for testing purposes with Akeneo 1.5 and previous.
+
+- `carcel/akeneo-apache` images tagged `php-7.0`, `php-7.1` and `latest` are not maintained.
+- `carcel/akeneo-fpm` images tagged `php-5.6` and `php-7.0` are not maintained.
 
 ## How to use these images?
 
