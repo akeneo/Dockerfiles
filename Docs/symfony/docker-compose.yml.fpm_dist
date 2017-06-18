@@ -6,6 +6,7 @@ services:
     depends_on:
       - mysql
     environment:
+      COMPOSER_HOME: /home/docker/.composer
       PHP_IDE_CONFIG: 'serverName=your-cli-key'       # Mandatory for debugging in CLI
       PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
       PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
@@ -20,7 +21,7 @@ services:
       - symfony
 
   nginx:
-    image: carcel/nginx
+    image: nginx
     depends_on:
       - fpm
     environment:

@@ -56,6 +56,7 @@ Four branches are maintained, all based on [debian:jessie](https://hub.docker.co
 ## How to use these images?
 
 If you are new to Docker, please start with the [getting started section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/getting-started.md).
+And even if you are not new, it is a good start to understand how these images are intended to be used.
 
 Then, you can find out how to use these images
 - for Symfony development in the [Symfony docker-compose section](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/compose.md).

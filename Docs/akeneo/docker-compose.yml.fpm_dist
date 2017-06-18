@@ -10,7 +10,8 @@ services:
       - mongodb-behat
       - selenium
     environment:
-      BEHAT_TMPDIR: /srv/pim/app/cache/tmp    # Mandatory to run behat tests
+      BEHAT_TMPDIR: /srv/pim/app/cache/tmp            # Mandatory to run behat tests
+      COMPOSER_HOME: /home/docker/.composer
       PHP_IDE_CONFIG: 'serverName=pim-cli'            # Mandatory for debugging
       PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
       PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
@@ -19,8 +20,9 @@ services:
     user: docker
     volumes:
       - ./:/srv/pim
-      - ~/.composer:/home/docker/.composer
-      - /tmp/behat/screenshots:/tmp/behat/screenshots
+      - ~/.config/composer:/home/docker/.composer
+      - ~/.ssh:/home/docker/.ssh                        # [optional] Only needed for projects using Akeneo EE standard edition
+      - /tmp/behat/screenshots:/tmp/behat/screenshots   # Needed to be able to access behat screenshots when scenarios are failing
     working_dir: /srv/pim
     networks:
       - akeneo
