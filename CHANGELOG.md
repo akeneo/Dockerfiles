@@ -4,6 +4,7 @@
 
 ### Documentation
 
+- **Issue 224:** Add usage of NodeJS and NPM in the Akeneo FPM compose file.
 - **Issue 225:** Update compose file for Akeneo FPM, to be used with MySQL 5.7 and Elasticsearch 5.x (no more MongoDB).
 - **Issue 226:** Set composer home folder in compose file and better document composer settings.
 

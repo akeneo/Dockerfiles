@@ -28,6 +28,17 @@ services:
       - akeneo
       - behat
 
+    node:
+      image: node:8
+      user: node
+      volumes:
+        - ./:/srv/pim
+        - ~/.npm:/home/node/.npm
+      working_dir: /srv/pim
+      networks:
+        - akeneo
+        - behat
+
   selenium:
     image: selenium/standalone-firefox-debug:2.53.1-beryllium
     ports:
@@ -42,7 +53,7 @@ services:
     depends_on:
       - akeneo
     environment:
-      PHP_IDE_CONFIG: 'serverName=pim'     # Mandatory for debugging
+      PHP_IDE_CONFIG: 'serverName=pim'                            # Mandatory for debugging
     ports:
       - '8080:80'
     volumes:
@@ -57,7 +68,7 @@ services:
     depends_on:
       - akeneo
     environment:
-      PHP_IDE_CONFIG: 'serverName=pim-behat'     # Mandatory for debugging
+      PHP_IDE_CONFIG: 'serverName=pim-behat'                      # Mandatory for debugging
     ports:
       - '8081:80'
     volumes:
@@ -76,6 +87,8 @@ services:
       - MYSQL_DATABASE=akeneo_pim
     ports:
       - '3307:3306'
+    volumes:
+      - ./docker/mysql.cnf:/etc/mysql/conf.d/sql_modes.cnf        # Contains the modes you want to activate
     networks:
       - akeneo
 
@@ -88,6 +101,8 @@ services:
       - MYSQL_DATABASE=akeneo_pim
     ports:
       - '3308:3306'
+    volumes:
+      - ./docker/mysql.cnf:/etc/mysql/conf.d/sql_modes.cnf        # Contains the modes you want to activate
     networks:
       - behat
 
@@ -99,6 +114,14 @@ services:
       - '9200:9200'
     networks:
       - akeneo
+
+  elasticsearch-behat:
+    image: elasticsearch:5
+    environment:
+      ES_JAVA_OPTS: '-Xms256m -Xmx256m'
+    ports:
+      - '9200:9200'
+    networks:
       - behat
 
 networks:
