@@ -2,10 +2,11 @@
 
 ## 2017-06-17
 
-### Enhancement
+### Enhancements
 
 - **Issue 199:** Remove `carcel/akeneo-fpm` from PHP 5.6 and 7.0.
     Remove `carcel/akeneo-apache` from PHP 7.0 and following.
+- **Issue 234:** Remove `carcel/nginx` image (official `nginx` image is to be used instead).
 
 ## 2017-06-13
 
@@ -33,7 +34,7 @@
 
 ## 2017-05-08
 
-### Enhancement
+### Enhancements
 
 - **Issue 185:** Make the vhosts and nginx servers more generic.
     All base images now expect the web application to be in `/home/docker/application`,

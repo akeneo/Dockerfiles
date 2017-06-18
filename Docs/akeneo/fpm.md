@@ -4,7 +4,7 @@
 
 The simplest way to run the containers is to copy the [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
 
-You can place it somewhere else, but then you will need to change the volumes parameter from `./:/home/docker/pim` to `/the/path/to/your/pim:/home/docker/pim` (you'll need to do it for both `nginx` and `nginx-behat` services).
+You can place it somewhere else, but then you will need to change the volumes parameter from `./:/srv/pim` to `/the/path/to/your/pim:/srv/pim` (you'll need to do it for both `nginx` and `nginx-behat` services).
 
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 
@@ -109,6 +109,19 @@ The development version comes with `doctrine/mongodb-odm-bundle` already present
 So you always need to add `alcaeus/mongo-php-adapter` when using PHP 7.x, even if not using MongoDB storage.
 
 This is not the case for the standard version.
+
+### Configure nginx
+
+Unlike `carcel/akeneo-apache` image, which contains PHP **and** Apache with two already configured VirtualHost (one for `prod` and `dev` modes, one for `behat`), `carcel/akeneo-fpm` image contains only PHP-FPM.
+So to be able to access your PIM in a web browser, you need to associate the FPM container with a nginx one.
+
+You can use the official `nginx` image available on [Docker Hub](https://hub.docker.com/_/nginx/). The [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) already defines the appropriate services.
+You just need to copy the nginx server configurations to the appropriate folder:
+- one for [prod and dev modes](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/nginx.conf), that will be used by the `nginx` service,
+- one for [behat mode](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/nginx-behat.conf), that will be used by the `nginx-behat` service.
+The compose file expects those server configurations in a `docker` subfolder of your project, but it is up to you to choose another folder. However, it has to be a subfolder of your project.
+
+Optionally, you can also add a [configuration file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx services for the compose file are already set for it).
 
 ### Install Akeneo
 

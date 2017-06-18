@@ -10,7 +10,7 @@ services:
       - mongodb-behat
       - selenium
     environment:
-      BEHAT_TMPDIR: /home/docker/pim/app/cache/tmp    # Mandatory to run behat tests
+      BEHAT_TMPDIR: /srv/pim/app/cache/tmp    # Mandatory to run behat tests
       PHP_IDE_CONFIG: 'serverName=pim-cli'            # Mandatory for debugging
       PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
       PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
@@ -18,10 +18,10 @@ services:
       XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with you host IP
     user: docker
     volumes:
-      - ./:/home/docker/pim
+      - ./:/srv/pim
       - ~/.composer:/home/docker/.composer
       - /tmp/behat/screenshots:/tmp/behat/screenshots
-    working_dir: /home/docker/pim
+    working_dir: /srv/pim
     networks:
       - akeneo
       - behat
@@ -31,12 +31,12 @@ services:
     ports:
       - '5901:5900'
     volumes:
-      - ./:/home/docker/pim
+      - ./:/srv/pim
     networks:
       - behat
 
   nginx:
-    image: carcel/akeneo-nginx
+    image: nginx
     depends_on:
       - akeneo
     environment:
@@ -44,12 +44,14 @@ services:
     ports:
       - '8080:80'
     volumes:
-      - ./:/home/docker/pim
+      - ./:/srv/pim
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/upload.conf:/etc/nginx/conf.d/upload.conf        # Optional
     networks:
       - akeneo
 
   nginx-behat:
-    image: carcel/akeneo-behat-nginx
+    image: nginx
     depends_on:
       - akeneo
     environment:
@@ -57,7 +59,9 @@ services:
     ports:
       - '8081:80'
     volumes:
-      - ./:/home/docker/pim
+      - ./:/srv/pim
+      - ./docker/nginx-behat.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/upload.conf:/etc/nginx/conf.d/upload.conf        # Optional
     networks:
       - behat
 
