@@ -52,9 +52,18 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
 ```
 
+### Configure nginx
+
+Unlike `carcel/apache-php` image, which contains PHP **and** Apache with an already configured VirtualHost, `carcel/fpm` image contains only PHP-FPM.
+So to be able to access your application in a web browser, you need to associate the FPM container with a nginx one.
+
+You can use the official `nginx` image available on [Docker Hub](https://hub.docker.com/_/nginx/). The [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/docker-compose.yml.fpm_dist) already defines the appropriate service.
+You just need to copy the [nginx server configuration](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/nginx.conf) to the appropriate folder.
+The compose file expects it in a `docker` subfolder of your project, but it is up to you to choose another folder. However, it has to be a subfolder of your project.
+
 ### Install Symfony
 
-Now, you can install vendors (if needed):
+You can install vendors (if needed) by running:
 
 ```bash
 $ docker-compose exec fpm composer update

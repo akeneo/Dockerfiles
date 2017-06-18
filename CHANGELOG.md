@@ -34,7 +34,7 @@
 
 ## 2017-05-08
 
-### Enhancement
+### Enhancements
 
 - **Issue 185:** Make the vhosts and nginx servers more generic.
     All base images now expect the web application to be in `/home/docker/application`,

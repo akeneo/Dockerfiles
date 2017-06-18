@@ -110,6 +110,17 @@ So you always need to add `alcaeus/mongo-php-adapter` when using PHP 7.x, even i
 
 This is not the case for the standard version.
 
+### Configure nginx
+
+Unlike `carcel/akeneo-apache` image, which contains PHP **and** Apache with two already configured VirtualHost (one for `prod` and `dev` modes, one for `behat`), `carcel/akeneo-fpm` image contains only PHP-FPM.
+So to be able to access your PIM in a web browser, you need to associate the FPM container with a nginx one.
+
+You can use the official `nginx` image available on [Docker Hub](https://hub.docker.com/_/nginx/). The [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) already defines the appropriate services.
+You just need to copy the nginx server configurations to the appropriate folder:
+- one for [prod and dev modes](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/nginx.conf), that will be used by the `nginx` service,
+- one for [behat mode](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/nginx-behat.conf), that will be used by the `nginx-behat` service.
+The compose file expects those server configurations in a `docker` subfolder of your project, but it is up to you to choose another folder. However, it has to be a subfolder of your project.
+
 ### Install Akeneo
 
 Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php` if you want to use MongoDB storage.

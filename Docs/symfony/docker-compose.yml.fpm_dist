@@ -29,6 +29,7 @@ services:
       - '8080:80'
     volumes:
       - ./:/srv/application
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - symfony
 
