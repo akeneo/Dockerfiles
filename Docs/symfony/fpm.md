@@ -61,6 +61,8 @@ You can use the official `nginx` image available on [Docker Hub](https://hub.doc
 You just need to copy the [nginx server configuration](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/nginx.conf) to the appropriate folder.
 The compose file expects it in a `docker` subfolder of your project, but it is up to you to choose another folder. However, it has to be a subfolder of your project.
 
+Optionally, you can also add a [configuration file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx service for the compose file is already set for it).
+
 ### Install Symfony
 
 You can install vendors (if needed) by running:

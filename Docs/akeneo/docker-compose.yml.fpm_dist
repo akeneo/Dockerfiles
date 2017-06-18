@@ -46,6 +46,7 @@ services:
     volumes:
       - ./:/srv/pim
       - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/upload.conf:/etc/nginx/conf.d/upload.conf        # Optional
     networks:
       - akeneo
 
@@ -60,6 +61,7 @@ services:
     volumes:
       - ./:/srv/pim
       - ./docker/nginx-behat.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/upload.conf:/etc/nginx/conf.d/upload.conf        # Optional
     networks:
       - behat
 

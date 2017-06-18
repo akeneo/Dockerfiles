@@ -121,6 +121,8 @@ You just need to copy the nginx server configurations to the appropriate folder:
 - one for [behat mode](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/nginx-behat.conf), that will be used by the `nginx-behat` service.
 The compose file expects those server configurations in a `docker` subfolder of your project, but it is up to you to choose another folder. However, it has to be a subfolder of your project.
 
+Optionally, you can also add a [configuration file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx services for the compose file are already set for it).
+
 ### Install Akeneo
 
 Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php` if you want to use MongoDB storage.
