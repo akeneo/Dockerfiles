@@ -2,7 +2,7 @@
 
 This is a Docker development environment for Akeneo PIM with PHP FPM, based on [carcel/fpm](https://hub.docker.com/r/carcel/fpm).
 
-It is configured to listen to the port 9001, and is intended to be used with [carcel/akeneo-nginx](https://hub.docker.com/r/carcel/akeneo-nginx).
+It is configured to listen to the port 9001, and is intended to be used with [nginx](https://hub.docker.com/_/nginx).
 
 ## How to use it?
 

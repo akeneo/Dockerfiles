@@ -21,7 +21,7 @@ services:
       - symfony
 
   nginx:
-    image: carcel/nginx
+    image: nginx
     depends_on:
       - fpm
     environment:

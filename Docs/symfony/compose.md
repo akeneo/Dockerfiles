@@ -10,5 +10,5 @@ Two compose file examples are provided:
     - you can access the full documentation regarding this compose file [here](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/mod_php.md).
     
 - [**The second one**](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/docker-compose.yml.fpm_dist) provides nginx + PHP-FPM:
-    - it uses [`carcel/fpm`](https://hub.docker.com/r/carcel/fpm/) and  [`carcel/nginx`](https://hub.docker.com/r/carcel/nginx/),
+    - it uses [`carcel/fpm`](https://hub.docker.com/r/carcel/fpm/) and  [`nginx`](https://hub.docker.com/_/nginx/),
     - you can access the full documentation regarding this compose file [here](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/fpm.md).

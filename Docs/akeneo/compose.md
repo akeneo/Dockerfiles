@@ -10,5 +10,5 @@ Two compose file examples are provided, both providing two environments, one for
     - you can access the full documentation regarding this compose file [here](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/mod_php.md).
     
 - [**The second one**](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) provides nginx + PHP-FPM:
-    - it uses [`carcel/akeneo-fpm`](https://hub.docker.com/r/carcel/akeneo-fpm/) and  [`carcel/nginx`](https://hub.docker.com/r/carcel/nginx/),
+    - it uses [`carcel/akeneo-fpm`](https://hub.docker.com/r/carcel/akeneo-fpm/) and  [`nginx`](https://hub.docker.com/_/nginx/),
     - you can access the full documentation regarding this compose file [here](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/fpm.md).
