@@ -134,9 +134,13 @@ Now, you can initialize Akeneo:
 ```bash
 $ docker-compose exec fpm php -d memory_limit=-1 /usr/local/bin/composer update
 $ docker-compose exec fpm pim-initialize
+$ docker-compose run node npm install
+$ docker-compose run node npm run webpack
 ```
 
 Command `pim-initialize` is detailed [below in this page](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/fpm.md#scripts-available).
+
+`npm` commands are run in the `node` container with `docker-compose run` instead of `docker-compose exec`, because the node image do not have a foreground process to stay alive after running `docker-compose up -d`. So it can be used only to run "one shot" commands.
 
 ### Xdebug
 
