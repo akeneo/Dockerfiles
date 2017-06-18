@@ -6,8 +6,8 @@ services:
     depends_on:
       - mysql
       - mysql-behat
-      - mongodb
-      - mongodb-behat
+      - elasticsearch
+      - elasticsearch-behat
       - selenium
     environment:
       BEHAT_TMPDIR: /srv/pim/app/cache/tmp            # Mandatory to run behat tests
@@ -111,7 +111,7 @@ services:
     environment:
       ES_JAVA_OPTS: '-Xms256m -Xmx256m'
     ports:
-      - '9200:9200'
+      - '9201:9200'
     networks:
       - akeneo
 
@@ -120,7 +120,7 @@ services:
     environment:
       ES_JAVA_OPTS: '-Xms256m -Xmx256m'
     ports:
-      - '9200:9200'
+      - '9202:9200'
     networks:
       - behat
 
