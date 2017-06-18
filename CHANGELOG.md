@@ -2,16 +2,20 @@
 
 ## 2017-06-17
 
+### Documentation
+
+- **Issue 225:** Update compose file for Akeneo FPM, to be used with MySQL 5.7 and Elasticsearch 5.x (no more MongoDB).
+- **Issue 226:** Set composer home folder in compose file and better document composer settings.
+
 ### Enhancements
 
 - **Issue 199:** Remove `carcel/akeneo-fpm` from PHP 5.6 and 7.0.
     Remove `carcel/akeneo-apache` from PHP 7.0 and following.
-- **Issue 226:** Set composer home folder in compose file and better document composer settings.
 - **Issue 234:** Remove `carcel/nginx` image (official `nginx` image is to be used instead).
 
 ## 2017-06-13
 
-### Enhancement
+### Documentation
 
 - **Issue 132:** Adds CONTRIBUTING.md and GitHub templates (issues and pull requests).
 
@@ -56,7 +60,7 @@
 
 ## 2017-02-25
 
-### Enhancement
+### Documentation
 
 - **Issue 160:** Improve the documentation for people who have none or very few knowledge of Docker.
 
@@ -99,7 +103,7 @@
 
 ## 2017-02-05
 
-### Enhancement
+### Documentation
 
 - **Issue 124:** Complete the documentation and put it on master only.
 
@@ -165,7 +169,7 @@
 
 ## 2016-11-21
 
-### Bug fixes
+### Documentation
 
 - Fix some broken links in documentation.
 
@@ -177,7 +181,7 @@
 
 ## 2016-10-31
 
-### Enhancement
+### Documentation
 
 - **Issue 53:** Reorganize documentation (minimalist READMEs, all important documentation in `COMPOSE.md`).
 
