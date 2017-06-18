@@ -46,23 +46,23 @@ networks:     # Here we define a network, in which everything that happen in the
 
 services:     # Each service you define below will be a container. It allows you to define you container configuration in a clear, readable way
   apache:     # This is our Apache + PHP container (as `mod_php` package needs both `php` and `apache` package, everything is in one container)
-    image: carcel/apache-php:latest         # We use the image `carcel/apache` in its latest version to create the container
+    image: carcel/apache-php:latest                 # We use the image `carcel/apache` in its latest version to create the container
     depends_on:
-      - mysql                               # This container will depend on the MySQL on, meaning it won't start until MySQL container is
-    ports:
-      - '8080:80'                           # Here we map the ports: port 80 of the container will be redirected on port 8080 on your machine
-    user: docker                            # Every command we execute in the container will be as the `docker` user (id 1000 group 1000, defined during the build of the image `carcel/apache`)
+      - mysql                                       # This container will depend on the MySQL on, meaning it won't start until MySQL container is
+    ports:  
+      - '8080:80'                                   # Here we map the ports: port 80 of the container will be redirected on port 8080 on your machine
+    user: docker                                    # Every command we execute in the container will be as the `docker` user (id 1000 group 1000, defined during the build of the image `carcel/apache`)
     volumes:
-      - ./:/home/docker/application         # We map the content of the current folder (usually your PHP application) with `/home/docker/application` (because `carcel/apache` contains a vhost pointing to this location)
-      - ~/.composer:/home/docker/.composer  # Same thing with you own composer folder, allowing you to use your own composer cache and GitHub token when running `composer update` for instance
-    working_dir: /home/docker/application   # The default working directory, so if for instance you run `app/console cache:clear` with `docker-compose`, it will be in this folder
+      - ./:/home/docker/application                 # We map the content of the current folder (usually your PHP application) with `/home/docker/application` (because `carcel/apache` contains a vhost pointing to this location)
+      - ~/.config/composer:/home/docker/.composer   # Same thing with you own composer folder, allowing you to use your own composer cache and GitHub token when running `composer update` for instance
+    working_dir: /home/docker/application           # The default working directory, so if for instance you run `app/console cache:clear` with `docker-compose`, it will be in this folder
     networks:
-      - symfony                             # The Docker network we want our application to run within.
+      - symfony                                     # The Docker network we want our application to run within.
 
   mysql:
-    image: mysql:5.7                        # Here we use the official MySQL 5.7 image: https://hub.docker.com/_/mysql/
-    environment:                            # We can provide some environment variables to the container when we start it
-      - MYSQL_ROOT_PASSWORD=root            # Here they are used to initialize MySQL with a root password and a default database
+    image: mysql:5.7                                # Here we use the official MySQL 5.7 image: https://hub.docker.com/_/mysql/
+    environment:                                    # We can provide some environment variables to the container when we start it
+      - MYSQL_ROOT_PASSWORD=root                    # Here they are used to initialize MySQL with a root password and a default database
       - MYSQL_USER=symfony
       - MYSQL_PASSWORD=symfony
       - MYSQL_DATABASE=symfony

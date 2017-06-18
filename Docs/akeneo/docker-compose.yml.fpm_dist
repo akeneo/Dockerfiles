@@ -20,8 +20,9 @@ services:
     user: docker
     volumes:
       - ./:/srv/pim
-      - ~/.composer:/home/docker/.composer
-      - /tmp/behat/screenshots:/tmp/behat/screenshots
+      - ~/.config/composer:/home/docker/.composer
+      - ~/.ssh:/home/docker/.ssh                        # [optional] Only needed for projects using Akeneo EE standard edition
+      - /tmp/behat/screenshots:/tmp/behat/screenshots   # Needed to be able to access behat screenshots when scenarios are failing
     working_dir: /srv/pim
     networks:
       - akeneo
