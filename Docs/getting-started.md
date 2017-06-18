@@ -49,6 +49,8 @@ services:     # Each service you define below will be a container. It allows you
     image: carcel/apache-php:latest                 # We use the image `carcel/apache` in its latest version to create the container
     depends_on:
       - mysql                                       # This container will depend on the MySQL on, meaning it won't start until MySQL container is
+    environment:
+      COMPOSER_HOME: /home/docker/.composer         # Ensure the composer home folder will be where we expect it for volume sharing
     ports:  
       - '8080:80'                                   # Here we map the ports: port 80 of the container will be redirected on port 8080 on your machine
     user: docker                                    # Every command we execute in the container will be as the `docker` user (id 1000 group 1000, defined during the build of the image `carcel/apache`)
@@ -73,3 +75,9 @@ services:     # Each service you define below will be a container. It allows you
 You can notice than the mapping of the ports or of the volumes works the same way: first you provide the one of your own machine, then in second you provide the one of the Docker container.
 
 By mapping the port 80 of the container `apache` to your port 8080, you can access the PHP application in your web browser at the URL `localhost:8080` (you can of course choose another port).
+
+### Special note about composer
+
+In the above example, the composer home folder inside the container is ensured to be `/home/docker/composer` and shared with your own host machine.
+If you have not installed `composer` on your host machine, then you can choose whatever folder you want.
+However, if you have and use `composer` on your host, then check first where this home folder is. You can find more information in [composer documentation](https://getcomposer.org/doc/03-cli.md#composer-home) about it.

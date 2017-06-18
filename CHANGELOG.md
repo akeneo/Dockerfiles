@@ -6,6 +6,7 @@
 
 - **Issue 199:** Remove `carcel/akeneo-fpm` from PHP 5.6 and 7.0.
     Remove `carcel/akeneo-apache` from PHP 7.0 and following.
+- **Issue 226:** Set composer home folder in compose file and better document composer settings.
 - **Issue 234:** Remove `carcel/nginx` image (official `nginx` image is to be used instead).
 
 ## 2017-06-13
