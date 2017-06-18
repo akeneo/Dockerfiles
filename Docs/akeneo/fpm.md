@@ -4,7 +4,7 @@
 
 The simplest way to run the containers is to copy the [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
 
-You can place it somewhere else, but then you will need to change the volumes parameter from `./:/home/docker/pim` to `/the/path/to/your/pim:/home/docker/pim` (you'll need to do it for both `nginx` and `nginx-behat` services).
+You can place it somewhere else, but then you will need to change the volumes parameter from `./:/srv/pim` to `/the/path/to/your/pim:/srv/pim` (you'll need to do it for both `nginx` and `nginx-behat` services).
 
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 

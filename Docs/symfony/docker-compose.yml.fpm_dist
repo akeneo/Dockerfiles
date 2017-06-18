@@ -13,9 +13,9 @@ services:
       XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with you host IP
     user: docker
     volumes:
-      - ./:/home/docker/application
+      - ./:/srv/application
       - ~/.composer:/home/docker/.composer
-    working_dir: /home/docker/application
+    working_dir: /srv/application
     networks:
       - symfony
 
@@ -28,7 +28,7 @@ services:
     ports:
       - '8080:80'
     volumes:
-      - ./:/home/docker/application
+      - ./:/srv/application
     networks:
       - symfony
 
