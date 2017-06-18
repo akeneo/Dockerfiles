@@ -114,6 +114,14 @@ services:
       - '9200:9200'
     networks:
       - akeneo
+
+  elasticsearch-behat:
+    image: elasticsearch:5
+    environment:
+      ES_JAVA_OPTS: '-Xms256m -Xmx256m'
+    ports:
+      - '9200:9200'
+    networks:
       - behat
 
 networks:

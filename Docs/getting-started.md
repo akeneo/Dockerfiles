@@ -1,4 +1,3 @@
-app/console -e=prod oro:requirejs:generate-config
 # Getting started
 
 The content of this guide is not to replace the official Docker documentation, but only to allow beginners to quickly have a running `Docker` + `Docker Compose` installation.
