@@ -123,6 +123,12 @@ The compose file expects those server configurations in a `docker` subfolder of 
 
 Optionally, you can also add a [configuration file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx services for the compose file are already set for it).
 
+### Configure MySQL
+
+Akeneo versions next to 1.7 requires MySQL 5.7. However, it still do not support new SQL modes `ONLY_FULL_GROUP_BY`. You need to add a specific configuration to your MySQL containers, to activate all MySQL modes but this one.
+An example of [configuration file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/mysql.cnf) is provided and to be placed in the `docker` subfolder of your project.
+The [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) already defines volumes for sharing this configuration through data volume with your MySQL containers.
+
 ### Install Akeneo
 
 Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php` if you want to use MongoDB storage.

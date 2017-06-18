@@ -53,7 +53,7 @@ services:
     depends_on:
       - akeneo
     environment:
-      PHP_IDE_CONFIG: 'serverName=pim'     # Mandatory for debugging
+      PHP_IDE_CONFIG: 'serverName=pim'                            # Mandatory for debugging
     ports:
       - '8080:80'
     volumes:
@@ -68,7 +68,7 @@ services:
     depends_on:
       - akeneo
     environment:
-      PHP_IDE_CONFIG: 'serverName=pim-behat'     # Mandatory for debugging
+      PHP_IDE_CONFIG: 'serverName=pim-behat'                      # Mandatory for debugging
     ports:
       - '8081:80'
     volumes:
@@ -87,6 +87,8 @@ services:
       - MYSQL_DATABASE=akeneo_pim
     ports:
       - '3307:3306'
+    volumes:
+      - ./docker/mysql.cnf:/etc/mysql/conf.d/sql_modes.cnf        # Contains the modes you want to activate
     networks:
       - akeneo
 
@@ -99,6 +101,8 @@ services:
       - MYSQL_DATABASE=akeneo_pim
     ports:
       - '3308:3306'
+    volumes:
+      - ./docker/mysql.cnf:/etc/mysql/conf.d/sql_modes.cnf        # Contains the modes you want to activate
     networks:
       - behat
 
