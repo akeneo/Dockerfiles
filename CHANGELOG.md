@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-06-19
+
+### Documentation
+
+- **Issue 251:** Fix Akeneo FPM compose file indentation.
+
 ## 2017-06-17
 
 ### Documentation
