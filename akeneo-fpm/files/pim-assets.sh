@@ -3,7 +3,9 @@
 echo "Clean previous assets"
 rm -rf app/cache/*
 rm -rf web/bundles/*
+rm -rf web/cache/*
 rm -rf web/css/*
+rm -rf web/dist/*
 rm -rf web/js/*
 
 echo "Initialize assets"

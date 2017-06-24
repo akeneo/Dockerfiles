@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-06-24
+
+### Enhancement
+
+- **Issue 254:** Clear folders created by webpack (`web/cache` and `web/dist`) before PIM install.
+
 ## 2017-06-17
 
 ### Enhancement
