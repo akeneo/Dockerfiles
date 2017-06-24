@@ -6,7 +6,9 @@ rm -rf app/cache/*
 rm -rf app/file_storage/*
 rm -rf app/logs/*
 rm -rf web/bundles/*
+rm -rf web/cache/*
 rm -rf web/css/*
+rm -rf web/dist/*
 rm -rf web/js/*
 rm -rf web/media/*
 
