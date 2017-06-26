@@ -2,16 +2,16 @@
 
 This is a Docker development environment for Akeneo PIM with Apache and `mod_php`.
 
-This environment is based on [carcel/apache-php](https://hub.docker.com/r/carcel/apache-php/).
+This environment is based on [akeneo/apache-php](https://hub.docker.com/r/akeneo/apache-php/).
 
 ## How to use it?
 
 ### From Docker hub
 
-You can directly pull this image from [Docker hub](https://hub.docker.com/r/carcel/akeneo-apache/) by running:
+You can directly pull this image from [Docker hub](https://hub.docker.com/r/akeneo/akeneo-apache/) by running:
 
 ```bash
-$ docker run --name akeneo -p 8080:80 -d carcel/akeneo-apache:php-5.6
+$ docker run --name akeneo -p 8080:80 -d akeneo/akeneo-apache:php-5.6
 ```
 
 Access the URL `localhost:8080` with your web browser to check that the container works.
@@ -32,8 +32,8 @@ $ docker run --name akeneo -p 8080:80 -d akeneo-apache
 
 ### Use this image with Docker Compose
 
-The easiest way to use these images is [Docker Compose](https://docs.docker.com/compose/). You can found detailed explanations [here](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/compose.md).
+The easiest way to use these images is [Docker Compose](https://docs.docker.com/compose/). You can found detailed explanations [here](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/compose.md).
 
 ## License
 
-This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/damien-carcel/Dockerfiles/blob/master/LICENSE) file.
+This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/akeneo/Dockerfiles/blob/master/LICENSE) file.

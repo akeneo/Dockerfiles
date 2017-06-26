@@ -7,5 +7,5 @@ cwd=$(pwd)
 for (( i=0; i<${#images[@]}; i++ ));
 do
     cd ${cwd}/${images[i]}
-    docker build -t carcel/${images[i]}:${versions[i]} .
+    docker build -t akeneo/${images[i]}:${versions[i]} .
 done

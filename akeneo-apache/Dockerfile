@@ -1,4 +1,4 @@
-FROM carcel/apache-php:php-5.6
+FROM akeneo/apache-php:php-5.6
 MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 # Define "root" as current user

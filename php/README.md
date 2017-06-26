@@ -8,4 +8,4 @@ The environment comes with native Debian Jessie PHP 5.6, and some PHP extensions
 
 ## License
 
-This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/damien-carcel/Dockerfiles/blob/master/LICENSE) file.
+This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/akeneo/Dockerfiles/blob/master/LICENSE) file.
