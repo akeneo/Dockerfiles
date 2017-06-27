@@ -45,16 +45,16 @@ networks:     # Here we define a network, in which everything that happen in the
 
 services:     # Each service you define below will be a container. It allows you to define you container configuration in a clear, readable way
   apache:     # This is our Apache + PHP container (as `mod_php` package needs both `php` and `apache` package, everything is in one container)
-    image: carcel/apache-php:latest                 # We use the image `carcel/apache` in its latest version to create the container
+    image: akeneo/apache-php:latest                 # We use the image `akeneo/apache` in its latest version to create the container
     depends_on:
       - mysql                                       # This container will depend on the MySQL on, meaning it won't start until MySQL container is
     environment:
       COMPOSER_HOME: /home/docker/.composer         # Ensure the composer home folder will be where we expect it for volume sharing
     ports:  
       - '8080:80'                                   # Here we map the ports: port 80 of the container will be redirected on port 8080 on your machine
-    user: docker                                    # Every command we execute in the container will be as the `docker` user (id 1000 group 1000, defined during the build of the image `carcel/apache`)
+    user: docker                                    # Every command we execute in the container will be as the `docker` user (id 1000 group 1000, defined during the build of the image `akeneo/apache`)
     volumes:
-      - ./:/home/docker/application                 # We map the content of the current folder (usually your PHP application) with `/home/docker/application` (because `carcel/apache` contains a vhost pointing to this location)
+      - ./:/home/docker/application                 # We map the content of the current folder (usually your PHP application) with `/home/docker/application` (because `akeneo/apache` contains a vhost pointing to this location)
       - ~/.config/composer:/home/docker/.composer   # Same thing with you own composer folder, allowing you to use your own composer cache and GitHub token when running `composer update` for instance
     working_dir: /home/docker/application           # The default working directory, so if for instance you run `app/console cache:clear` with `docker-compose`, it will be in this folder
     networks:

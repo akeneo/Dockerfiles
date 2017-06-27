@@ -2,14 +2,14 @@
 
 ## Using the images
 
-The simplest way to run the containers is to copy the [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
+The simplest way to run the containers is to copy the [FPM compose file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
 
 You can place it somewhere else, but then you will need to change the volumes parameter from `./:/srv/pim` to `/the/path/to/your/pim:/srv/pim` (you'll need to do it for both `nginx` and `nginx-behat` services).
 
 Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
 
-By default, `carcel/akeneo-fpm:php-7.1` is used in the compose file.
-Read the [Tags available](https://github.com/damien-carcel/Dockerfiles/blob/master/README.md#github-branches-and-corresponding-docker-hub-tags) section of the `README.md` for more details.
+By default, `akeneo/akeneo-fpm:php-7.1` is used in the compose file.
+Read the [Tags available](https://github.com/akeneo/Dockerfiles/blob/master/README.md#github-branches-and-corresponding-docker-hub-tags) section of the `README.md` for more details.
 
 ## Run and stop the containers
 
@@ -76,22 +76,22 @@ For more details on Akeneo configuration, don't hesitate to look at [Akeneo offi
 
 ### Configure nginx
 
-Unlike `carcel/akeneo-apache` image, which contains PHP **and** Apache with two already configured VirtualHost (one for `prod` and `dev` modes, one for `behat`), `carcel/akeneo-fpm` image contains only PHP-FPM.
+Unlike `akeneo/akeneo-apache` image, which contains PHP **and** Apache with two already configured VirtualHost (one for `prod` and `dev` modes, one for `behat`), `akeneo/akeneo-fpm` image contains only PHP-FPM.
 So to be able to access your PIM in a web browser, you need to associate the FPM container with a nginx one.
 
-You can use the official `nginx` image available on [Docker Hub](https://hub.docker.com/_/nginx/). The [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) already defines the appropriate services.
+You can use the official `nginx` image available on [Docker Hub](https://hub.docker.com/_/nginx/). The [FPM compose file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) already defines the appropriate services.
 You just need to copy the nginx server configurations to the appropriate folder:
-- one for [prod and dev modes](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/nginx.conf), that will be used by the `nginx` service,
-- one for [behat mode](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/nginx-behat.conf), that will be used by the `nginx-behat` service.
+- one for [prod and dev modes](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/nginx.conf), that will be used by the `nginx` service,
+- one for [behat mode](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/nginx-behat.conf), that will be used by the `nginx-behat` service.
 The compose file expects those server configurations in a `docker` subfolder of your project, but it is up to you to choose another folder. However, it has to be a subfolder of your project.
 
-Optionally, you can also add a [configuration file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx services for the compose file are already set for it).
+Optionally, you can also add a [configuration file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx services for the compose file are already set for it).
 
 ### Configure MySQL
 
 Akeneo versions next to 1.7 requires MySQL 5.7. However, it still do not support new SQL modes `ONLY_FULL_GROUP_BY`. You need to add a specific configuration to your MySQL containers, to activate all MySQL modes but this one.
-An example of [configuration file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/mysql.cnf) is provided and to be placed in the `docker` subfolder of your project.
-The [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) already defines volumes for sharing this configuration through data volume with your MySQL containers.
+An example of [configuration file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/mysql.cnf) is provided and to be placed in the `docker` subfolder of your project.
+The [FPM compose file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.fpm_dist) already defines volumes for sharing this configuration through data volume with your MySQL containers.
 
 ### Install Akeneo
 
@@ -104,7 +104,7 @@ $ docker-compose run node npm install
 $ docker-compose run node npm run webpack
 ```
 
-Command `pim-initialize` is detailed [below in this page](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/akeneo/fpm.md#scripts-available).
+Command `pim-initialize` is detailed [below in this page](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/fpm.md#scripts-available).
 
 `npm` commands are run in the `node` container with `docker-compose run` instead of `docker-compose exec`, because the node image do not have a foreground process to stay alive after running `docker-compose up -d`. So it can be used only to run "one shot" commands.
 
@@ -122,14 +122,14 @@ You should now be able to access Akeneo development environment from your host t
 
 The `akeneo-fpm` image comes with three little scripts to ease your Akeneo development and testing.
 
-- [`pim-cac` script](https://github.com/damien-carcel/Dockerfiles/blob/master/akeneo-fpm/files/pim-cac.sh) will completely remove the application cache, then regenerate it in prod, dev and behat mode.
+- [`pim-cac` script](https://github.com/akeneo/Dockerfiles/blob/master/akeneo-fpm/files/pim-cac.sh) will completely remove the application cache, then regenerate it in prod, dev and behat mode.
 
-- [`pim-assets` script](https://github.com/damien-carcel/Dockerfiles/blob/master/akeneo-fpm/files/pim-assets.sh) will completely remove the application cache and assets (`web/bundles/*`, `web/css/*`, `web/js/*`).
+- [`pim-assets` script](https://github.com/akeneo/Dockerfiles/blob/master/akeneo-fpm/files/pim-assets.sh) will completely remove the application cache and assets (`web/bundles/*`, `web/css/*`, `web/js/*`).
     Then it will regenerate the cache and the ORO requirejs configuration, and dump all assets as symlinks.
 
     This command is to be used each time you have strange behavior on the front end (missing translations, modifications that do not appear in the forms…).
 
-- [`pim-initialize` script](https://github.com/damien-carcel/Dockerfiles/blob/master/akeneo-fpm/files/pim-initialize.sh) will completely remove the application cache, logs, assets (`web/bundles/*`, `web/css/*`, `web/js/*`),
+- [`pim-initialize` script](https://github.com/akeneo/Dockerfiles/blob/master/akeneo-fpm/files/pim-initialize.sh) will completely remove the application cache, logs, assets (`web/bundles/*`, `web/css/*`, `web/js/*`),
     and everything generated by any previous installation. Then it will perform a installation of Akeneo in production mode through the command `pim:install --force`, and dump all assets as symlinks.
     Finally, it will initialize the database (through `pim:installer:db`) for the behat environment.
 

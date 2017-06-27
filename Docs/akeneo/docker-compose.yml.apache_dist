@@ -2,7 +2,7 @@ version: '2'
 
 services:
   akeneo:
-    image: carcel/akeneo-apache:php-5.6
+    image: akeneo/akeneo-apache:php-5.6
     depends_on:
       - mysql
       - mysql-behat

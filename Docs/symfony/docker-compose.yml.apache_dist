@@ -2,7 +2,7 @@ version: '2'
 
 services:
   apache:
-    image: carcel/apache-php
+    image: akeneo/apache-php
     depends_on:
       - mysql
     environment:
