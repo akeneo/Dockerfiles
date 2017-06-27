@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-06-26
+
+### Enhancement
+
+- **Issue 260:** Move images from namespace `carcel` to `akeneo`
+
 ## 2017-06-17
 
 ### Enhancement
