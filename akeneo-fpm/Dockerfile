@@ -1,4 +1,4 @@
-FROM carcel/fpm:7.1
+FROM akeneo/fpm:7.1
 MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 # Define "root" as current user

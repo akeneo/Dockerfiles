@@ -1,6 +1,6 @@
 # Apache and PHP on Docker
 
-This is a basic Docker environment for PHP development, based on [carcel/php](https://hub.docker.com/r/carcel/php).
+This is a basic Docker environment for PHP development, based on [akeneo/php](https://hub.docker.com/r/akeneo/php).
 
 It is not intended to use directly as it stands, but rather to extend it and create custom development environments.
 
@@ -15,10 +15,10 @@ The environment come with  some PHP extensions: apcu, mcrypt, intl, mysql, curl,
 
 ### From Docker hub
 
-You can directly pull this image from [Docker hub](https://hub.docker.com/r/carcel/apache-php/) by running:
+You can directly pull this image from [Docker hub](https://hub.docker.com/r/akeneo/apache-php/) by running:
 
 ```bash
-$ docker run --name apache-php -p 8080:80 -d carcel/apache-php
+$ docker run --name apache-php -p 8080:80 -d akeneo/apache-php
 ```
 
 Access the URL `localhost:8080` with your web browser to check that the container works.
@@ -39,4 +39,4 @@ $ docker run --name apache-php -p 8080:80 -d apache-php
 
 ## License
 
-This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/damien-carcel/Dockerfiles/blob/master/LICENSE) file.
+This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/akeneo/Dockerfiles/blob/master/LICENSE) file.

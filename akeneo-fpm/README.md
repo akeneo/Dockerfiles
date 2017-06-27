@@ -1,17 +1,17 @@
 # Akeneo and FPM on Docker
 
-This is a Docker development environment for Akeneo PIM with PHP FPM, based on [carcel/fpm](https://hub.docker.com/r/carcel/fpm).
+This is a Docker development environment for Akeneo PIM with PHP FPM, based on [akeneo/fpm](https://hub.docker.com/r/akeneo/fpm).
 
-It is configured to listen to the port 9001, and is intended to be used with [carcel/akeneo-nginx](https://hub.docker.com/r/carcel/akeneo-nginx).
+It is configured to listen to the port 9001, and is intended to be used with [nginx](https://hub.docker.com/_/nginx).
 
 ## How to use it?
 
 ### From Docker hub
 
-You can directly pull this image from [Docker hub](https://hub.docker.com/r/carcel/akeneo-fpm/) by running:
+You can directly pull this image from [Docker hub](https://hub.docker.com/r/akeneo/akeneo-fpm/) by running:
 
 ```bash
-$ docker run --name akeneo-fpm -p 8080:80 -d carcel/akeneo-fpm
+$ docker run --name akeneo-fpm -p 8080:80 -d akeneo/akeneo-fpm
 ```
 
 Access the URL `localhost:8080` with your web browser to check that the container works.
@@ -32,8 +32,8 @@ $ docker run --name akeneo-fpm -p 8080:80 -d akeneo-fpm
 
 ### Use this image with Docker Compose
 
-The easiest way to use these images is [Docker Compose](https://docs.docker.com/compose/). You can found detailed explanations [here](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/compose.md).
+The easiest way to use these images is [Docker Compose](https://docs.docker.com/compose/). You can found detailed explanations [here](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/compose.md).
 
 ## License
 
-This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/damien-carcel/Dockerfiles/blob/master/LICENSE) file.
+This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/akeneo/Dockerfiles/blob/master/LICENSE) file.
