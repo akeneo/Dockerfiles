@@ -2,12 +2,12 @@
 
 ## Using the images
 
-The simplest way to run the containers is to copy the [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/docker-compose.yml.fpm_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
+The simplest way to run the containers is to copy the [FPM compose file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/docker-compose.yml.fpm_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
 
 You can place it somewhere else, but then you will need to change the volumes parameter from `./:/srv/application` to `/the/path/to/your/application:/srv/application`.
 
-By default, latest version of `carcel/fpm` is used in the compose file. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (identical to `latest`).
-Read the [Tags available](https://github.com/damien-carcel/Dockerfiles/blob/master/README.md#github-branches-and-corresponding-docker-hub-tags) section of the `README.md` for more details.
+By default, latest version of `akeneo/fpm` is used in the compose file. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (identical to `latest`).
+Read the [Tags available](https://github.com/akeneo/Dockerfiles/blob/master/README.md#github-branches-and-corresponding-docker-hub-tags) section of the `README.md` for more details.
 
 ## Run and stop the containers
 
@@ -54,14 +54,14 @@ parameters:
 
 ### Configure nginx
 
-Unlike `carcel/apache-php` image, which contains PHP **and** Apache with an already configured VirtualHost, `carcel/fpm` image contains only PHP-FPM.
+Unlike `akeneo/apache-php` image, which contains PHP **and** Apache with an already configured VirtualHost, `akeneo/fpm` image contains only PHP-FPM.
 So to be able to access your application in a web browser, you need to associate the FPM container with a nginx one.
 
-You can use the official `nginx` image available on [Docker Hub](https://hub.docker.com/_/nginx/). The [FPM compose file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/docker-compose.yml.fpm_dist) already defines the appropriate service.
-You just need to copy the [nginx server configuration](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/nginx.conf) to the appropriate folder.
+You can use the official `nginx` image available on [Docker Hub](https://hub.docker.com/_/nginx/). The [FPM compose file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/docker-compose.yml.fpm_dist) already defines the appropriate service.
+You just need to copy the [nginx server configuration](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/nginx.conf) to the appropriate folder.
 The compose file expects it in a `docker` subfolder of your project, but it is up to you to choose another folder. However, it has to be a subfolder of your project.
 
-Optionally, you can also add a [configuration file](https://github.com/damien-carcel/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx service for the compose file is already set for it).
+Optionally, you can also add a [configuration file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx service for the compose file is already set for it).
 
 ### Install Symfony
 
