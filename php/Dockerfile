@@ -1,4 +1,4 @@
-FROM debian:jessie-slim
+FROM debian:stretch-slim
 MAINTAINER Damien Carcel <damien.carcel@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -16,19 +16,6 @@ RUN apt-get update && \
 # Add PHP 7.1 repository
 RUN wget -O sury.gpg https://packages.sury.org/php/apt.gpg && apt-key add sury.gpg && rm sury.gpg
 COPY files/sury.list /etc/apt/sources.list.d/sury.list
-
-# Install and configure Gosu
-RUN set -x && \
-    wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64" && \
-    wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64.asc" && \
-    export GNUPGHOME="$(mktemp -d)" && \
-    gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && \
-    gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu && \
-    rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc && \
-    chmod +x /usr/local/bin/gosu && \
-    gosu nobody true && \
-    chown root:users /usr/local/bin/gosu && \
-    chmod +s /usr/local/bin/gosu
 
 # Install PHP with some extensions
 RUN apt-get update && \
