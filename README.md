@@ -15,7 +15,7 @@ This repository contains the Dockerfiles I use for Akeneo and other Symfony deve
 
 ## Images available
 
-- [**akeneo/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:jessie-slim`
+- [**akeneo/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:stretch-slim`
 - [**akeneo/fpm**](fpm/README.md): An image with PHP FPM preconfigured to be use with any Symfony project, based on `akeneo/php`
 - [**akeneo/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured to be use with any Symfony project, based on `akeneo/php`
 - [**akeneo/akeneo-fpm**](akeneo-fpm/README.md): An image for Akeneo development with PHP FPM, based on `akeneo/fpm`
