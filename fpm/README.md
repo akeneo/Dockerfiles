@@ -1,6 +1,6 @@
 # PHP FPM on Docker
 
-This is a basic Docker environment for PHP FPM development, based on [carcel/php](https://hub.docker.com/r/carcel/php).
+This is a basic Docker environment for PHP FPM development, based on [akeneo/php](https://hub.docker.com/r/akeneo/php).
 
 It is not intended to use directly as it stands, but rather to extend it and create custom development environments.
 
@@ -14,10 +14,10 @@ The PHP FPM daemon is configured with "docker" as user and group, and listen to 
 
 ### From Docker hub
 
-You can directly pull this image from [Docker hub](https://hub.docker.com/r/carcel/apache-php/) by running:
+You can directly pull this image from [Docker hub](https://hub.docker.com/r/akeneo/apache-php/) by running:
 
 ```bash
-$ docker run -p 8080:80 -d --name fpm carcel/fpm
+$ docker run -p 8080:80 -d --name fpm akeneo/fpm:7.1
 ```
 
 Access the URL `localhost:8080` with your web browser to check that the container works.
@@ -39,4 +39,4 @@ $ docker run --name fpm -d fpm
 
 ## License
 
-This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/damien-carcel/Dockerfiles/blob/master/LICENSE) file.
+This repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/akeneo/Dockerfiles/blob/master/LICENSE) file.
