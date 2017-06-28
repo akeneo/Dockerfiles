@@ -39,7 +39,7 @@ This repository contains the Dockerfiles proposed for Akeneo PIM. Feel free to u
 
 ### Where to get help:
 
-The Akeneo COmmunity [forum](https://www.akeneo.com/forums/), the Akeneo Community [Slack](https://akeneopim-ug.herokuapp.com)
+The Akeneo Community [forum](https://www.akeneo.com/forums/), the Akeneo Community [Slack](https://akeneopim-ug.herokuapp.com)
 
 ### Where to file issues:
 
