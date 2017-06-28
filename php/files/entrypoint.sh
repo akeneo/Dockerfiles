@@ -4,7 +4,7 @@ set -e
 XDEBUG_PATH="/etc/php/7.1/mods-available/xdebug.ini"
 
 function execAsRoot {
-    gosu root bash -c "$1"
+    sudo bash -c "$1"
 }
 
 function writeXdebugSetting {

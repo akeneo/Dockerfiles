@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-06-27
+
+### Enhancement
+
+- **Issue 243:** Update branches `php-7.1` and `master` to `debian:stretch-lite`.
+
 ## 2017-06-26
 
 ### Enhancement
