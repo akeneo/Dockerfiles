@@ -1,6 +1,16 @@
-# My Dockerfiles
+# Akeneo PIM server with Docker
 
-This repository contains the Dockerfiles I use for Akeneo and other Symfony development. Feel free to use/adapt them if they fit your needs.
+Akeneo stack is also available as a Docker image, provided and maintained by Akeneo.
+
+Akeneo provides open-source support for this Dockerfiles via the akeneo/Dockerfiles GitHub repository. Akeneo stack's technical documentation, server prerequisites and cookbooks is available here: https://docs.akeneo.com
+
+## What is Akeneo PIM?
+
+[Akeneo](https://www.akeneo.com) is an open source Product Information Management (PIM) solution that centralizes and harmonizes all marketing and technical information for product listings and catalogs. [Akeneo PIM source code](https://github.com/akeneo/pim-community-standard) is released under open source license. Based on the Symfony2 framework, this solution is highly customizable and extensible.
+
+## What do we share here
+
+This repository contains the Dockerfiles proposed for Akeneo PIM. Feel free to use/adapt them if they fit your needs.
 
 | [Master][Master] | [php-7.1][php-7.1] | [php-5.6][php-5.6] |
 |:----------------:|:----------:|:----------:|:----------:|
@@ -26,6 +36,18 @@ This repository contains the Dockerfiles I use for Akeneo and other Symfony deve
 ### Unmaintained
 
 - **akeneo/akeneo** and **akeneo/akeneo-behat** have been replaced by **akeneo/akeneo-apache**.
+
+### Where to get help:
+
+The Akeneo COmmunity [forum](https://www.akeneo.com/forums/), the Akeneo Community [Slack](https://akeneopim-ug.herokuapp.com)
+
+### Where to file issues:
+
+https://github.com/akeneo/Dockerfiles/issues
+
+### Maintainance
+
+This repo is maintained by the Akeneo Community and the Akeneo Team. Contributions and feedbacks are welcome ver welcome, through this Github repository: https://github.com/akeneo/Dockerfiles
 
 ## GitHub branches and corresponding Docker Hub tags
 
