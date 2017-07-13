@@ -3,7 +3,7 @@
 This repository contains the Dockerfiles I use for Akeneo and other Symfony development. Feel free to use/adapt them if they fit your needs.
 
 | [Master][Master] | [php-7.1][php-7.1] | [php-5.6][php-5.6] |
-|:----------------:|:----------:|:----------:|:----------:|
+|:----------------:|:------------------:|:------------------:|
 | [![Build status][Master image]][Master] | [![Build status][php-7.1 image]][php-7.1] | [![Build status][php-5.6 image]][php-5.6] |
 
   [Master image]: https://travis-ci.org/akeneo/Dockerfiles.svg?branch=master
