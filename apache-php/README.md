@@ -6,7 +6,7 @@ This is a basic Docker environment for PHP development, based on [akeneo/php](ht
 
 It provides a pre-configured Apache (2.4) + mod_php ( PHP 7.1 from [Sury repository](https://deb.sury.org/)) web server, based on Debian 9 (Stretch).
 
-The environment come with some PHP extensions: apcu, mcrypt, intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last one comes deactivated, run `phpenmod xdebug` and restart Apache to enable it).
+The environment comes with some PHP extensions: apcu, mcrypt, intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last one comes deactivated, run `phpenmod xdebug` and restart Apache to enable it).
 
 ## How to use it?
 

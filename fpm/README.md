@@ -8,7 +8,7 @@ It is intended to be used [httpd](https://hub.docker.com/_/httpd) with FCGI enab
 
 It comes with Debian 9 (Stretch) and PHP 7.1 (from [Sury repository](https://deb.sury.org/)), and some PHP extensions: fpm of course, but also apcu, mcrypt, intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last one comes deactivated, run `phpenmod xdebug` to enable it).
 
-The PHP FPM daemon is configured with "docker" as user and group, and listen to the port `9001`.
+The PHP FPM daemon is configured with "docker" as user and group, and istens to the port `9001`.
 
 ## How to use it?
 
