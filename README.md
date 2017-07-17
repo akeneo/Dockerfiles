@@ -4,16 +4,18 @@ This repository contains the Dockerfiles we use for Akeneo PIM and other PHP or 
 
 **These images do not contain Akeneo PIM**.
 
-| [php-5.6][php-5.6] |
-|:------------------:|
-| [![Build status][php-5.6 image]][php-5.6] |
+| [php-7.0][php-7.0] | [php-5.6][php-5.6] |
+|:------------------:|:------------------:|
+| [![Build status][php-7.0 image]][php-7.0] | [![Build status][php-5.6 image]][php-5.6] |
 
+  [php-7.0 image]: https://travis-ci.org/akeneo/Dockerfiles.svg?branch=php-7.0
+  [php-7.0]: https://travis-ci.org/akeneo/Dockerfiles/tree/php-7.0
   [php-5.6 image]: https://travis-ci.org/akeneo/Dockerfiles.svg?branch=php-5.6
   [php-5.6]: https://travis-ci.org/akeneo/Dockerfiles/tree/php-5.6
 
 ## Images available
 
-- [**akeneo/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:jessie-slim`
+- [**akeneo/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:stretch-slim`
 - [**akeneo/fpm**](fpm/README.md): An image with PHP FPM preconfigured to be use with any PHP project, based on `akeneo/php`
 - [**akeneo/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured to be use with any PHP project, based on `akeneo/php`
 

@@ -1,10 +1,10 @@
 # PHP CLI on Docker
 
-[![Build Status](https://travis-ci.org/akeneo/Dockerfiles.svg?branch=php-5.6)](https://travis-ci.org/akeneo/Dockerfiles/tree/php-5.6)
+[![Build Status](https://travis-ci.org/akeneo/Dockerfiles.svg?branch=php-7.0)](https://travis-ci.org/akeneo/Dockerfiles/tree/php-7.0)
 
-This is a basic Docker environment for PHP development and testing, based on [debian:jessie](https://hub.docker.com/_/debian/). **This image does not contain Akeneo PIM**.
+This is a basic Docker environment for PHP development and testing, based on [debian:stretch-slim](https://hub.docker.com/_/debian/). **This image does not contain Akeneo PIM**.
 
-The environment comes with native Debian Jessie PHP 5.6, and some PHP extensions: apcu, mcrypt, intl, mysql, curl, gd, mongo, and xdebug (this last one comes deactivated, run `php5enmod xdebug` to enable it).
+The environment comes with native Debian 9 (Stretch) PHP 7.0, and some PHP extensions: apcu, mcrypt, intl, mysql, curl, gd, mongo, and xdebug (this last one comes deactivated, run `phpenmod xdebug` to enable it).
 
 ## How to use it?
 
@@ -13,7 +13,7 @@ The environment comes with native Debian Jessie PHP 5.6, and some PHP extensions
 You can directly pull this image from [Docker hub](https://hub.docker.com/r/akeneo/apache-php/) by running:
 
 ```bash
-$ docker run -d --name fpm akeneo/php:5.6
+$ docker run -d --name fpm akeneo/php:7.0
 ```
 
 Access the URL `localhost:8080` with your web browser to check that the container works.

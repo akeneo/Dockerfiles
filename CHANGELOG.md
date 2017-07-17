@@ -6,6 +6,7 @@
 
 - **Issue 265:** Remove `akeneo/akeneo-apache` image.
                  Remove usage of `gosu` in PHP 5.6 images.
+- **Issue 277:** Bring back PHP 7.0 images.
 
 ## 2017-06-26
 
