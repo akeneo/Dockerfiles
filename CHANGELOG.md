@@ -1,5 +1,12 @@
 # Changelog
 
+## 2017-07-17
+
+### Enhancement
+
+- **Issue 265:** Remove `akeneo/akeneo-apache` image.
+                 Remove usage of `gosu` in PHP 5.6 images.
+
 ## 2017-06-26
 
 ### Enhancement

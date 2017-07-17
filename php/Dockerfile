@@ -1,5 +1,5 @@
 FROM debian:jessie-slim
-MAINTAINER Damien Carcel <damien.carcel@gmail.com>
+MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -12,19 +12,6 @@ RUN apt-get update && \
     rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
             /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
-
-# Install and configure Gosu
-RUN set -x && \
-    wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64" && \
-    wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/1.9/gosu-amd64.asc" && \
-    export GNUPGHOME="$(mktemp -d)" && \
-    gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 && \
-    gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu && \
-    rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc && \
-    chmod +x /usr/local/bin/gosu && \
-    gosu nobody true && \
-    chown root:users /usr/local/bin/gosu && \
-    chmod +s /usr/local/bin/gosu
 
 # Install PHP with some extensions
 RUN apt-get update && \
