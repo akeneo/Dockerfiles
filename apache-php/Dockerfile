@@ -1,5 +1,5 @@
 FROM akeneo/php:latest
-MAINTAINER Damien Carcel <damien.carcel@gmail.com>
+MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
 # Define "root" as current user
 USER root
@@ -27,9 +27,6 @@ RUN a2enmod rewrite && \
 RUN sed -i "s/export APACHE_RUN_USER=www-data/export APACHE_RUN_USER=docker/" /etc/apache2/envvars && \
     sed -i "s/export APACHE_RUN_GROUP=www-data/export APACHE_RUN_GROUP=docker/" /etc/apache2/envvars && \
     chown -R docker: /var/lock/apache2
-
-# Add a default vhost
-COPY files/application.dev.conf /etc/apache2/sites-available/000-default.conf
 
 # Expose Apache
 EXPOSE 80 443
