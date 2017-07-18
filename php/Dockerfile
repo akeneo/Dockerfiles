@@ -1,5 +1,5 @@
 FROM debian:stretch-slim
-MAINTAINER Damien Carcel <damien.carcel@gmail.com>
+MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 

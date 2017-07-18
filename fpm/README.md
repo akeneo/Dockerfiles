@@ -1,41 +1,38 @@
 # PHP FPM on Docker
 
-This is a basic Docker environment for PHP FPM development, based on [akeneo/php](https://hub.docker.com/r/akeneo/php).
+[![Build Status](https://travis-ci.org/akeneo/Dockerfiles.svg?branch=php-7.1)](https://travis-ci.org/akeneo/Dockerfiles/tree/php-7.1)
 
-It is not intended to use directly as it stands, but rather to extend it and create custom development environments.
+This is a basic Docker environment for PHP FPM development, based on [akeneo/php](https://hub.docker.com/r/akeneo/php). **This image does not contain Akeneo PIM**.
 
-It comes with PHP 7.1 (provided by dotdeb.org repository), and some PHP extensions: fpm of course,
-but also apcu, mcrypt, intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last one comes deactivated,
-run `phpenmod xdebug` to enable it).
+It is intended to be used [httpd](https://hub.docker.com/_/httpd) with FCGI enable or [nginx](https://hub.docker.com/_/nginx).
 
-The PHP FPM daemon is configured with "docker" as user and group, and listen to the socket "/run/php/php7.1-fpm.sock".
+It comes with Debian 9 (Stretch) and PHP 7.1 (from [Sury repository](https://deb.sury.org/)), and some PHP extensions: fpm of course, but also apcu, mcrypt, intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last is deactivated by default, run `phpenmod xdebug` to enable it).
 
-## How to use it?
+The PHP FPM daemon is configured with "docker" as user and group, and listens to the port `9001`.
+
+## How to use it
 
 ### From Docker hub
 
 You can directly pull this image from [Docker hub](https://hub.docker.com/r/akeneo/apache-php/) by running:
 
 ```bash
-$ docker run -p 8080:80 -d --name fpm akeneo/fpm:7.1
+$ docker run -d --name akeneo-fpm akeneo/fpm:php-7.1
 ```
-
-Access the URL `localhost:8080` with your web browser to check that the container works.
 
 ### From GitHub
 
 Clone the repository, go inside the created folder, and build the docker image:
 
 ```bash
-$ docker build -t "fpm" .
+$ docker build -t akeneo-fpm .
 ```
 
 Then you can run a container like this:
 
 ```bash
-$ docker run --name fpm -d fpm
+$ docker run --name akeneo-fpm -d akeneo-fpm
 ```
-
 
 ## License
 

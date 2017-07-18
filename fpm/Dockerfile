@@ -1,5 +1,5 @@
 FROM akeneo/php:latest
-MAINTAINER Damien Carcel <damien.carcel@gmail.com>
+MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
 # Define "root" as current user
 USER root
