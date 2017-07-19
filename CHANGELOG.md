@@ -2,7 +2,13 @@
 
 ## 2017-07-17
 
-### Enhancement
+### Bug fix
+
+- **Issue 280:** Add `mbstring` extension to PHP 7.0 images.
+
+## 2017-07-17
+
+### Enhancements
 
 - **Issue 265:** Remove `akeneo/akeneo-apache` image.
                  Remove usage of `gosu` in PHP 5.6 images.
