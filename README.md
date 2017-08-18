@@ -1,35 +1,32 @@
 # Akeneo Dockerfiles
 
+[![Build Status](https://travis-ci.org/akeneo/Dockerfiles.svg?branch=master)](https://travis-ci.org/akeneo/Dockerfiles)
+
 This repository contains the Dockerfiles we use for Akeneo PIM and other PHP or Symfony development/testing. Feel free to use/adapt them if they fit your needs.
 
 **These images do not contain Akeneo PIM**.
 
-| [Master][Master] | [php-7.1][php-7.1] | [php-7.0][php-7.0] | [php-5.6][php-5.6] |
-|:----------------:|:------------------:|:------------------:|:------------------:|
-| [![Build status][Master image]][Master] | [![Build status][php-7.1 image]][php-7.1] | [![Build status][php-7.0 image]][php-7.0] | [![Build status][php-5.6 image]][php-5.6] |
-
-  [Master image]: https://travis-ci.org/akeneo/Dockerfiles.svg?branch=master
-  [Master]: https://travis-ci.org/akeneo/Dockerfiles/tree/master
-  [php-7.1 image]: https://travis-ci.org/akeneo/Dockerfiles.svg?branch=php-7.1
-  [php-7.1]: https://travis-ci.org/akeneo/Dockerfiles/tree/php-7.1
-  [php-7.0 image]: https://travis-ci.org/akeneo/Dockerfiles.svg?branch=php-7.0
-  [php-7.0]: https://travis-ci.org/akeneo/Dockerfiles/tree/php-7.0
-  [php-5.6 image]: https://travis-ci.org/akeneo/Dockerfiles.svg?branch=php-5.6
-  [php-5.6]: https://travis-ci.org/akeneo/Dockerfiles/tree/php-5.6
-
 ## Images available
 
-- [**akeneo/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:stretch-slim`
-- [**akeneo/fpm**](fpm/README.md): An image with PHP FPM preconfigured to be used with any PHP project, based on `akeneo/php`
+- [**akeneo/php**](php/README.md): Base image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`
+- [**akeneo/fpm**](fpm/README.md): An image with PHP FPM preconfigured to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`)
 - [**akeneo/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured to be used with any PHP project, based on `akeneo/php`
 
-## GitHub branches and corresponding Docker Hub tags
+All images are available as follow:
 
-Four branches are maintained, all based on [debian:jessie](https://hub.docker.com/_/debian/):
+| PHP version | Based on                                                                                     | Corresponding tags        |
+|-------------|----------------------------------------------------------------------------------------------|---------------------------|
+| 5.6         | Debian 8 "Jessie" with native PHP package                                                    | akeneo/php:5.6            |
+|             |                                                                                              | akeneo/fpm:php-5.6        |
+|             |                                                                                              | akeneo/apache-php:php-5.6 |
+| 7.0         | Debian 9 "Stretch" with native PHP packages                                                  | akeneo/php:7.0            |
+|             |                                                                                              | akeneo/fpm:php-7.0        |
+|             |                                                                                              | akeneo/apache-php:php-7.0 |
+| 7.1         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.1            |
+|             |                                                                                              | akeneo/fpm:php-7.1        |
+|             |                                                                                              | akeneo/apache-php:php-7.1 |
 
-- `php-5.6` branch provides images with native Jessie PHP 5.6. Corresponding tag is `php-5.6`, except for `akeneo/php` and `akeneo/fpm` images, which simply use the tag `5.6`.
-- `php-7.1` branch provides images with PHP 7.1 from [Sury](https://deb.sury.org/) repository. Corresponding tag is `php-7.1`, except for `akeneo/php` and `akeneo/fpm` images, which simply use the tag `7.1`.
-- `master` branch images correspond to the tag `latest`, and are exactly the same than images with `php-7.1` tag.
+For all images, images tagged `latest` are identical to those using the most recent PHP version.
 
 **Please, remember that, for the moment, only Apache + mod_php, with PHP 5.6, is officially supported by Akeneo.**
 

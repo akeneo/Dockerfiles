@@ -1,12 +1,20 @@
 # Apache and PHP on Docker
 
-[![Build Status](https://travis-ci.org/akeneo/Dockerfiles.svg?branch=php-7.1)](https://travis-ci.org/akeneo/Dockerfiles/tree/php-7.1)
+[![Build Status](https://travis-ci.org/akeneo/Dockerfiles.svg)](https://travis-ci.org/akeneo/Dockerfiles)
 
-This is a basic Docker environment for PHP development, based on [akeneo/php](https://hub.docker.com/r/akeneo/php). **This image does not contain Akeneo PIM**.
+This is a basic Docker environment for PHP development, based on [akeneo/php](https://hub.docker.com/r/akeneo/php).
 
-It provides a preconfigured Apache (2.4) + mod_php ( PHP 7.1 from [Sury repository](https://deb.sury.org/)) web server, based on Debian 9 (Stretch).
+It provides a preconfigured Apache (2.4) web server with `mod_php`.
 
-The environment comes with some PHP extensions: apcu, mcrypt, intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
+The environment comes with some PHP extensions: apcu, mcrypt, intl, mysql, curl, gd, mongo, soap, xml, zip, and xdebug (this last one is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
+
+**This image does not contain Akeneo PIM**.
+
+## Supported tags and respective `Dockerfile` links
+
+- `php-7.1`, `latest` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/apache-php/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.1 from [Sury repository](https://deb.sury.org/)
+- `php-7.0` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/apache-php/7.0/Dockerfile): The environment comes with Debian 9 (Stretch) with native PHP 7.0
+- `php-5.6` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/apache-php/5.6/Dockerfile): The environment comes with Debian 8 (Jessie) with native PHP 5.6
 
 ## How to use it
 
@@ -15,7 +23,7 @@ The environment comes with some PHP extensions: apcu, mcrypt, intl, mysql, curl,
 You can directly pull this image from [Docker hub](https://hub.docker.com/r/akeneo/apache-php/) by running:
 
 ```bash
-$ docker run --name akeneo-apache-php -p 8080:80 -d akeneo/apache-php:php-7.1
+$ docker run --name akeneo-apache-php -p 8080:80 -d akeneo/apache-php
 ```
 
 Access the URL `localhost:8080` with your web browser to check that the container works.
@@ -33,6 +41,8 @@ Then you can run a container like this:
 ```bash
 $ docker run --name akeneo-apache-php -p 8080:80 -d akeneo-apache-php
 ```
+
+Full documentation is accessible [here](https://github.com/akeneo/Dockerfiles#how-to-use-these-images)
 
 ## License
 
