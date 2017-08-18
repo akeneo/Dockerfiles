@@ -2,9 +2,10 @@
 
 ## 2017-08-18
 
-### Enhancement
+### Enhancements
 
 - **Issue 284**: Move all images tags on master branch.
+- **Issue 285**: Enable APC for command line on PHP 7.1.
 
 ## 2017-07-17
 
