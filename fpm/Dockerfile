@@ -1,4 +1,4 @@
-FROM akeneo/php:latest
+FROM akeneo/php:7.1
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
 # Define "root" as current user
