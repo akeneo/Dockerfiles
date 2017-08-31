@@ -27,6 +27,9 @@ The installation process for Windows and MacOS X already provides `Docker Compos
 Most of the distribution do not provide `Compose` in their repositories (or propose very old versions, like for Docker).
 The best way is to install the last version directly from [here](https://github.com/docker/compose/releases), as proposed by the [official documentation](https://docs.docker.com/compose/install/).
 
+### Docker Sync for MacOS X
+On MacOS X you'll notice that the performance isn't the best. This is why should have a closer look at [docker-sync](https://github.com/akeneo/Dockerfiles/blob/master/Docs/macos_docker_sync/docker-sync.yml.dist).
+
 ## The compose file
 
 As the best way to understand a new tool is an example, you can see below a very basic compose file.
