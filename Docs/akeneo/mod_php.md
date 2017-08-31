@@ -1,15 +1,19 @@
 # Akeneo with Apache + mod_php
 
+**Reminder: all the information in this page are for Akeneo PIM 1.7 and previous versions.**
+
+For versions next to 1.7, please have a look [here](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/fpm.md).
+
 ## Using the images
 
-The simplest way to run the containers is to copy the [Apache compose file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/docker-compose.yml.apache_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
+A compose file template is already present both in [akeneo/pim-community-dev](https://github.com/akeneo/pim-community-dev/blob/1.7/docker-compose.yml.dist)
+and [akeneo/pim-enterprise-dev](https://github.com/akeneo/pim-enterprise-dev/blob/1.7/docker-compose.yml.dist), **from version 1.5 to 1.7**.
+You only need to copy it to `docker-compose.yml`.
 
-You can place it somewhere else, but then you will need to change the volumes parameter from `./:/home/docker/pim` to `/the/path/to/your/pim:/home/docker/pim` (you'll need to do it for both `akeneo` and `selenium` services).
+It is placed by default at the root of your PIM project, but you can place it somewhere else. In this case, you will have to change the volumes parameter from `./:/srv/pim` to `/the/path/to/your/pim:/srv/pim` (you'll need to do it for `akeneo`, `akeneo-behat`, and `selenium` services).
 
-Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to you compose file) with full read/write access to your user, otherwise `docker-compose` will create it, but with write access only for root, and your behat tests will fail.
-
-By default, `akeneo/akeneo-apache:php-5.6` is used in the compose file.
-Read the [Tags available](https://github.com/akeneo/Dockerfiles/blob/master/README.md#github-branches-and-corresponding-docker-hub-tags) section of the `README.md` for more details.
+Create on your host a folder `/tmp/behat/screenshots` (or anywhere else according to your compose file) with full read/write access to your user.
+Otherwise `docker-compose` will create it, but with write access only for root. Then failing behats will be unable to create screenshots.
 
 ## Run and stop the containers
 
@@ -39,7 +43,8 @@ This, of course, will not delete the Akeneo application you cloned on your machi
 
 ### Configure Akeneo
 
-First, make sure that Akeneo database settings are as the containers expect them:
+First, make sure that Akeneo database settings are as the containers expect.
+As you can see below, the `database_host` is the name of your MySQL service in the compose file.
 
 ```yaml
 # /host/path/to/you/pim/app/config/parameters.yml
@@ -68,7 +73,7 @@ parameters:
     installer_data: PimInstallerBundle:minimal
 ```
 
-If you want to use MongoDB storage, add the following to your PIM parameters:
+If you want to use MongoDB storage, add the following to your PIM parameters (like for MySQL, the `mongodb_server` correspond to the name of the MongoDB service in the compose file):
 
 ```yaml
 # /host/path/to/you/pim/app/config/parameters.yml and parameters.yml.dist ; the last one is important too, to avoid removal on "composer update"
@@ -94,45 +99,32 @@ For more details on Akeneo configuration, don't hesitate to look at [Akeneo offi
 
 Don't forget to activate the `DoctrineMongoDBBundle` in `app/AppKernel.php` if you want to use MongoDB storage.
 
-Now, you can initialize Akeneo:
+Now, you can initialize Akeneo. First download all the dependencies with `composer`:
 
 ```bash
 $ docker-compose exec akeneo php -d memory_limit=-1 /usr/local/bin/composer update
-$ docker-compose exec akeneo pim-initialize
 ```
 
-Command `pim-initialize` is detailed [below in this page](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/mod_php.md#scripts-available).
+Then you can setup the PIM with the following commands:
+
+```bash
+$ docker-compose exec akeneo --env=prod pim:install --force
+$ docker-compose exec akeneo-behat --env=prod pim:installer:db  # Only with you intend to run behat or integration tests
+```
+
+You should now be able to access Akeneo development environment from your host through `http://localhost:8080/` and behat environment through `http://localhost:8081/` (of course, you can change the host port in the compose file).
 
 ### Xdebug
 
 *Xdebug* is deactivated by default. If you want to activate, you can turn the environment variable `PHP_XDEBUG_ENABLED` to `1`. Then you just have to run `docker-compose up -d` again.
 
-Also, you can configure two things on Xdebug through environment variables on akeneo-apache image. These environment variables are all optional.
+Also, you can configure two things on Xdebug through environment variables on `akeneo/apache-php` image. These environment variables are all optional.
 - `PHP_XDEBUG_IDE_KEY`: the IDE KEY you want to use (by default `XDEBUG_IDE_KEY`)
 - `PHP_XDEBUG_REMOTE_HOST`: your host IP address (by default it allows all IPs)
 
-You should now be able to access Akeneo development environment from your host through `http://localhost:8080/` and behat environment through `http://localhost:8081/` (of course, you can change the host port in the compose file).
-
-### Scripts available
-
-The `akeneo-apache` image comes with three little scripts to ease your Akeneo development and testing.
-
-- [`pim-cac` script](https://github.com/akeneo/Dockerfiles/tree/php-5.6/akeneo-apache/files/pim-cac.sh) will completely remove the application cache, then regenerate it in prod, dev and behat mode.
-
-- [`pim-assets` script](https://github.com/akeneo/Dockerfiles/tree/php-5.6/akeneo-apache/files/pim-assets.sh) will completely remove the application cache and assets (`web/bundles/*`, `web/css/*`, `web/js/*`).
-    Then it will regenerate the cache and the ORO requirejs configuration, and dump all assets as symlinks.
-
-    This command is to be used each time you have strange behavior on the front end (missing translations, modifications that do not appear in the forms…).
-
-- [`pim-initialize` script](https://github.com/akeneo/Dockerfiles/tree/php-5.6/akeneo-apache/files/pim-initialize.sh) will completely remove the application cache, logs, assets (`web/bundles/*`, `web/css/*`, `web/js/*`),
-    and everything generated by any previous installation. Then it will regenerate the cache and the ORO requirejs configuration, perform a installation of Akeneo in production mode through the command `pim:install --force`, and dump all assets as symlinks.
-    Finally, it will initialize the database (through `pim:installer:db`) for the behat environment.
-
-    Basically, this command will provide you with a fresh PIM, as if it was its first installation.
-
 ## Run behat tests
 
-The tests are to be run inside the containers. Start by configuring Behat:
+The tests are to be run inside the containers. Start by configuring Behat as follows:
 
 ```yaml
 # /host/path/to/your/pim/behat.yml
@@ -142,7 +134,7 @@ default:
     context:
         class:  Context\FeatureContext
         parameters:
-            base_url: 'http://akeneo:81/'
+            base_url: 'http://akeneo-behat/'
             timeout: 10000
             window_width: 1280
             window_height: 1024
@@ -152,7 +144,7 @@ default:
             show_cmd: chromium-browser %s
             selenium2:
                 wd_host: 'http://selenium:4444/wd/hub'
-            base_url: 'http://akeneo:81/'
+            base_url: 'http://akeneo-behat/'
             files_path: 'features/Context/fixtures/'
         Behat\Symfony2Extension\Extension:
             kernel:
@@ -164,7 +156,7 @@ default:
 You are now able to run behat tests.
 
 ```bash
-$ docker-compose exec akeneo bin/behat features/path/to/scenario
+$ docker-compose exec akeneo-behat bin/behat features/path/to/scenario
 ```
 
 ## What if?
