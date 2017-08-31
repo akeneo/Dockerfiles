@@ -6,8 +6,8 @@ The simplest way to run the containers is to copy the [FPM compose file](https:/
 
 You can place it somewhere else, but then you will need to change the volumes parameter from `./:/srv/application` to `/the/path/to/your/application:/srv/application`.
 
-By default, latest version of `akeneo/fpm` is used in the compose file. But you can also choose to use a specific tag. Currently, are available `php-5.6`, `php-7.0`, and `php-7.1` (identical to `latest`).
-Read the [Tags available](https://github.com/akeneo/Dockerfiles/blob/master/README.md#github-branches-and-corresponding-docker-hub-tags) section of the `README.md` for more details.
+By default, latest version of `akeneo/fpm` is used in the compose file. But you can also choose to use a specific tag.
+[Look here](https://github.com/akeneo/Dockerfiles/blob/master/README.md#github-branches-and-corresponding-docker-hub-tags) to know all available tags.
 
 ## Run and stop the containers
 
@@ -31,7 +31,7 @@ but if you want to completely remove everything (containers, networks and volume
 $ docker-compose down -v
 ```
 
-This, of course, will not delete the Symfony application you cloned on your machine, only the Docker containers. 
+This, of course, will not delete the application you cloned on your machine, only the Docker containers. 
 
 ## Install and run Symfony
 
@@ -54,14 +54,14 @@ parameters:
 
 ### Configure nginx
 
-Unlike `akeneo/apache-php` image, which contains PHP **and** Apache with an already configured VirtualHost, `akeneo/fpm` image contains only PHP-FPM.
-So to be able to access your application in a web browser, you need to associate the FPM container with a nginx one.
+Unlike `akeneo/apache-php` image, which contains PHP **and** Apache, `akeneo/fpm` image contains only PHP-FPM.
+So to be able to access your application in a web browser, you need to associate the FPM container with a nginx one (you could use Apache with mod FCGI too).
 
 You can use the official `nginx` image available on [Docker Hub](https://hub.docker.com/_/nginx/). The [FPM compose file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/docker-compose.yml.fpm_dist) already defines the appropriate service.
 You just need to copy the [nginx server configuration](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/nginx.conf) to the appropriate folder.
-The compose file expects it in a `docker` subfolder of your project, but it is up to you to choose another folder. However, it has to be a subfolder of your project.
+The compose file expects it in a `docker` subfolder of your project, but it is up to you to choose another folder.
 
-Optionally, you can also add a [configuration file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx service for the compose file is already set for it).
+Optionally, you can also add a [configuration file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/upload.conf) to set the maximum size of uploaded files (the nginx service of the compose file is already set for it).
 
 ### Install Symfony
 
@@ -71,7 +71,7 @@ You can install vendors (if needed) by running:
 $ docker-compose exec fpm composer update
 ```
 
-You should now be able to access your Symfony application from your host through `http://localhost:8080/` (of course, you can change the host port in the compose file).
+You should now be able to access your application from your host through `http://localhost:8080/` (of course, you can change the host port in the compose file).
 
 ### Xdebug
 

@@ -3,10 +3,8 @@ version: '2'
 services:
   fpm:
     image: akeneo/fpm
-    depends_on:
-      - mysql
     environment:
-      COMPOSER_HOME: /home/docker/.composer
+      COMPOSER_HOME: '/home/docker/.composer'
       PHP_IDE_CONFIG: 'serverName=your-cli-key'       # Mandatory for debugging in CLI
       PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
       PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
@@ -38,10 +36,12 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_USER=symfony
-      - MYSQL_PASSWORD=symfony
-      - MYSQL_DATABASE=symfony
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+      MYSQL_DATABASE: symfony
+    ports:
+      - '3306:3306'
     networks:
       - symfony
 
