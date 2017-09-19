@@ -28,7 +28,8 @@ All images are available as follow:
 
 For all images, tag `latest` is identical to the one corresponding to the most recent PHP version.
 
-**Please, remember that, for the moment, only Apache + mod_php, with PHP 5.6, is officially supported by Akeneo.**
+Please, remember that only Apache + mod_php, with PHP 5.6, is officially supported by Akeneo 1.7 and previous versions.
+On the other hand, Akeneo 2.O is to be used only with PHP 7.1, with php-fpm and Apache 2.4 with FCGI.
 
 ## How to use these images
 
