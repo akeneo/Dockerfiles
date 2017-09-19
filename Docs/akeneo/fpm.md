@@ -86,11 +86,20 @@ For more details on Akeneo configuration, don't hesitate to look at [Akeneo offi
 Now, you can initialize Akeneo:
 
 ```bash
-$ docker-compose exec fpm php -d memory_limit=-1 /usr/local/bin/composer update
+$ bin/docker/pim-dependencies.sh
 $ bin/docker/pim-initialize.sh
 ```
 
-The bash script `pim-initialize.sh` is just a helper placed in the PIM, in the folder `bin/docker` that executes the following commands (you could do so too if you prefer):
+Those two bash scripts are just helpers placed in the PIM, in the folder `bin/docker`. They execute the following commands (you could do so too if you prefer):
+
+- `pim-dependencies.sh`
+
+```bash
+$ docker-compose exec fpm composer update
+$ docker-compose run --rm node yarn install
+```
+
+- `pim-initialize.sh`
 
 ```bash
 $ docker-compose exec fpm bin/console --env=prod cache:clear --no-warmup    # Those 4 commands clears all the caches of Symfony 3
@@ -101,8 +110,7 @@ $ docker-compose exec fpm bin/console --env=test cache:clear --no-warmup
 $ docker-compose exec fpm bin/console --env=prod pim:install --force --symlink --clean 
 $ docker-compose exec fpm bin/console --env=behat pim:installer:db          # Run this command only if you want to run behat or integration tests
 
-$ docker-compose run --rm node npm install
-$ docker-compose run --rm node npm run webpack
+$ docker-compose run --rm node yarn run webpack
 ```
 
 ### Xdebug
