@@ -1,6 +1,6 @@
 # Akeneo with Apache + mod_php
 
-**Reminder: all the information in this page are for Akeneo PIM 1.7 and previous versions.**
+**Reminder: all the information in this page is for Akeneo PIM 1.7 and previous versions.**
 
 For versions next to 1.7, please have a look [here](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/fpm.md).
 

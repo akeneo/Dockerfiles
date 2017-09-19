@@ -1,6 +1,6 @@
 # Akeneo with PHP FPM and Apache FCGI
 
-**Reminder: all the information in this page are for Akeneo PIM versions next to 1.8 and following.**
+**Reminder: all the information in this page is for Akeneo PIM 2.0 and following.**
 
 For versions to 1.7 and prior, please have a look [here](https://github.com/akeneo/Dockerfiles/blob/master/Docs/akeneo/mod_php.md).
 
