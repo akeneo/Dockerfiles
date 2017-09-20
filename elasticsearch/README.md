@@ -1,0 +1,3 @@
+# Akeneo's elasticsearch container
+
+Just a wrapper that catch SIGTERM and exists 0 ...

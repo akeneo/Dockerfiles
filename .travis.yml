@@ -1,9 +1,24 @@
 language: bash
 services: docker
 env:
-  - TAG=5.6
-  - TAG=7.0
-  - TAG=7.1
+  - IMAGE=apache-php VERSION=5.6 BUILD_PATH=apache-php/5.6
+  - IMAGE=apache-php VERSION=7.0 BUILD_PATH=apache-php/7.0
+  - IMAGE=apache-php VERSION=7.1 BUILD_PATH=apache-php
+  - IMAGE=elasticsearch VERSION=5.5 BUILD_PATH=elasticsearch/5.5
+  - IMAGE=fpm VERSION=5.6 BUILD_PATH=fpm/5.6
+  - IMAGE=fpm VERSION=7.0 BUILD_PATH=fpm/7.0
+  - IMAGE=fpm VERSION=7.1 BUILD_PATH=fpm
+  - IMAGE=fpm VERSION=7.1-ci BUILD_PATH=fpm/7.1-ci
+  - IMAGE=httpd VERSION=2.4 BUILD_PATH=httpd/2.4
+  - IMAGE=php VERSION=5.6 BUILD_PATH=php/5.6
+  - IMAGE=php VERSION=7.0 BUILD_PATH=php/7.0
+  - IMAGE=php VERSION=7.1 BUILD_PATH=php
+  - IMAGE=selenium VERSION=standalone-firefox-2.53.1-beryllium BUILD_PATH=selenium/standalone-firefox-2.53.1-beryllium
+
+before_script:
+  - env | sort
+  - cd "${BUILD_PATH}"
 
 script:
-  - ./run_tests.sh 7.1
+  - docker build -t "akeneo/${IMAGE}:${VERSION}" .
+  - docker inspect "akeneo/${IMAGE}:${VERSION}"
