@@ -49,8 +49,6 @@ networks:         # Here we define a network, in which everything that happen in
 services:         # Each service you define below will be a container. It allows you to define you container configuration in a clear, readable way
   apache:         # This is our Apache + PHP container (as `mod_php` package needs both `php` and `apache` package, everything is in one container)
     image: akeneo/apache-php:latest                 # We use the image `akeneo/apache` in its latest version to create the container
-    depends_on:
-      - mysql                                       # This container will depend on the MySQL on, meaning it won't start until MySQL container is
     environment:
       COMPOSER_HOME: /home/docker/.composer         # Ensure the composer home folder will be where we expect it for volume sharing
     ports:  

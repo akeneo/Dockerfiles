@@ -8,8 +8,8 @@ services:
       PHP_IDE_CONFIG: 'serverName=your-cli-key'       # Mandatory for debugging in CLI
       PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
       PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
-      PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with you host IP (only for Windows and Mac as Linux uses socket)
-      XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with you host IP
+      PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with your host IP (only for Windows and Mac as Linux uses IPC socket)
+      XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with your host IP
     user: docker
     volumes:
       - ./:/srv/application
@@ -27,7 +27,7 @@ services:
     ports:
       - '8080:80'
     volumes:
-      - ./:/srv/application
+      - ./:/srv/application:ro
       - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./docker/upload.conf:/etc/nginx/conf.d/upload.conf
     networks:

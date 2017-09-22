@@ -1,6 +1,6 @@
 # Troubleshooting
 
-## I ran `composer update` on Akeneo PIM and end up with this message:
+## I ran `composer update` on Akeneo PIM 1.x and end up with this message:
 
 ```bash
 Your requirements could not be resolved to an installable set of packages.
