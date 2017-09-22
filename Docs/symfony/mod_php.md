@@ -2,9 +2,21 @@
 
 ## Using the images
 
-The simplest way to run the containers is to copy the [Apache compose file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/docker-compose.yml.apache_dist) at the root of your project (don't forget to rename it `docker-compose.yml`).
+Just copy the [Apache compose file](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/docker-compose.yml.apache_dist) to the root of your project (don't forget to rename it `docker-compose.yml`).
 
-You can place it somewhere else, but then you will need to change the volumes parameter from `./:/srv/application` to `/the/path/to/your/application:/srv/application`.
+The application is mounted into a data volume by the compose file, as follow:
+```yaml
+services:
+  apache:
+    image: akeneo/apache-php
+    user: docker
+    volumes:
+      - ./:/srv/application
+```
+
+**Important**: As the application is shared between your host and the FPM container, it is mandatory on Linux that your user ID and group ID are `1000`,
+as it is for the `docker` user inside the container. Without that, you'll end up with a permission mess that will prevent your application from running.
+This is not a problem on Windows and Mac OX as both are using a virtual machine to run Docker, with user and group IDs `1000`.
 
 By default, latest version of `akeneo/apache-php` is used in the compose file. But you can also choose to use a specific tag.
 [Look here](https://github.com/akeneo/Dockerfiles/blob/master/README.md#github-branches-and-corresponding-docker-hub-tags) to know all available tags.
@@ -86,10 +98,54 @@ $ docker-compose exec apache composer update
 
 You should now be able to access your application from your host through `http://localhost:8080/` (of course, you can change the host port in the compose file).
 
+## Advanced configuration
+
+### Composer
+
+You can set the composer home with the following environment variable:
+```yaml
+services:
+  apache:
+    environment:
+      COMPOSER_HOME: '/home/docker/.composer'`
+```
+
+This will ensure where `composer` keeps its data inside the container, and allow you to safely map your own composer home folder,
+sharing both your configuration (including your GitHub token, which is mandatory to install Akeneo PIM standard and/or enterprise edition)
+and your composer cache (and so reducing considerably the dependencies installation time):
+```yaml
+services:
+  apache:
+    volumes:
+      - ~/.composer:/home/docker/.composer
+```
+
+Beware that on recent Linux system, `composer` cache and configuration are usually separated in `.cache/composer` and `.config/composer`.
+You then need to adapt the environment variables of your compose file as follow:
+```yaml
+services:
+  apache:
+    environment:
+      COMPOSER_CACHE_DIR: '/home/docker/.cache/composer'
+      COMPOSER_HOME: '/home/docker/.config/composer'
+    volumes:
+      - ~/.cache/composer:/home/docker/.cache/composer
+      - ~/.config/composer:/home/docker/.config/composer
+```
+
 ### Xdebug
 
-*Xdebug* is deactivated by default. If you want to activate, you can turn the environment variable `PHP_XDEBUG_ENABLED` to `1`. Then you just have to run `docker-compose up -d` again.
+*Xdebug* is deactivated by default. If you want to activate it, you need to set the following environment variables:
+```yaml
+services:
+  apache:
+    environment:
+      PHP_XDEBUG_ENABLED: 1
+      XDEBUG_CONFIG: 'your host IP address'
+```
 
-Also, you can configure two things on Xdebug through environment variables. These environment variables are all optional.
+Then you just have to run `docker-compose up -d` again and XDebug will be activated.
+
+Also, you can configure a few more parameters through environment variables (all optional).
 - `PHP_XDEBUG_IDE_KEY`: the IDE KEY you want to use (by default `XDEBUG_IDE_KEY`)
-- `PHP_XDEBUG_REMOTE_HOST`: your host IP address (by default it allows all IPs)
+- `PHP_XDEBUG_REMOTE_HOST`: your host IP address (again), this one is needed only if the docker daemon run on TCP instead of unix domain socket (on Mac OS for instance)
