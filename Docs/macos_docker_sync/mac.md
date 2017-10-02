@@ -4,7 +4,7 @@ Due performance issues while developing on a Mac it’s necessary to use docker-
 ## Requirements
 Install [docker-sync](http://docker-sync.io/):
 ```bash
-# gem install docker-sync
+$ sudo gem install docker-sync
 ```
 
 Install [unison](https://www.cis.upenn.edu/~bcpierce/unison/):

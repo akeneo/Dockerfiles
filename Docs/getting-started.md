@@ -17,7 +17,7 @@ The official documentation proposes to use Docker own repositories and packages,
 **Important:** On Linux, don't forget, once Docker installed, to add your user to the Docker group. This will allow you to run Docker commands without `sudo`. On most distribution, the following command (to run as `root` or with `sudo`) should work:
 
 ```bash
-# gpasswd -a user docker
+$ sudo gpasswd -a user docker
 ```
 
 ### Docker Compose
@@ -28,6 +28,7 @@ Most of the distribution do not provide `Compose` in their repositories (or prop
 The best way is to install the last version directly from [here](https://github.com/docker/compose/releases), as proposed by the [official documentation](https://docs.docker.com/compose/install/).
 
 ### Docker Sync for MacOS X
+
 On MacOS X you'll notice that the performance isn't the best. This is why should have a closer look at [docker-sync](https://github.com/akeneo/Dockerfiles/blob/master/Docs/macos_docker_sync/docker-sync.yml.dist).
 
 ## The compose file
