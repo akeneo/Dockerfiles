@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-XDEBUG_PATH="/etc/php5/mods-available/xdebug.ini"
+XDEBUG_PATH="/etc/php/5.6/mods-available/xdebug.ini"
 
 function execAsRoot {
     sudo bash -c "$1"
@@ -34,12 +34,12 @@ fi
 
 if [ ! -z "${PHP_XDEBUG_ENABLED}" ]; then
     if [ "${PHP_XDEBUG_ENABLED}" == "1" ]; then
-        execAsRoot "php5enmod xdebug"
+        execAsRoot "phpenmod xdebug"
     elif [ "${PHP_XDEBUG_ENABLED}" == "0" ]; then
-        execAsRoot "php5dismod xdebug"
+        execAsRoot "phpdismod xdebug"
     fi
 else
-    execAsRoot "php5dismod xdebug"
+    execAsRoot "phpdismod xdebug"
 fi
 
 eval "${@}"
