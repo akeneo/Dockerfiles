@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-10-09
+
+### Enhancements
+
+- Add PHP LDAP extension in all images.
+
 ## 2017-08-18
 
 ### Enhancements
