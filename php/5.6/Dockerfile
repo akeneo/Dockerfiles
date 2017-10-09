@@ -16,7 +16,7 @@ RUN apt-get update && \
 # Install PHP with some extensions
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
-        php5-cli php5-apcu php5-curl php5-gd php5-imagick php5-intl php5-mongo php5-mcrypt php5-mysql php5-xdebug && \
+        php5-cli php5-apcu php5-curl php5-gd php5-imagick php5-intl php5-mongo php5-mcrypt php5-mysql php5-xdebug php5-ldap && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
