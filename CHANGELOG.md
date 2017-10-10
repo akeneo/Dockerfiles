@@ -1,10 +1,16 @@
 # Changelog
 
+## 2017-10-10
+
+### Enhancements
+
+- **Issue 297**: Add make to all images.
+
 ## 2017-10-09
 
 ### Enhancements
 
-- Add PHP LDAP extension in all images.
+- **Pull request 298**: Add PHP LDAP extension in all images. Thanks @jmleroux!
 
 ## 2017-08-18
 

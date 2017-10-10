@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install some useful packages
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
-        ca-certificates bash-completion less curl wget sudo \
+        ca-certificates bash-completion less curl wget sudo make \
         mysql-client mongodb-clients ssh-client vim git imagemagick perceptualdiff && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
