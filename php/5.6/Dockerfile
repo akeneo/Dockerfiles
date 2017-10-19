@@ -23,11 +23,8 @@ RUN apt-get update && \
             /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Configure PHP CLI
-RUN sed -i "s/;date.timezone =/date.timezone = Etc\/UTC/" /etc/php5/cli/php.ini && \
-    sed -i "s/memory_limit = .*/memory_limit = 2G/" /etc/php5/cli/php.ini && \
-    sed -i "s/upload_max_filesize = .*/upload_max_filesize = 20M/" /etc/php5/cli/php.ini && \
-    sed -i "s/post_max_size = .*/post_max_size = 20M/" /etc/php5/cli/php.ini
-
+COPY files/akeneo.ini /etc/php5/mods-available/akeneo.ini
+RUN php5enmod akeneo
 RUN php5dismod xdebug
 
 # Add a "docker" user

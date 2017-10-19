@@ -21,6 +21,8 @@
 ### Enhancement
 
 - **Issue 297**: Add make to all images.
+- **Issue 288**: Set `error_reporting` to `E_ALL`.
+                 Externalize Akeneo specific configuration into `akeneo.ini` PHP configuration file.
 
 ## 2017-10-09
 
