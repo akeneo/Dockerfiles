@@ -1,6 +1,13 @@
 # Changelog
 
-## 2017-12-09
+## 2018-xx-xx
+
+### Enhancement
+
+- **Issue 288**: Set `error_reporting` to `E_ALL`.
+                 Externalize Akeneo specific configuration into `akeneo.ini` PHP configuration file.
+
+## 2018-01-10
 
 ### Enhancement
 
@@ -21,8 +28,6 @@
 ### Enhancement
 
 - **Issue 297**: Add make to all images.
-- **Issue 288**: Set `error_reporting` to `E_ALL`.
-                 Externalize Akeneo specific configuration into `akeneo.ini` PHP configuration file.
 
 ## 2017-10-09
 
