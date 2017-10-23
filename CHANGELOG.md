@@ -4,7 +4,7 @@
 
 ### Enhancements
 
-- Remove user docker on php, fpm and apache-php 5.6/7.0/7.1
+- **Issue 303**: Remove user docker on php, fpm and apache-php (all tags).
 
 ## 2017-10-10
 
