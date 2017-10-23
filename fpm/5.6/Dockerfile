@@ -1,9 +1,6 @@
 FROM akeneo/php:5.6
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
-# Define "root" as current user
-USER root
-
 # Install PHP FPM
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install php5-fpm && \
@@ -27,8 +24,5 @@ RUN php5dismod xdebug
 
 RUN sed -i "s/listen = .*/listen = 9001/" /etc/php5/fpm/pool.d/www.conf
 
-# Define "docker" as current user
-USER docker
-
 # Run FPM in foreground
-CMD ["sudo", "php5-fpm", "-F"]
+CMD ["php5-fpm", "-F"]

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-10-23
+
+### Enhancements
+
+- Remove user docker on php and apache-php 5.6
+
 ## 2017-10-10
 
 ### Enhancements
