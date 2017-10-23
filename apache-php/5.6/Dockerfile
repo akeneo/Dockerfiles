@@ -1,9 +1,6 @@
 FROM akeneo/php:5.6
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
-# Define "root" as current user
-USER root
-
 # Install Apache + mod_php and some PHP extensions
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install apache2 libapache2-mod-php5 && \
@@ -34,8 +31,5 @@ EXPOSE 80 443
 COPY files/apache-foreground /usr/local/bin
 RUN  chmod +x /usr/local/bin/apache-foreground
 
-# Define "docker" as current user
-USER docker
-
 # Run apache in foreground
-CMD ["sudo", "/usr/local/bin/apache-foreground"]
+CMD ["/usr/local/bin/apache-foreground"]
