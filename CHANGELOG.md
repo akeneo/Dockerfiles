@@ -2,19 +2,23 @@
 
 ## 2017-10-23
 
-### Enhancements
+### Bug fix
+
+- **Issue 305**: Revert the removal of "sudo" in command, so the container can still be run by `docker` user.
+
+### Enhancement
 
 - **Issue 303**: Remove user docker on php, fpm and apache-php (all tags).
 
 ## 2017-10-10
 
-### Enhancements
+### Enhancement
 
 - **Issue 297**: Add make to all images.
 
 ## 2017-10-09
 
-### Enhancements
+### Enhancement
 
 - **Pull request 298**: Add PHP LDAP extension in all images. Thanks @jmleroux!
 

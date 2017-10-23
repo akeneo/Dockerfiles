@@ -25,4 +25,4 @@ RUN phpdismod xdebug
 RUN mkdir -p /run/php && sed -i "s/listen = .*/listen = 9001/" /etc/php/7.0/fpm/pool.d/www.conf
 
 # Run FPM in foreground
-CMD ["php-fpm7.0", "-F"]
+CMD ["sudo", "php-fpm7.0", "-F"]

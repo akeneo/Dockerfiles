@@ -32,4 +32,4 @@ COPY files/apache-foreground /usr/local/bin
 RUN  chmod +x /usr/local/bin/apache-foreground
 
 # Run apache in foreground
-CMD ["/usr/local/bin/apache-foreground"]
+CMD ["sudo", "/usr/local/bin/apache-foreground"]
