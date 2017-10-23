@@ -1,9 +1,6 @@
 FROM akeneo/php:7.1
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
-# Define "root" as current user
-USER root
-
 # Install PHP FPM
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install php7.1-fpm && \
@@ -27,8 +24,5 @@ RUN phpdismod xdebug
 
 RUN mkdir -p /run/php && sed -i "s/listen = .*/listen = 9001/" /etc/php/7.1/fpm/pool.d/www.conf
 
-# Define "docker" as current user
-USER docker
-
 # Run FPM in foreground
-CMD ["sudo", "php-fpm7.1", "-F"]
+CMD ["php-fpm7.1", "-F"]
