@@ -25,4 +25,4 @@ RUN php5dismod xdebug
 RUN sed -i "s/listen = .*/listen = 9001/" /etc/php5/fpm/pool.d/www.conf
 
 # Run FPM in foreground
-CMD ["php5-fpm", "-F"]
+CMD ["sudo", "php5-fpm", "-F"]
