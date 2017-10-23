@@ -12,7 +12,7 @@ It comes with the following PHP extensions: apcu, mcrypt, intl, mysql, curl, gd,
 
 - `7.1`, `latest` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.1 from [Sury repository](https://deb.sury.org/)
 - `7.0` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/7.0/Dockerfile): The environment comes with Debian 9 (Stretch) with native PHP 7.0
-- `5.6` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/5.60/Dockerfile): The environment comes with Debian 8 (Jessie) with native PHP 5.6
+- `5.6` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/5.6/Dockerfile): The environment comes with Debian 8 (Jessie) with native PHP 5.6
 
 ## How to use it
 
