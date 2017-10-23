@@ -4,7 +4,7 @@
 
 ### Enhancements
 
-- Remove user docker on php and apache-php 5.6
+- Remove user docker on php and apache-php 5.6/7.0/7.1
 
 ## 2017-10-10
 

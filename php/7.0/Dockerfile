@@ -46,7 +46,6 @@ COPY ./files/entrypoint.sh /usr/local/bin
 RUN chmod a+x /usr/local/bin/entrypoint.sh
 
 # Define "docker" as current user
-USER docker
 WORKDIR /home/docker/
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
