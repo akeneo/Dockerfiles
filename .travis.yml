@@ -11,3 +11,4 @@ env:
 
 script:
   - ./.ci/build_images.sh
+  - ./.ci/run_tests.sh
