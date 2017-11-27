@@ -14,7 +14,7 @@ for (( i=0; i<${#images[@]}; i++ )); do
 
     echo "Run tests for akeneo/${images[i]}:${imageTag} image"
 
-    bash ${cwd}/tests/${images[i]}/run_tests.sh ${imageTag}
+    bash ${cwd}/tests/${images[i]}/run_image_tests.sh ${imageTag}
 
     testsOutput=$?
     didFail=$((didFail + testsOutput))

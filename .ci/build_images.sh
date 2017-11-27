@@ -4,13 +4,14 @@ set -euo pipefail
 
 images=("php" "fpm" "apache-php")
 tagPrefix=("" "php-" "php-")
+latestTag="7.1"
 
 scriptFailed=1
 inspectFailed=0
 
 cwd=$(pwd)
 for (( i=0; i<${#images[@]}; i++ )); do
-    if [ "$TAG" == "$LATEST_TAG" ]; then
+    if [ "$TAG" == "$latestTag" ]; then
         path=${cwd}/${images[i]}
     else
         path=${cwd}/${images[i]}/${TAG}

@@ -2,12 +2,9 @@ language: bash
 services: docker
 
 env:
-  global:
-    - LATEST_TAG=7.1
-  matrix:
-    - TAG=5.6
-    - TAG=7.0
-    - TAG=7.1
+  - TAG=5.6
+  - TAG=7.0
+  - TAG=7.1
 
 script:
   - ./.ci/build_images.sh

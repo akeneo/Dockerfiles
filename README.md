@@ -43,6 +43,18 @@ Then, you can find out how to use these images in detail:
 Please read carefully the [troubleshoothing section](https://github.com/akeneo/Dockerfiles/blob/master/Docs/troubleshooting.md) if you encounter any problem.
 If your problem is not listed in it, don't hesitate to [open an issue](https://github.com/akeneo/Dockerfiles/issues).
 
+## Contributing
+
+We gladly accept any contribution. Please check first if an issue [does not already exists](https://github.com/akeneo/Dockerfiles/issues).
+If not, first create it to describe the feature or bug-fix you would like. If it already exists, then add a comment in it to tell us you are interested in doing it.
+
+Please remember that to be merged, a PR must:
+- be approved by at least one Akeneo Core team member,
+- have a green CI,
+- contain a new test (or set of tests) related to the new feature or bug-fix.
+
+To know how to add tests, please read [this documentation](https://github.com/akeneo/Dockerfiles/blob/master/Docs/testing.md).
+
 ## License
 
 This content of this repository is under the MIT license. See the complete license in the [LICENSE](https://github.com/akeneo/Dockerfiles/blob/master/LICENSE) file.
