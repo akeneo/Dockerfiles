@@ -48,4 +48,6 @@ RUN chmod a+x /usr/local/bin/entrypoint.sh
 # Define "docker" as current user
 WORKDIR /home/docker/
 
+ENV PATH=bin:vendor/bin:$PATH
+
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
