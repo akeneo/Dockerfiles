@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/akeneo/Dockerfiles.svg?branch=master)](https://travis-ci.org/akeneo/Dockerfiles)
 
-This repository contains Dockerfiles to be used for Akeneo PIM and other PHP or Symfony development/testing. Feel free to use/adapt them if they fit your needs.
+This repository contains Dockerfiles to be used for Akeneo PIM and other PHP or Symfony development/testing. **Please do not use them for a production environment.** Feel free to use/adapt them if they fit your needs.
 
 **These images do not contain Akeneo PIM**.
 
