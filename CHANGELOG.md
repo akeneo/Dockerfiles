@@ -1,5 +1,11 @@
 # Changelog
 
+## 2017-12-09
+
+### Enhancement
+
+- **Issue 118**: Introduce a testing architecture
+
 ## 2017-10-23
 
 ### Bug fix

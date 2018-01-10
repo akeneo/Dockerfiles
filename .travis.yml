@@ -1,9 +1,11 @@
 language: bash
 services: docker
+
 env:
-  - TAG=5.6
-  - TAG=7.0
-  - TAG=7.1
+  - PHP_VERSION=5.6
+  - PHP_VERSION=7.0
+  - PHP_VERSION=7.1
 
 script:
-  - ./run_tests.sh 7.1
+  - ./.ci/build_images.sh
+  - ./.ci/run_tests.sh
