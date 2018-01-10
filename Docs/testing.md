@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Running the tests rests on two main scripts:
+Running the tests uses two main scripts:
 - `.ci/build_images.sh` will build the images from the Dockerfiles,
 - `.ci/run_tests.sh` will run all the tests.
 
@@ -10,11 +10,11 @@ Both scripts are used on TravisCI, but can also be run on your machine.
 
 ### Building the images
 
-You need to first export a `TAG` environment variable, to define which version of PHP you will build.
+You need to first export a `PHP_VERSION` environment variable, to define which version of PHP you will build.
 For example, the following will build all images for PHP 7.0:
 
 ```bash
-$ export TAG="7.0"
+$ export PHP_VERSION="7.0"
 ```
 
 Running the `build_images.sh` script will build the images only for the tag you exported, in the correct order:
@@ -26,7 +26,7 @@ was no errors, then the script will return `0` (green build on TravisCI), displa
 
 ### Running the tests
 
-The `TAG` variable is also needed for the `run_tests.sh` script. It will allow to know what version of PHP to test.
+The `PHP_VERSION` variable is also needed for the `run_tests.sh` script. It will allow to know what version of PHP to test.
 This main script will test again that the image to test exists (directly exits with `1` if it does not) and run all
 the tests available for each image.
 

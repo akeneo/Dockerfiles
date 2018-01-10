@@ -2,9 +2,9 @@
 
 echo "Apache PHP module version should be 5"
 
-version=`apache2ctl -M | grep "[p]hp5_module"`
+VERSION=$(apache2ctl -M | grep "[p]hp5_module")
 
-if [ ! "$version" ]; then
+if [ -z "$VERSION" ]; then
     echo "Failure"
     exit 1
 fi

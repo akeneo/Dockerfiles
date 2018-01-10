@@ -2,9 +2,9 @@
 
 echo "PHP FPM version should be 7.1"
 
-version=`ps aux | grep "[p]hp-fpm7.1"`
+VERSION=$(ps aux | grep "[p]hp-fpm7.1")
 
-if [ ! "$version" ]; then
+if [ -z "$VERSION" ]; then
     echo "Failure"
     exit 1
 fi

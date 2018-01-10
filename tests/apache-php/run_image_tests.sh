@@ -1,31 +1,26 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+DID_FAIL=0
 
-tag=$1
-didFail=0
-cwd=$(pwd)
+set -xeuo pipefail
 
-docker run -d --name akeneo-apache-php-${tag} -u docker -v ${cwd}/tests/apache-php:${cwd}/tests/apache-php akeneo/apache-php:${tag}
+IMAGE_TAG=$1
+SCRIPT_DIR=$(dirname $(realpath $0))
 
-if test "$(ls ${cwd}/tests/apache-php/common | grep .sh)"; then
-    for test in ${cwd}/tests/apache-php/common/*.sh; do
-        docker exec akeneo-apache-php-${tag} bash ${test}
+docker run -d --name akeneo-apache-php-${IMAGE_TAG} -u docker -v ${SCRIPT_DIR}:${SCRIPT_DIR} akeneo/apache-php:${IMAGE_TAG}
 
-        testOutput=$?
-        didFail=$((didFail + testOutput))
-    done
-fi
+for TEST in ${SCRIPT_DIR}/common/*.sh; do
+    test -f "$TEST" || continue
+    docker exec akeneo-apache-php-${IMAGE_TAG} bash ${TEST} || DID_FAIL=1
+done
 
-if test "$(ls ${cwd}/tests/apache-php/${tag} | grep .sh)"; then
-    for test in ${cwd}/tests/apache-php/${tag}/*.sh; do
-        docker exec akeneo-apache-php-${tag} bash ${test}
+for TEST in ${SCRIPT_DIR}/${IMAGE_TAG}/*.sh; do
+    test -f "$TEST" || continue
+    docker exec akeneo-apache-php-${IMAGE_TAG} bash ${TEST} || DID_FAIL=1
+done
 
-        testOutput=$?
-        didFail=$((didFail + testOutput))
-    done
-fi
+docker rm -f -v akeneo-apache-php-${IMAGE_TAG}
 
-docker rm -f -v akeneo-apache-php-${tag}
+test "0" -ne "$DID_FAIL" && exit 1
 
-test ${didFail} -eq '0'
+exit 0

@@ -2,9 +2,9 @@
 
 echo "PHP version should be 7.0"
 
-version=`php -v | grep "^PHP 7.0"`
+VERSION=$(php -v | grep "^PHP 7.0")
 
-if [ ! "$version" ]; then
+if [ -z "$VERSION" ]; then
     echo "Failure"
     exit 1
 fi

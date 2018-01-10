@@ -1,31 +1,26 @@
 #!/usr/bin/env bash
 
+DID_FAIL=0
+
 set -euo pipefail
 
-tag=$1
-didFail=0
-cwd=$(pwd)
+IMAGE_TAG=$1
+SCRIPT_DIR=$(dirname $(realpath $0))
 
-docker run -d --name akeneo-fpm-${tag} -u docker -v ${cwd}/tests/fpm:${cwd}/tests/fpm akeneo/fpm:${tag}
+docker run -d --name akeneo-fpm-${IMAGE_TAG} -u docker -v ${SCRIPT_DIR}:${SCRIPT_DIR} akeneo/fpm:${IMAGE_TAG}
 
-if test "$(ls ${cwd}/tests/fpm/common | grep .sh)"; then
-    for test in ${cwd}/tests/fpm/common/*.sh; do
-        docker exec akeneo-fpm-${tag} bash ${test}
+for TEST in ${SCRIPT_DIR}/common/*.sh; do
+    test -f "$TEST" || continue
+    docker exec akeneo-fpm-${IMAGE_TAG} bash ${TEST} || DID_FAIL=1
+done
 
-        testOutput=$?
-        didFail=$((didFail + testOutput))
-    done
-fi
+for TEST in ${SCRIPT_DIR}/${IMAGE_TAG}/*.sh; do
+    test -f "$TEST" || continue
+    docker exec akeneo-fpm-${IMAGE_TAG} bash ${TEST} || DID_FAIL=1
+done
 
-if test "$(ls ${cwd}/tests/fpm/${tag} | grep .sh)"; then
-    for test in ${cwd}/tests/fpm/${tag}/*.sh; do
-        docker exec akeneo-fpm-${tag} bash ${test}
+docker rm -f -v akeneo-fpm-${IMAGE_TAG}
 
-        testOutput=$?
-        didFail=$((didFail + testOutput))
-    done
-fi
+test "0" -ne "$DID_FAIL" && exit 1
 
-docker rm -f -v akeneo-fpm-${tag}
-
-test ${didFail} -eq '0'
+exit 0

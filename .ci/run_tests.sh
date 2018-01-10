@@ -1,23 +1,24 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+DID_FAIL=0
 
-images=("php" "fpm" "apache-php")
-tagPrefix=("" "php-" "php-")
+set -xeuo pipefail
 
-didFail=1
+IMAGES="php fpm apache-php"
+TAG_PREFIX="php-"
+SCRIPT_DIR=$(dirname $(realpath $0))
 
-cwd=$(pwd)
-for (( i=0; i<${#images[@]}; i++ )); do
-    didFail=0
-    imageTag=${tagPrefix[i]}${TAG}
+for IMAGE in ${IMAGES}; do
+    IMAGE_TAG=${TAG_PREFIX}${PHP_VERSION}
+    if [ "php" == "$IMAGE" ]; then
+        IMAGE_TAG=${PHP_VERSION}
+    fi
 
-    echo "Run tests for akeneo/${images[i]}:${imageTag} image"
+    echo "Run tests for akeneo/$IMAGE:$IMAGE_TAG image"
 
-    bash ${cwd}/tests/${images[i]}/run_image_tests.sh ${imageTag}
-
-    testsOutput=$?
-    didFail=$((didFail + testsOutput))
+    bash ${SCRIPT_DIR}/../tests/${IMAGE}/run_image_tests.sh ${IMAGE_TAG} || DID_FAIL=1
 done
 
-test ${didFail} -eq '0'
+test "0" -ne "$DID_FAIL" && exit 1
+
+exit 0

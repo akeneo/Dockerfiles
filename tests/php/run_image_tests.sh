@@ -1,27 +1,22 @@
 #!/usr/bin/env bash
 
+DID_FAIL=0
+
 set -euo pipefail
 
-tag=$1
-didFail=0
-cwd=$(pwd)
+IMAGE_TAG=$1
+SCRIPT_DIR=$(dirname $(realpath $0))
 
-if test "$(ls ${cwd}/tests/php/common | grep .sh)"; then
-    for test in ${cwd}/tests/php/common/*.sh; do
-        docker run -i -t --rm -u docker -v ${test}:/home/docker/test.sh akeneo/php:${tag} bash test.sh
+for TEST in ${SCRIPT_DIR}/common/*.sh; do
+    test -f "$TEST" || continue
+    docker run -i -t --rm -u docker -v ${TEST}:/home/docker/test.sh akeneo/php:${IMAGE_TAG} bash test.sh || DID_FAIL=1
+done
 
-        testOutput=$?
-        didFail=$((didFail + testOutput))
-    done
-fi
+for TEST in ${SCRIPT_DIR}/${IMAGE_TAG}/*.sh; do
+    test -f "$TEST" || continue
+    docker run -i -t --rm -u docker -v ${TEST}:/home/docker/test.sh akeneo/php:${IMAGE_TAG} bash test.sh || DID_FAIL=1
+done
 
-if test "$(ls ${cwd}/tests/php/${tag} | grep .sh)"; then
-    for test in ${cwd}/tests/php/${tag}/*.sh; do
-        docker run -i -t --rm -u docker -v ${test}:/home/docker/test.sh akeneo/php:${tag} bash test.sh
+test "0" -ne "$DID_FAIL" && exit 1
 
-        testOutput=$?
-        didFail=$((didFail + testOutput))
-    done
-fi
-
-test ${didFail} -eq '0'
+exit 0

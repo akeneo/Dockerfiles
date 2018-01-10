@@ -2,9 +2,9 @@
 
 echo "PHP version should be 5.6"
 
-version=`php -v | grep "^PHP 5.6"`
+VERSION=$(php -v | grep "^PHP 5.6")
 
-if [ ! "$version" ]; then
+if [ -z "$VERSION" ]; then
     echo "Failure"
     exit 1
 fi
