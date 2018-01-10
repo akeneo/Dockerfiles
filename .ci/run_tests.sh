@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 DID_FAIL=0
-
-set -xeuo pipefail
-
 IMAGES="php fpm apache-php"
 TAG_PREFIX="php-"
-SCRIPT_DIR=$(dirname $(realpath $0))
+
+PROJECT_DIR=$(dirname $(readlink -f $0))/../
 
 for IMAGE in ${IMAGES}; do
     IMAGE_TAG=${TAG_PREFIX}${PHP_VERSION}
@@ -14,9 +14,11 @@ for IMAGE in ${IMAGES}; do
         IMAGE_TAG=${PHP_VERSION}
     fi
 
+    docker inspect akeneo/${IMAGE}:${IMAGE_TAG} > /dev/null
+
     echo "Run tests for akeneo/$IMAGE:$IMAGE_TAG image"
 
-    bash ${SCRIPT_DIR}/../tests/${IMAGE}/run_image_tests.sh ${IMAGE_TAG} || DID_FAIL=1
+    bash ${PROJECT_DIR}/tests/${IMAGE}/run_image_tests.sh ${IMAGE_TAG} || DID_FAIL=1
 done
 
 test "0" -ne "$DID_FAIL" && exit 1
