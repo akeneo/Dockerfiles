@@ -1,6 +1,13 @@
 # Changelog
 
-## 2017-12-09
+## 2018-02-13
+
+### Enhancement
+
+- **Issue 288**: Set `error_reporting` to `E_ALL`.
+                 Externalize Akeneo specific configuration into `akeneo.ini` PHP configuration file.
+
+## 2018-01-10
 
 ### Enhancement
 
