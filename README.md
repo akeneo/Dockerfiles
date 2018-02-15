@@ -8,9 +8,9 @@ This repository contains Dockerfiles to be used for Akeneo PIM and other PHP or 
 
 ## Images and tags available
 
-- [**akeneo/php**](php/README.md): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`
-- [**akeneo/fpm**](fpm/README.md): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`)
-- [**akeneo/apache-php**](apache-php/README.md): An image with Apache + mod_php preconfigured, to be used with any PHP project, based on `akeneo/php`
+- [**akeneo/php**](php/7.1/README.md): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`
+- [**akeneo/fpm**](fpm/7.1/README.md): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`)
+- [**akeneo/apache-php**](apache-php/7.1/README.md): An image with Apache + mod_php preconfigured, to be used with any PHP project, based on `akeneo/php`
 
 All images are available as follow:
 

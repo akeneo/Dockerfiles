@@ -4,6 +4,7 @@
 
 ### Enhancement
 
+- **Issue 283**: Move PHP 7.1 Dockerfiles into their own folder.
 - **Issue 288**: Set `error_reporting` to `E_ALL`.
                  Externalize Akeneo specific configuration into `akeneo.ini` PHP configuration file.
 
@@ -11,7 +12,7 @@
 
 ### Enhancement
 
-- **Issue 118**: Introduce a testing architecture
+- **Issue 118**: Introduce a testing architecture.
 
 ## 2017-10-23
 

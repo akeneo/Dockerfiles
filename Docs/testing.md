@@ -6,15 +6,15 @@ Running the tests uses two main scripts:
 - `.ci/build_images.sh` will build the images from the Dockerfiles,
 - `.ci/run_tests.sh` will run all the tests.
 
-Both scripts are used on TravisCI, but can also be run on your machine.
+Both scripts are used on Travis CI, but can also be run on your machine.
 
 ### Building the images
 
 You need to first export a `PHP_VERSION` environment variable, to define which version of PHP you will build.
-For example, the following will build all images for PHP 7.0:
+For example, the following will build all images for PHP 7.1:
 
 ```bash
-$ export PHP_VERSION="7.0"
+$ export PHP_VERSION="7.1"
 ```
 
 Running the `build_images.sh` script will build the images only for the tag you exported, in the correct order:
@@ -33,8 +33,8 @@ the tests available for each image.
 The tests are all located in the `tests` directory, at the root of the project. They are split by images, all the tests
 of the `akeneo/php` image being in `tests/php` for instance. Each image directory contains a `common` directory, plus
 one directory per tag. The `common` directory contains tests that are to be run against all the versions of the image.
-The other contains tag specific tests: for example, tests placed in `tests/fpm/php-5.6` are to be run against
-`akeneo/fpm:php-5.6` only.
+The other contains tag specific tests: for example, tests placed in `tests/fpm/php-7.1` are to be run against
+`akeneo/fpm:php-7.1` only.
 
 The tests are run thanks to base scripts `run_image_tests.sh` placed in each image tests directory. You never
 have to run those scripts yourself nor modify them. They are here only to be called by `.ci/run_tests.sh`. They are
@@ -53,8 +53,8 @@ However, some rules have to be respected:
 
 A template is available [here](https://github.com/akeneo/Dockerfiles/blob/master/.ci/test_template.sh). Just copy it in
 the right folder. For example, if the test is to be run against all versions of `akeneo/apache-php` image, place it in
-`tests/apache-php/common/`. If it is specific to the PHP 7.0 version of the image, then place it in
-`tests/apache-php/php-7.0/`.
+`tests/apache-php/common/`. If it is specific to the PHP 7.1 version of the image, then place it in
+`tests/apache-php/php-7.1/`.
 
 ## Adding a new image
 
@@ -69,7 +69,7 @@ tagPrefix=("" "php-" "php-")
 
 The tag prefix allows to declare the TAG environment variable with only the PHP version, not the full Docker image tag.
 For example, tags of `akeneo/php` are just the PHP version used, when `akeneo/fpm` tags are prefixed: the image using
-PHP 5.6 corresponds to the tag `akeneo/fpm:php-5.6`.
+PHP 7.1 corresponds to the tag `akeneo/fpm:php-7.1`.
 
 When adding a new image, you need to add, in both scripts, the name of the image and the corresponding prefix. Order is
 important too, as it will decide in which order the images are build.
@@ -92,7 +92,7 @@ Then add a `common` directory, plus one directory for each tag. If we follow our
 the following directories:
 
 - tests/php-extended/common/
-- tests/php-extended/php-5.6/
+- tests/php-extended/php-7.1/
 - ...
 
 Finally, add the tests for this new image. If for any reason a folder remains empty, just put a `.gitkeep` empty file
