@@ -4,11 +4,11 @@
 
 This Dockerfile is a basic environment for PHP development, providing a preconfigured Apache (2.4) web server with `mod_php` enabled.
 
-It  based on [akeneo/php](https://hub.docker.com/r/akeneo/php), and comes with the following PHP extensions: apcu, curl, gd, intl, mcrypt, mongo, mysql, soap, xml, zip, and xdebug (this last one is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
+It is based on [akeneo/php](https://hub.docker.com/r/akeneo/php), and comes with the following PHP extensions: apcu, curl, gd, intl, mcrypt, mongo, mysql, soap, xml, zip, and xdebug (this last one is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
 
 **This image does not contain Akeneo PIM**.
 
-## Supported tags and respective `Dockerfile` links
+## Supported tags and corresponding `Dockerfile` links
 
 - `php-7.1`, `latest` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/apache-php/7.1/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.1 from [Sury repository](https://deb.sury.org/)
 - `php-7.0` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/apache-php/7.0/Dockerfile): The environment comes with Debian 9 (Stretch) with native PHP 7.0

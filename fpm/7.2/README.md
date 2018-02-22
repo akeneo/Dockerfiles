@@ -4,15 +4,18 @@
 
 This Dockerfile is a basic environment for PHP development, providing a preconfigured FastCGI Process Manager (FPM).
 
-It  based on [akeneo/php](https://hub.docker.com/r/akeneo/php), and comes with the following PHP extensions: apcu, curl, gd, intl, mcrypt, mongo, mysql, soap, xml, zip, and xdebug (this last one is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
+It is based on [akeneo/php](https://hub.docker.com/r/akeneo/php), and comes with the following PHP extensions: apcu, curl, gd, intl, mysql, soap, xml, zip, and xdebug (this last one is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
+
+Extensions mcrypt and mongo are also present on PHP 7.1 and previous versions.
 
 It is intended to be used [httpd](https://hub.docker.com/_/httpd) with FCGI enable or [nginx](https://hub.docker.com/_/nginx). The PHP FPM daemon is configured with "docker" as user and group, and listens to the port `9001`.
 
 **This image does not contain Akeneo PIM**.
 
-## Supported tags and respective `Dockerfile` links
+## Supported tags and corresponding `Dockerfile` links
 
-- `php-7.1`, `latest` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/7.1/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.1 from [Sury repository](https://deb.sury.org/)
+- `php-7.2`, `latest` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/7.2/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.1 from [Sury repository](https://deb.sury.org/)
+- `php-7.1` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/7.1/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.1 from [Sury repository](https://deb.sury.org/)
 - `php-7.0` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/7.0/Dockerfile): The environment comes with Debian 9 (Stretch) with native PHP 7.0
 - `php-5.6` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/5.6/Dockerfile): The environment comes with Debian 8 (Jessie) with native PHP 5.6
 
