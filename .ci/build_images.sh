@@ -2,7 +2,6 @@
 
 set -euo pipefail
 
-IMAGES="php fpm apache-php"
 TAG_PREFIX="php-"
 
 PROJECT_DIR=$(dirname $(readlink -f $0))/../

@@ -2,14 +2,14 @@
 
 [![Build Status](https://travis-ci.org/akeneo/Dockerfiles.svg?branch=master)](https://travis-ci.org/akeneo/Dockerfiles)
 
-This repository contains Dockerfiles to be used for Akeneo PIM and other PHP or Symfony development/testing. **Please do not use them for a production environment.** Feel free to use/adapt them if they fit your needs.
+This repository contains Dockerfiles to be used for [Akeneo PIM](https://www.akeneo.com/) and other PHP or Symfony development/testing. **Please do not use them for a production environment.** Feel free to use/adapt them if they fit your needs.
 
 **These images do not contain Akeneo PIM**.
 
 ## Images and tags available
 
-- [**akeneo/php**](php/7.1/README.md): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`
-- [**akeneo/fpm**](fpm/7.1/README.md): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`)
+- [**akeneo/php**](php/7.2/README.md): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`
+- [**akeneo/fpm**](fpm/7.2/README.md): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`)
 - [**akeneo/apache-php**](apache-php/7.1/README.md): An image with Apache + mod_php preconfigured, to be used with any PHP project, based on `akeneo/php`
 
 All images are available as follow:

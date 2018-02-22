@@ -2,9 +2,10 @@ language: bash
 services: docker
 
 env:
-  - PHP_VERSION=5.6
-  - PHP_VERSION=7.0
-  - PHP_VERSION=7.1
+  - PHP_VERSION=5.6 IMAGES="php fpm apache-php"
+  - PHP_VERSION=7.0 IMAGES="php fpm apache-php"
+  - PHP_VERSION=7.1 IMAGES="php fpm apache-php"
+  - PHP_VERSION=7.2 IMAGES="php fpm"
 
 script:
   - ./.ci/build_images.sh
