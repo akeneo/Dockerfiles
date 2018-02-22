@@ -25,6 +25,7 @@ All images are available as follow:
 | 7.1         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.1            |
 |             |                                                                                              | akeneo/fpm:php-7.1        |
 |             |                                                                                              | akeneo/apache-php:php-7.1 |
+| 7.2         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.2            |
 
 For all images, tag `latest` is identical to the one corresponding to the most recent PHP version.
 

@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
         apt-transport-https bash-completion ca-certificates curl git gnupg imagemagick \
-        less make mongodb-clients mysql-client perceptualdiff procps ssh-client sudo vim wget && \
+        less make mysql-client perceptualdiff procps ssh-client sudo vim wget && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
@@ -20,15 +20,15 @@ COPY files/sury.list /etc/apt/sources.list.d/sury.list
 # Install PHP with some extensions
 RUN apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
-        php7.1-cli php7.1-apcu php7.1-mbstring php7.1-curl php7.1-gd php7.1-imagick php7.1-intl php7.1-bcmath \
-        php7.1-mcrypt php7.1-mongodb php7.1-mysql php7.1-soap php7.1-xdebug php7.1-xml php7.1-zip php7.1-ldap && \
+        php7.2-cli php7.2-apcu php7.2-mbstring php7.2-curl php7.2-gd php7.2-imagick php7.2-intl php7.2-bcmath \
+        php7.2-mysql php7.2-soap php7.2-xdebug php7.2-xml php7.2-zip php7.2-ldap && \
     apt-get clean && apt-get --yes --quiet autoremove --purge && \
     rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
             /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Configure PHP CLI
-COPY files/akeneo.ini /etc/php/7.1/mods-available/akeneo.ini
+COPY files/akeneo.ini /etc/php/7.2/mods-available/akeneo.ini
 RUN phpenmod akeneo
 RUN phpdismod xdebug
 
