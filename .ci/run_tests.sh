@@ -3,7 +3,6 @@
 set -euo pipefail
 
 DID_FAIL=0
-IMAGES="php fpm apache-php"
 TAG_PREFIX="php-"
 
 PROJECT_DIR=$(dirname $(readlink -f $0))/../

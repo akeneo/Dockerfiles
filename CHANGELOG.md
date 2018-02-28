@@ -1,5 +1,11 @@
 # Changelog
 
+## 2018-02-23
+
+### Enhancement
+
+- **Issue 283**: Add PHP 7.2 for CLI and FPM (no more new Apache + mod_php image).
+
 ## 2018-02-13
 
 ### Enhancement
