@@ -41,7 +41,7 @@ And even if you are not new, it is a good start to understand how these images a
 Then, you can find out how to use these images in detail:
 - for PHP application development in the [Symfony docker-compose section](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/compose.md).
 - for Akeneo development and behat testing in the [official Akeneo documentation](https://docs.akeneo.com/).
-- for using XDebug on your IDEs please follow the [guide](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/debugging.md).
+- for using XDebug on your IDEs please follow this [guide](https://github.com/akeneo/Dockerfiles/blob/master/Docs/symfony/debugging.md).
 
 Please read carefully the [troubleshoothing section](https://github.com/akeneo/Dockerfiles/blob/master/Docs/troubleshooting.md) if you encounter any problem.
 If your problem is not listed in it, don't hesitate to [open an issue](https://github.com/akeneo/Dockerfiles/issues).
