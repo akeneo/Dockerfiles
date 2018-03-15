@@ -42,7 +42,6 @@ RUN chmod +x /usr/local/bin/composer
 COPY ./files/entrypoint.sh /usr/local/bin
 RUN chmod a+x /usr/local/bin/entrypoint.sh
 
-# Define "docker" as current user
 WORKDIR /home/docker/
 
 ENV PATH=bin:vendor/bin:$PATH
