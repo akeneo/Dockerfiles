@@ -1,5 +1,14 @@
 # Changelog
 
+## 2018-xx-xx
+
+### Enhancement
+
+- **Issue 227**: Make UID and GID configurable.
+
+### BC break
+- `docker` user has been removed. Current compose files will not work anymore.
+
 ## 2018-02-23
 
 ### Enhancement
@@ -8,7 +17,7 @@
 
 ## 2018-02-13
 
-### Enhancement
+### Enhancements
 
 - **Issue 283**: Move PHP 7.1 Dockerfiles into their own folder.
 - **Issue 288**: Set `error_reporting` to `E_ALL`.

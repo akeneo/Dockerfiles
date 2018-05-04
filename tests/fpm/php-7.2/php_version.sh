@@ -2,7 +2,7 @@
 
 echo "PHP FPM version should be 7.2"
 
-VERSION=$(ps aux | grep "[p]hp-fpm7.2")
+VERSION=$(ps aux | grep "[p]hp-fpm: master process (/etc/php/7.2/fpm/php-fpm.conf)")
 
 if [ -z "$VERSION" ]; then
     echo "Failure"

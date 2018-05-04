@@ -1,14 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 set -e
 
 XDEBUG_PATH="/etc/php/7.2/mods-available/xdebug.ini"
 
-function execAsRoot {
-    sudo bash -c "$1"
-}
-
 function writeXdebugSetting {
-    execAsRoot "echo $1 >> ${XDEBUG_PATH}"
+    bash -c "echo $1 >> ${XDEBUG_PATH}"
 }
 
 # checkOrWrite xdebugKey defaultValue providedValue
@@ -34,12 +31,20 @@ fi
 
 if [ ! -z "${PHP_XDEBUG_ENABLED}" ]; then
     if [ "${PHP_XDEBUG_ENABLED}" == "1" ]; then
-        execAsRoot "phpenmod xdebug"
+        phpenmod xdebug
     elif [ "${PHP_XDEBUG_ENABLED}" == "0" ]; then
-        execAsRoot "phpdismod xdebug"
+        phpdismod xdebug
     fi
 else
-    execAsRoot "phpdismod xdebug"
+    phpdismod xdebug
+fi
+
+if [ -z "${FPM_UID}" ]; then
+    export FPM_UID=1000
+fi
+
+if [ -z "${FPM_GID}" ]; then
+    export FPM_GID=1000
 fi
 
 eval "${@}"
