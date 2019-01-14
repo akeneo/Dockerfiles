@@ -4,7 +4,7 @@
 
 This Dockerfile is a basic environment for PHP development, providing a preconfigured Apache (2.4) web server with `mod_php` enabled.
 
-It is based on [akeneo/php](https://hub.docker.com/r/akeneo/php), and comes with the following PHP extensions: apcu, curl, gd, intl, mcrypt, mongo, mysql, soap, xml, zip, and xdebug (this last one is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
+It is based on [akeneo/php](https://hub.docker.com/r/akeneo/php), and comes with the following PHP extensions: apcu, curl, gd, intl, mcrypt, mongo, mysql, xml, zip, and xdebug (this last one is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
 
 **This image does not contain Akeneo PIM**.
 
