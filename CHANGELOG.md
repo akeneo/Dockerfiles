@@ -2,6 +2,12 @@
 
 ## 2018-08-18
 
+### Enhancement
+
+- **TIP 1018**: Removes unused SOAP extension
+
+## 2018-08-18
+
 ### Bug fix
 
 - **Issue 323**: Set timezone to `UTC` and increase `post_max_size` so it is larger than `upload_max_filesize`.
