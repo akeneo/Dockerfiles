@@ -1,5 +1,10 @@
 # Changelog
 
+## 2019-01-14
+
+## Enhancement
+ - TIP-1018: Removes unused SOAP PHP extension from 7.2 images, as it's not used by Akeneo 3.x
+
 ## 2018-08-18
 
 ### Bug fix

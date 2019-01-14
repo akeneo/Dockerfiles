@@ -4,7 +4,7 @@
 
 This Dockerfile is a basic environment for PHP development, providing a preconfigured FastCGI Process Manager (FPM).
 
-It is based on [akeneo/php](https://hub.docker.com/r/akeneo/php), and comes with the following PHP extensions: apcu, curl, gd, intl, mysql, soap, xml, zip, and xdebug (this last one is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
+It is based on [akeneo/php](https://hub.docker.com/r/akeneo/php), and comes with the following PHP extensions: apcu, curl, gd, intl, mysql, xml, zip, and xdebug (this last one is deactivated by default, run `phpenmod xdebug` and restart Apache to enable it).
 
 Extensions mcrypt and mongo are also present on PHP 7.1 and previous versions.
 
