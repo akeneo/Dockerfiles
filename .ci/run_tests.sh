@@ -8,9 +8,9 @@ TAG_PREFIX="php-"
 PROJECT_DIR=$(dirname $(readlink -f $0))/../
 
 for IMAGE in ${IMAGES}; do
-    IMAGE_TAG=${TAG_PREFIX}${PHP_VERSION}
-    if [ "php" == "$IMAGE" ]; then
-        IMAGE_TAG=${PHP_VERSION}
+    IMAGE_TAG=${VERSION}
+    if [[ "php" != "$IMAGE" && "node" != "$IMAGE" ]]; then
+        IMAGE_TAG=${TAG_PREFIX}${VERSION}
     fi
 
     docker inspect akeneo/${IMAGE}:${IMAGE_TAG} > /dev/null
