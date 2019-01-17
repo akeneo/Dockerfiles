@@ -2,8 +2,15 @@
 
 ## 2019-01-14
 
-## Enhancement
- - TIP-1018: Removes unused SOAP PHP extension from 7.2 images, as it's not used by Akeneo 3.x
+### Enhancement
+
+- Issue-330: Add new `akeneo/node` 8 and 10 images.
+
+## 2019-01-14
+
+### Enhancement
+
+ - Issue-334: Removes unused SOAP PHP extension from 7.2 images, as it's not used by Akeneo 3.x.
 
 ## 2018-08-18
 

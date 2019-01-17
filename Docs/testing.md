@@ -13,13 +13,13 @@ Both scripts are used on Travis CI, but can also be run manually on your machine
 You need to first export two environment variables to define which images and which tag you'll be building:
 
 - `IMAGES` will contains the list of images to build,
-- `PHP_VERSION` corresponds to the PHP version of the tag you want.
+- `VERSION` corresponds to the PHP or Node version of the tag you want.
 
 For example, the following will build all images for PHP 7.1:
 
 ```bash
 $ export IMAGES="php fpm apache-php"
-$ export PHP_VERSION="7.1"
+$ export VERSION="7.1"
 ```
 
 Running the `build_images.sh` script will build the images only for the tag you exported, in the order you set in the `IMAGES` environment variable.
