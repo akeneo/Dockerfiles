@@ -1,5 +1,11 @@
 # Changelog
 
+## 2019-02-15
+
+### Enhancement
+
+- Issue-329: Add 7.3 images for PHP & PHP-FPM.
+
 ## 2019-01-14
 
 ### Enhancement
