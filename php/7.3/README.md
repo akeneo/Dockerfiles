@@ -12,7 +12,8 @@ Extensions mcrypt and mongo are also present on PHP 7.1 and previous versions.
 
 ## Supported tags and corresponding `Dockerfile` links
 
-- `7.2`, `latest` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/7.2/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.2 from [Sury repository](https://deb.sury.org/)
+- `7.3`, `latest` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/7.3/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.3 from [Sury repository](https://deb.sury.org/)
+- `7.2` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/7.2/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.2 from [Sury repository](https://deb.sury.org/)
 - `7.1` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/7.1/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.1 from [Sury repository](https://deb.sury.org/)
 - `7.0` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/7.0/Dockerfile): The environment comes with Debian 9 (Stretch) with native PHP 7.0
 - `5.6` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/php/5.6/Dockerfile): The environment comes with Debian 8 (Jessie) with native PHP 5.6

@@ -8,8 +8,8 @@ This repository contains Dockerfiles to be used for [Akeneo PIM](https://www.ake
 
 ## Images and tags available
 
-- [**akeneo/php**](php/7.2/README.md): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`
-- [**akeneo/fpm**](fpm/7.2/README.md): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`)
+- [**akeneo/php**](php/7.3/README.md): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`
+- [**akeneo/fpm**](fpm/7.3/README.md): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`)
 - [**akeneo/apache-php**](apache-php/7.1/README.md): An image with Apache + mod_php preconfigured, to be used with any PHP project, based on `akeneo/php`
 
 All images are available as follow:
@@ -27,11 +27,14 @@ All images are available as follow:
 |             |                                                                                              | akeneo/apache-php:php-7.1 |
 | 7.2         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.2            |
 |             |                                                                                              | akeneo/fpm:php-7.2        |
+| 7.2         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.3            |
+|             |                                                                                              | akeneo/fpm:php-7.3        |
 
 For all images, tag `latest` is identical to the one corresponding to the most recent PHP version.
 
 Please, remember that only Apache + mod_php, with PHP 5.6, is officially supported by Akeneo 1.7 and previous versions.
-On the other hand, Akeneo 2.O is to be used only with PHP 7.1, with php-fpm and Apache 2.4 with FCGI.
+Akeneo 2.O is to be used only with PHP 7.1 (or higher), with php-fpm and Apache 2.4 with FCGI.
+Akeneo 3.0 is to be used only with PHP 7.2 (or higher), with php-fpm and Apache 2.4 with FCGI.
 
 ## How to use these images
 
