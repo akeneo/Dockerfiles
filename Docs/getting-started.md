@@ -45,7 +45,7 @@ Those examples could use a more recent version in the future, and we encourage y
 version: '2'
 
 networks:         # Here we define a network, in which everything that happen in the containers will be isolated.
-  application: ~  # We only define the name of the network, no specific configuration.
+  application:    # We only define the name of the network, no specific configuration.
 
 services:         # Each service you define below will be a container. It allows you to define you container configuration in a clear, readable way
   apache:         # This is our Apache + PHP container (as `mod_php` package needs both `php` and `apache` package, everything is in one container)

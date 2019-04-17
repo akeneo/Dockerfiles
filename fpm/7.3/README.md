@@ -17,8 +17,6 @@ It is intended to be used [httpd](https://hub.docker.com/_/httpd) with FCGI enab
 - `php-7.3` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/7.3/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.3 from [Sury repository](https://deb.sury.org/)
 - `php-7.2` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/7.2/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.2 from [Sury repository](https://deb.sury.org/)
 - `php-7.1` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/7.1/Dockerfile): The environment comes with Debian 9 (Stretch) with PHP 7.1 from [Sury repository](https://deb.sury.org/)
-- `php-7.0` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/7.0/Dockerfile): The environment comes with Debian 9 (Stretch) with native PHP 7.0
-- `php-5.6` [(Dockerfile)](https://github.com/akeneo/Dockerfiles/blob/master/fpm/5.6/Dockerfile): The environment comes with Debian 8 (Jessie) with native PHP 5.6
 
 ## How to use it
 
@@ -27,7 +25,7 @@ It is intended to be used [httpd](https://hub.docker.com/_/httpd) with FCGI enab
 You can directly pull this image from [Docker hub](https://hub.docker.com/r/akeneo/apache-php/) by running:
 
 ```bash
-$ docker run -d --name akeneo-fpm akeneo/fpm
+$ docker pull akeneo/fpm
 ```
 
 ### Build the image from GitHub
