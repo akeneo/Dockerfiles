@@ -18,7 +18,7 @@ You need to first export two environment variables to define which images and wh
 For example, the following will build all images for PHP 7.1:
 
 ```bash
-$ export IMAGES="php fpm apache-php"
+$ export IMAGES="php fpm"
 $ export VERSION="7.1"
 ```
 
@@ -51,4 +51,4 @@ However, some rules have to be followed:
 - return `0` in case of success, `1` in case of failure.
 
 A template is available [here](https://github.com/akeneo/Dockerfiles/blob/master/.ci/test_template.sh). Just copy it in the right folder and rename it.
-For example, if the test is to be run against all versions of `akeneo/apache-php` image, place it in `tests/apache-php/common/`. If it is specific to the PHP 7.1 version of the image, then place it in `tests/apache-php/php-7.1/`.
+For example, if the test is to be run against all versions of `akeneo/php` image, place it in `tests/php/common/`. If it is specific to the PHP 7.1 version of the image, then place it in `tests/php/php-7.1/`.

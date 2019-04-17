@@ -1,5 +1,11 @@
 # Changelog
 
+## 2019-04-17
+
+### Enhancement
+
+- Issue-338: Remove PHP 5.6 and 7.0 based and `akeneo/apache` deprecated Dockerfiles.
+
 ## 2019-02-15
 
 ### Enhancement
