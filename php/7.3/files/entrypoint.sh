@@ -38,4 +38,4 @@ else
     execAsRoot "phpdismod xdebug"
 fi
 
-eval "${@}"
+exec "${@}"
