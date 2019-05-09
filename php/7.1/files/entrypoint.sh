@@ -32,12 +32,8 @@ else
     writeXdebugSetting "xdebug.remote_host=${PHP_XDEBUG_REMOTE_HOST}"
 fi
 
-if [ ! -z "${PHP_XDEBUG_ENABLED}" ]; then
-    if [ "${PHP_XDEBUG_ENABLED}" == "1" ]; then
-        execAsRoot "phpenmod xdebug"
-    elif [ "${PHP_XDEBUG_ENABLED}" == "0" ]; then
-        execAsRoot "phpdismod xdebug"
-    fi
+if [[ "${PHP_XDEBUG_ENABLED}" == "1" ]]; then
+    execAsRoot "phpenmod xdebug"
 else
     execAsRoot "phpdismod xdebug"
 fi
