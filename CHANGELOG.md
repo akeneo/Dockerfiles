@@ -1,28 +1,40 @@
 # Changelog
 
+## 2019-05-10
+
+### Bug fix
+
+- **Issue 342**: Fix an issue with "eval" in the PHP image entry points. Cheers [Lärsle](https://github.com/lars85).
+
+## 2019-05-09
+
+### Enhancement
+
+- **Issue 340**: Simplify PHP_XDEBUG_ENABLED condition. Cheers [Lärsle](https://github.com/lars85).
+
 ## 2019-04-17
 
 ### Enhancement
 
-- Issue-338: Remove PHP 5.6 and 7.0 based and `akeneo/apache` deprecated Dockerfiles.
+- **Issue 338**: Remove PHP 5.6 and 7.0 based and `akeneo/apache` deprecated Dockerfiles.
 
 ## 2019-02-15
 
 ### Enhancement
 
-- Issue-329: Add 7.3 images for PHP & PHP-FPM.
+- **Issue 329**: Add 7.3 images for PHP & PHP-FPM.
 
 ## 2019-01-14
 
 ### Enhancement
 
-- Issue-330: Add new `akeneo/node` 8 and 10 images.
+- **Issue 330**: Add new `akeneo/node` 8 and 10 images.
 
 ## 2019-01-14
 
 ### Enhancement
 
- - Issue-334: Removes unused SOAP PHP extension from 7.2 images, as it's not used by Akeneo 3.x.
+ - **Issue 334**: Removes unused SOAP PHP extension from 7.2 images, as it's not used by Akeneo 3.x.
 
 ## 2018-08-18
 
