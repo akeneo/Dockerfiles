@@ -8,9 +8,9 @@ This repository contains Dockerfiles to be used for [Akeneo PIM](https://www.ake
 
 ## Images and tags available
 
-- [**akeneo/php**](php/7.3/README.md): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`. This image is used to run command line PHP scripts.
-- [**akeneo/fpm**](fpm/7.3/README.md): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`). This image is to be used with Apache to serve the PIM.
-- [**akeneo/node**](node/10/README.md): An image with Chromium and Puppeteer, used to run the front-end tests of the PIM.
+- [**akeneo/php**](https://hub.docker.com/r/akeneo/php): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`. This image is used to run command line PHP scripts.
+- [**akeneo/fpm**](https://hub.docker.com/r/akeneo/fpm): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`). This image is to be used with Apache to serve the PIM.
+- [**akeneo/node**](https://hub.docker.com/r/akeneo/node): An image with Chromium and Puppeteer, used to run the front-end tests of the PIM.
 
 All PHP and FPM images are available as follow:
 
