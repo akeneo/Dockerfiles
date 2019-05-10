@@ -8,10 +8,11 @@ This repository contains Dockerfiles to be used for [Akeneo PIM](https://www.ake
 
 ## Images and tags available
 
-- [**akeneo/php**](php/7.3/README.md): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`
-- [**akeneo/fpm**](fpm/7.3/README.md): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`)
+- [**akeneo/php**](php/7.3/README.md): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`. This image is used to run command line PHP scripts.
+- [**akeneo/fpm**](fpm/7.3/README.md): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`). This image is to be used with Apache to serve the PIM.
+- [**akeneo/node**](node/10/README.md): An image with Chromium and Puppeteer, used to run the front-end tests of the PIM.
 
-All images are available as follow:
+All PHP and FPM images are available as follow:
 
 | PHP version | Based on                                                                                     | Corresponding tags |
 |-------------|----------------------------------------------------------------------------------------------|--------------------|
@@ -19,10 +20,17 @@ All images are available as follow:
 |             |                                                                                              | akeneo/fpm:php-7.1 |
 | 7.2         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.2     |
 |             |                                                                                              | akeneo/fpm:php-7.2 |
-| 7.2         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.3     |
+| 7.3         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.3     |
 |             |                                                                                              | akeneo/fpm:php-7.3 |
 
-For all images, tag `latest` is identical to the one corresponding to the most recent PHP version.
+And for Node images:
+
+| Node version | Based on                            | Corresponding tags |
+|--------------|-------------------------------------|--------------------|
+| 8            | Official Docker image `node:8-slim  | akeneo/node:8      |
+| 10           | Official Docker image `node:10-slim | akeneo/node:10     |
+
+For all images, tag `latest` is identical to the one corresponding to the most recent language version.
 
 Akeneo 2.x is to be used only with PHP 7.1 (or higher), with php-fpm and Apache 2.4 with FCGI.
 Akeneo 3.x is to be used only with PHP 7.2 (or higher), with php-fpm and Apache 2.4 with FCGI.
