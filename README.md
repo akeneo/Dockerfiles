@@ -28,7 +28,7 @@ And for Node images:
 | Node version | Based on                            | Corresponding tags |
 |--------------|-------------------------------------|--------------------|
 | 8            | Official Docker image `node:8-slim`  | akeneo/node:8      |
-| 10           | Official Docker image `node:10-slim | akeneo/node:10     |
+| 10           | Official Docker image `node:10-slim` | akeneo/node:10     |
 
 For all images, tag `latest` is identical to the one corresponding to the most recent language version.
 
