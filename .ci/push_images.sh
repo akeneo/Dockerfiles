@@ -17,7 +17,7 @@ for IMAGE in ${IMAGES}; do
 
     docker push akeneo/${IMAGE}:${IMAGE_TAG}
 
-    if [[ "php" == "$IMAGE" || "fpm" == "$IMAGE" ] && [ "$LATEST_PHP_VERSION" == "$VERSION" ]]; then
+    if [[ "php" == "$IMAGE" || "fpm" == "$IMAGE" ]] && [[ "$LATEST_PHP_VERSION" == "$VERSION" ]]; then
         docker tag akeneo/${IMAGE}:${IMAGE_TAG} akeneo/${IMAGE}:latest
         docker push akeneo/${IMAGE}:latest
     fi
