@@ -11,3 +11,9 @@ env:
 script:
   - ./.ci/build_images.sh
   - ./.ci/run_tests.sh
+
+deploy:
+  provider: script
+  script: ./.ci/push_images.sh "7.3" "10"
+  on:
+    branch: master

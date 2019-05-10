@@ -1,5 +1,11 @@
 # Changelog
 
+## 2019-05-xx
+
+### Enhancement
+
+- **Issue 282**: Use the CI to build and push the images to the Docker registry.
+
 ## 2019-05-10
 
 ### Bug fix
