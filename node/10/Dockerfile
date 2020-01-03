@@ -3,6 +3,9 @@ MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others).
 # Note: this installs the necessary libs to make work the bundled version of Chromium that Puppeteer installs.
+#
+# Puppeter is installed as a JS dependency in the PIM. It is not needed directly in the image.
+# @see https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 RUN apt-get update \
     && apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
             fonts-liberation gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 \
@@ -23,14 +26,5 @@ RUN apt-get update \
 # It's a good idea to use dumb-init to help prevent zombie chrome processes.
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 /usr/local/bin/dumb-init
 RUN chmod +x /usr/local/bin/dumb-init
-
-# Install puppeteer so it's available in the container.
-RUN npm i puppeteer
-
-# Add user so we don't need --no-sandbox.
-RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-    && mkdir -p /home/pptruser/Downloads \
-    && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /node_modules
 
 ENTRYPOINT ["dumb-init", "--"]
