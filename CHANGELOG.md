@@ -1,15 +1,16 @@
 # Changelog
 
-## 2019-05-xx
+## 2020-02-21
 
-### Enhancement
+### Bug fix
 
-- **Issue 282**: Use the CI to build and push the images to the Docker registry.
+- **Issue 353**: Fix `akeneo/node:10` build and remove PIM 2.x dedicated images: `akeneo/php:7.1`, `akeneo/fpm:php-7.1` and `akeneo/node:8`.
 
 ## 2019-05-10
 
 ### Bug fix
 
+- **Issue 282**: Use the CI to build and push the images to the Docker registry.
 - **Issue 342**: Fix an issue with "eval" in the PHP image entry points. Cheers [Lärsle](https://github.com/lars85).
 
 ## 2019-05-09

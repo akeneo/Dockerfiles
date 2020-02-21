@@ -11,7 +11,7 @@ In this case we use a part of the default configuration of a php-fpm and httpd a
 ```yaml
 services:
   fpm:
-    image: akeneo/fpm:php-7.1
+    image: akeneo/fpm:php-7.2
     environment:
       PHP_IDE_CONFIG: 'serverName=cli' # Your will need the server name for your IDE config
       PHP_XDEBUG_ENABLED: 1 # Set to 0 if you don't want to activate xdebug
