@@ -4,7 +4,7 @@
 
 ### Bug fix
 
-- **Issue 353**: Fix `akeneo/node:10` build.
+- **Issue 353**: Fix `akeneo/node:10` build and remove PIM 2.x dedicated images: `akeneo/php:7.1`, `akeneo/fpm:php-7.1` and `akeneo/node:8`.
 
 ## 2019-05-10
 

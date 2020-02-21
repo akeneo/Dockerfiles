@@ -2,10 +2,8 @@ language: bash
 services: docker
 
 env:
-  - VERSION=7.1 IMAGES="php fpm"
   - VERSION=7.2 IMAGES="php fpm"
   - VERSION=7.3 IMAGES="php fpm"
-  - VERSION=8 IMAGES="node"
   - VERSION=10 IMAGES="node"
 
 script:
