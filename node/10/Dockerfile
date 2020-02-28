@@ -4,9 +4,7 @@ MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 ARG USER_ID=1000
 
 # Delete and recreate node user with the provided id
-RUN userdel --remove node \
-    && groupadd -g $USER_ID node \
-    && useradd -lms /bin/bash -u $USER_ID node -g node
+RUN usermod --uid ${USER_ID} node && groupmod --gid ${USER_ID} node
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others).
 # Note: this installs the necessary libs to make work the bundled version of Chromium that Puppeteer installs.
