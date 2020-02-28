@@ -1,6 +1,12 @@
 FROM node:10-slim
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
+ARG USER_ID=1000
+
+RUN userdel --remove node \
+    && groupadd -g $USER_ID node \
+    && useradd -lms /bin/bash -u $USER_ID node -g node
+
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others).
 # Note: this installs the necessary libs to make work the bundled version of Chromium that Puppeteer installs.
 #
