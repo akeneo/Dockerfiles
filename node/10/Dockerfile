@@ -1,6 +1,11 @@
 FROM node:10-slim
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
+ARG USER_ID=1000
+
+# Change the id of the node user to the provided value
+RUN usermod --uid ${USER_ID} node && groupmod --gid ${USER_ID} node
+
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others).
 # Note: this installs the necessary libs to make work the bundled version of Chromium that Puppeteer installs.
 #
