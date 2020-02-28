@@ -3,6 +3,7 @@ MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
 ARG USER_ID=1000
 
+# Delete and recreate node user with the provided id
 RUN userdel --remove node \
     && groupadd -g $USER_ID node \
     && useradd -lms /bin/bash -u $USER_ID node -g node
