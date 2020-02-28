@@ -1,5 +1,8 @@
 # Changelog
 
+## 2020-02-28
+- **Issue 354**: Allow `node` user of `akeneo/node:10` image to be given an id other than `1000`
+
 ## 2020-02-21
 
 ### Bug fix
