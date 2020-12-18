@@ -20,16 +20,16 @@ function checkOrWriteXdebugSetting {
    fi
 }
 
-writeXdebugSetting "xdebug.remote_enable=1"
 writeXdebugSetting "xdebug.max_nesting_level=500"
-writeXdebugSetting "xdebug.default_enable=1"
+writeXdebugSetting "xdebug.start_with_request=yes"
+writeXdebugSetting "xdebug.mode=debug"
 
 checkOrWriteXdebugSetting "xdebug.idekey" "XDEBUG_IDE_KEY" "${PHP_XDEBUG_IDE_KEY}"
 
 if [ -z "${PHP_XDEBUG_REMOTE_HOST}" ]; then
-    writeXdebugSetting "xdebug.remote_connect_back=1"
+    writeXdebugSetting "xdebug.discover_client_host=1"
 else
-    writeXdebugSetting "xdebug.remote_host=${PHP_XDEBUG_REMOTE_HOST}"
+    writeXdebugSetting "xdebug.client_host=${PHP_XDEBUG_REMOTE_HOST}"
 fi
 
 if [[ "${PHP_XDEBUG_ENABLED}" == "1" ]]; then

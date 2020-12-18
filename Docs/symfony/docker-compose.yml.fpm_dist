@@ -9,7 +9,7 @@ services:
       PHP_XDEBUG_ENABLED: 0                           # [optional] This is the default value, change to 1 to enable Xdebug
       PHP_XDEBUG_IDE_KEY: XDEBUG_IDE_KEY              # [optional] This is the default value
       PHP_XDEBUG_REMOTE_HOST: xxx.xxx.xxx.xxx         # Replace with your host IP (only for Windows and Mac as Linux uses IPC socket)
-      XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx'    # Replace with your host IP
+      XDEBUG_CONFIG: 'client_host=xxx.xxx.xxx.xxx'    # Replace with your host IP
     user: docker
     volumes:
       - ./:/srv/application

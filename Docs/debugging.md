@@ -16,7 +16,7 @@ services:
       PHP_IDE_CONFIG: 'serverName=cli' # Your will need the server name for your IDE config
       PHP_XDEBUG_ENABLED: 1 # Set to 0 if you don't want to activate xdebug
       PHP_XDEBUG_IDE_KEY: 'XDEBUG_IDE_KEY' # the IDE KEY you want to use
-      XDEBUG_CONFIG: 'remote_host=xxx.xxx.xxx.xxx' # Your host IP address, useful for CLI debugging
+      XDEBUG_CONFIG: 'client_host=xxx.xxx.xxx.xxx' # Your host IP address, useful for CLI debugging
     volumes:
       - ./:/srv/application
 
