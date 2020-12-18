@@ -142,7 +142,7 @@ services:
   fpm:
     environment:
       PHP_XDEBUG_ENABLED: 1
-      XDEBUG_CONFIG: 'your host IP address'
+      XDEBUG_CONFIG: 'client_host=<your host IP address>'
 ```
 
 Then you just have to run `docker-compose up -d` again and XDebug will be activated.
