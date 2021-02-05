@@ -1,4 +1,4 @@
-FROM node:12-slim
+FROM node:12-buster-slim
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
 ARG USER_ID=1000
