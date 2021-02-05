@@ -1,5 +1,13 @@
-FROM node:12-buster-slim
+FROM debian:buster-slim
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
+
+RUN apt-get update && \
+    apt-get --yes install \
+        yarnpkg \
+        nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    ln -s /usr/bin/yarnpkg /usr/bin/yarn
 
 ARG USER_ID=1000
 
