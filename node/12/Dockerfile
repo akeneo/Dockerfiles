@@ -1,10 +1,11 @@
-FROM node:12-slim
+FROM debian:buster-slim
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
-ARG USER_ID=1000
+RUN groupadd --gid 1000 node \
+    && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
-# Change the id of the node user to the provided value
-RUN usermod --uid ${USER_ID} node && groupmod --gid ${USER_ID} node
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+    && apt-get install -y nodejs
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others).
 # Note: this installs the necessary libs to make work the bundled version of Chromium that Puppeteer installs.
@@ -33,5 +34,7 @@ RUN apt-get update \
 # It's a good idea to use dumb-init to help prevent zombie chrome processes.
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 /usr/local/bin/dumb-init
 RUN chmod +x /usr/local/bin/dumb-init
+
+USER node
 
 ENTRYPOINT ["dumb-init", "--"]
