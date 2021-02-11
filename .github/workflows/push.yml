@@ -5,8 +5,6 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                VERSION: [ubuntu-latest, macos-latest, windows-latest]
-                IMAGES: [ubuntu-latest, macos-latest, windows-latest]
                 include:
                     - version: 7.2
                       image: "php fpm"
@@ -23,5 +21,5 @@ jobs:
             -   name: Test
                 run: ./.ci/run_tests.sh
                 env:
-                    POSTGRES_HOST: postgres
-                    POSTGRES_PORT: 5432
+                    VERSION: ${{ matrix.version }}
+                    IMAGES: ${{ matrix.images }}
