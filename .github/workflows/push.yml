@@ -6,13 +6,13 @@ jobs:
         strategy:
             matrix:
                 include:
-                    - version: 7.2
+                    - version: "7.2"
                       images: "php fpm"
-                    - version: 7.3
+                    - version: "7.3"
                       images: "php fpm"
-                    - version: 10
+                    - version: "10"
                       images: "node"
-                    - version: 12
+                    - version: "12"
                       images: "node"
         steps:
             -   uses: actions/checkout@v2
