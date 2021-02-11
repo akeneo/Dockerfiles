@@ -7,13 +7,13 @@ jobs:
             matrix:
                 include:
                     - version: 7.2
-                      image: "php fpm"
+                      images: "php fpm"
                     - version: 7.3
-                      image: "php fpm"
+                      images: "php fpm"
                     - version: 10
-                      image: "node"
+                      images: "node"
                     - version: 12
-                      image: "node"
+                      images: "node"
         steps:
             -   uses: actions/checkout@v2
 
