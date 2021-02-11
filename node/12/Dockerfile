@@ -5,15 +5,15 @@ RUN groupadd --gid 1000 node \
     && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
 # Install NodeJS v12 from Debian binary distribution
-RUN apt-get update && \
+RUN echo 'path-exclude=/usr/share/man/*' > /etc/dpkg/dpkg.cfg.d/path_exclusions && \
+    echo 'path-exclude=/usr/share/doc/*' >> /etc/dpkg/dpkg.cfg.d/path_exclusions && \
+    apt-get update && \
     apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
     curl dirmngr apt-transport-https lsb-release && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs \
     && apt-get clean && apt-get --yes --quiet autoremove --purge \
-    && rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-            /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
-            /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others).
 # Note: this installs the necessary libs to make work the bundled version of Chromium that Puppeteer installs.
@@ -35,9 +35,7 @@ RUN apt-get update \
     && apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
             google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf \
     && apt-get clean && apt-get --yes --quiet autoremove --purge \
-    && rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-            /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
-            /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # It's a good idea to use dumb-init to help prevent zombie chrome processes.
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 /usr/local/bin/dumb-init
