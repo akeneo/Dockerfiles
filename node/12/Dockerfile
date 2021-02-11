@@ -4,8 +4,16 @@ MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 RUN groupadd --gid 1000 node \
     && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
-    && apt-get install -y nodejs
+# Install NodeJS v12 from Debian binary distribution
+RUN apt-get update && \
+    apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
+    curl dirmngr apt-transport-https lsb-release && \
+    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+    apt-get install -y nodejs \
+    && apt-get clean && apt-get --yes --quiet autoremove --purge \
+    && rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+            /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
+            /usr/share/lintian/* /usr/share/locale/* /usr/share/man/*
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others).
 # Note: this installs the necessary libs to make work the bundled version of Chromium that Puppeteer installs.
@@ -25,7 +33,7 @@ RUN apt-get update \
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && apt-get update \
     && apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
-            google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst ttf-freefont \
+            google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf \
     && apt-get clean && apt-get --yes --quiet autoremove --purge \
     && rm -rf  /var/lib/apt/lists/* /tmp/* /var/tmp/* \
             /usr/share/doc/* /usr/share/groff/* /usr/share/info/* /usr/share/linda/* \
