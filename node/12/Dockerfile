@@ -4,16 +4,25 @@ MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 RUN groupadd --gid 1000 node \
     && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
-# Install NodeJS v12 from Debian binary distribution
 RUN echo 'path-exclude=/usr/share/man/*' > /etc/dpkg/dpkg.cfg.d/path_exclusions && \
     echo 'path-exclude=/usr/share/doc/*' >> /etc/dpkg/dpkg.cfg.d/path_exclusions && \
     apt-get update && \
-    apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
-    curl dirmngr apt-transport-https lsb-release && \
-    curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-    apt-get install -y nodejs \
-    && apt-get clean && apt-get --yes --quiet autoremove --purge \
+    apt-get --no-install-recommends --no-install-suggests -y -q install \
+    wget apt-transport-https ca-certificates gnupg && \
+    apt-get clean && apt-get --yes --quiet autoremove --purge && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# NodeJS v12 and Yarn
+RUN sh -c 'wget -q -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn apt-key add -' && \
+    sh -c 'echo "deb https://deb.nodesource.com/node_12.x buster main" > /etc/apt/sources.list.d/nodesource.list' && \
+    sh -c 'echo "deb-src https://deb.nodesource.com/node_12.x buster main" >> /etc/apt/sources.list.d/nodesource.list' && \
+    sh -c 'wget -q -O - https://dl.yarnpkg.com/debian/pubkey.gpg | APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn apt-key add -' && \
+    sh -c 'echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list' && \
+    apt-get update && \
+    apt-get install -y nodejs yarn \
+    && apt-get clean && apt-get -y -q autoremove --purge \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others).
 # Note: this installs the necessary libs to make work the bundled version of Chromium that Puppeteer installs.
@@ -21,7 +30,7 @@ RUN echo 'path-exclude=/usr/share/man/*' > /etc/dpkg/dpkg.cfg.d/path_exclusions 
 # Puppeter is installed as a JS dependency in the PIM. It is not needed directly in the image.
 # @see https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 RUN apt-get update \
-    && apt-get --no-install-recommends --no-install-suggests --yes --quiet install \
+    && apt-get --no-install-recommends --no-install-suggests -y -q install \
             ca-certificates fonts-liberation gconf-service gnupg libasound2 libatk1.0-0 libcairo2 libcups2 \
             libdbus-1-3 libexpat1 libfontconfig1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 \
             libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 \
