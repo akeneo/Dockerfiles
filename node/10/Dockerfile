@@ -1,6 +1,9 @@
 FROM debian:buster-slim
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
+RUN groupadd --gid 1000 node \
+  && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+
 RUN apt-get update && \
     apt-get --yes install \
         yarnpkg \
@@ -36,9 +39,6 @@ RUN apt-get update \
 # It's a good idea to use dumb-init to help prevent zombie chrome processes.
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 /usr/local/bin/dumb-init
 RUN chmod +x /usr/local/bin/dumb-init
-
-RUN groupadd --gid 1000 node \
-  && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
 USER node
 
