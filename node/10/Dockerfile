@@ -1,6 +1,14 @@
 FROM node:10-slim
 MAINTAINER Damien Carcel <damien.carcel@akeneo.com>
 
+RUN apt-get update && \
+    apt-get --yes install \
+        yarnpkg \
+        nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    ln -s /usr/bin/yarnpkg /usr/bin/yarn
+
 ARG USER_ID=1000
 
 # Change the id of the node user to the provided value
