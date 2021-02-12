@@ -1,0 +1,30 @@
+name: docker-compose-actions-workflow
+on: push
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                include:
+                    - version: "7.2"
+                      images: "php fpm"
+                    - version: "7.3"
+                      images: "php fpm"
+                    - version: "10"
+                      images: "node"
+                    - version: "12"
+                      images: "node"
+        steps:
+            -   uses: actions/checkout@v2
+
+            -   name: Build
+                env:
+                    VERSION: ${{ matrix.version }}
+                    IMAGES: ${{ matrix.images }}
+                run: ./.ci/build_images.sh
+
+            -   name: Test
+                env:
+                    VERSION: ${{ matrix.version }}
+                    IMAGES: ${{ matrix.images }}
+                run: ./.ci/run_tests.sh
