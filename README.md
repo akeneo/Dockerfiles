@@ -10,7 +10,7 @@ This repository contains Dockerfiles to be used for [Akeneo PIM](https://www.ake
 
 - [**akeneo/php**](https://hub.docker.com/r/akeneo/php): An image with PHP CLI preconfigured, based on `debian:jessie-slim` or `debian:stretch-slim`. This image is used to run command line PHP scripts.
 - [**akeneo/fpm**](https://hub.docker.com/r/akeneo/fpm): An image with PHP FPM preconfigured, to be used with any PHP project, based on `akeneo/php` (needs to be run along `nginx` or `httpd`). This image is to be used with Apache to serve the PIM.
-- [**akeneo/node**](https://hub.docker.com/r/akeneo/node): An image with Chromium and Puppeteer, used to run the front-end tests of the PIM.
+- [**akeneo/node**](https://hub.docker.com/r/akeneo/node): An image with Node, Yarn, Chromium and Puppeteer, used to build front and run the front-end tests of the PIM.
 
 All PHP and FPM images are available as follow:
 
@@ -21,16 +21,18 @@ All PHP and FPM images are available as follow:
 | 7.3         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.3     |
 |             |                                                                                              | akeneo/fpm:php-7.3 |
 
-And for Node images:
-
-| Node version | Based on                             | Corresponding tags |
-|--------------|--------------------------------------|--------------------|
-| 10           | Official Docker image `node:10-slim` | akeneo/node:10     |
-
 For all images, tag `latest` is identical to the one corresponding to the most recent language version.
 
 Akeneo 3.x is to be used only with PHP 7.2 (or higher), with php-fpm and Apache 2.4 with FCGI.
 Akeneo 4.0 comes with its own Docker images and does not use this repository anymore.
+
+And for Node images:
+
+| Node version | Yarn version | Based on                                   | Corresponding tags |
+|--------------|--------------|--------------------------------------------|--------------------|
+| 10           | 1.13         | Official Docker image `debian:buster-slim` | akeneo/node:10     |
+| 12           | 1.22         | Official Docker image `debian:buster-slim` | akeneo/node:12     |
+| 16           | 3.1          | Official Docker image `debian:buster-slim` | akeneo/node:16     |
 
 ## How to use these images
 
