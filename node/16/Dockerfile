@@ -18,8 +18,8 @@ RUN sh -c 'wget -q -O - https://deb.nodesource.com/gpgkey/nodesource.gpg.key | A
     sh -c 'echo "deb-src https://deb.nodesource.com/node_16.x buster main" >> /etc/apt/sources.list.d/nodesource.list' && \
     apt-get update && \
     apt-get install -y nodejs && \
-    corepack enable && \
-    yarn set version stable && \
+    npm i -g yarn && \
+    yarn set version 3.1.1 && \
     apt-get clean && apt-get -y -q autoremove --purge && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
