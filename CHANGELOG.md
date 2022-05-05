@@ -1,5 +1,8 @@
 # Changelog
 
+## 2022-05-05
+- Added Node 14 image
+
 ## 2020-02-28
 - **Issue 354**: Allow `node` user of `akeneo/node:10` image to be given an id other than `1000`
 
@@ -269,7 +272,7 @@
 ### Bug fix
 
 - **Issue 75**: Allow to properly restart apache container by removing `/var/run/apache2/apache2.pid` in
-    `carcel/apache-php` image entry point. 
+    `carcel/apache-php` image entry point.
 
 ### Enhancements
 
@@ -283,7 +286,7 @@
 - **Issue 88**: Allow user to config Xdebug from environment variables.
 - **Issue 89**: Introduce `php-7.1` branch containing PHP 7.1 based images.
     PHP 7.1 packages are provided by [Sury](https://packages.sury.org//) repositories. Master is updated to PHP 7.1 too.
-    
+
 ## 2016-12-05
 
 ### Enhancement
@@ -358,7 +361,7 @@
     Master contains the same PHP 7.0 images.
     Original PHP 5.6 images (Debian Jessie native packages) are now in the `php-5.6` branch.
     All files used by dockerfiles are now placed in a `files` subfolder.
-    
+
 ## 2016-10-07
 
 ### Enhancement

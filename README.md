@@ -21,16 +21,18 @@ All PHP and FPM images are available as follow:
 | 7.3         | Debian 9 "Stretch" with packages coming from [Ondřej Surý repository](https://deb.sury.org/) | akeneo/php:7.3     |
 |             |                                                                                              | akeneo/fpm:php-7.3 |
 
-And for Node images:
-
-| Node version | Based on                             | Corresponding tags |
-|--------------|--------------------------------------|--------------------|
-| 10           | Official Docker image `node:10-slim` | akeneo/node:10     |
-
 For all images, tag `latest` is identical to the one corresponding to the most recent language version.
 
 Akeneo 3.x is to be used only with PHP 7.2 (or higher), with php-fpm and Apache 2.4 with FCGI.
 Akeneo 4.0 comes with its own Docker images and does not use this repository anymore.
+
+And for Node images:
+
+| Node version | Yarn version | Based on                                   | Corresponding tags |
+|--------------|--------------|--------------------------------------------|--------------------|
+| 10           | 1.13         | Official Docker image `debian:buster-slim` | akeneo/node:10     |
+| 12           | 1.22         | Official Docker image `debian:buster-slim` | akeneo/node:12     |
+| 14           | 1.22         | Official Docker image `debian:buster-slim` | akeneo/node:14     |
 
 ## How to use these images
 
